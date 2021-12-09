@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+  font-family: 'Labil Grotesk Basic';
+  src: url('/LabilGroteskBasic-Black.woff2') format('woff2'),
+      url('/LabilGroteskBasic-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Labil Grotesk Basic';
+  src: url('/LabilGroteskBasic-Light.woff2') format('woff2'),
+      url('/LabilGroteskBasic-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Labil Grotesk Basic';
+  src: url('/LabilGroteskBasic-Regular.woff2') format('woff2'),
+      url('/LabilGroteskBasic-Regular.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+main {
+  padding: 3rem;
+  max-width: 84rem;
+  margin: auto;
+}
+
+p, h1, h2, h3 {
+  color: white;
+  font-family: 'Labil Grotesk Basic';
+  font-weight: 500;
+  font-style:normal;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+body {
+  background-color: #10392A;
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,51,9,1) 35%, rgba(0,212,255,1) 100%); */
+}
+
+header {
+  max-width: 48rem;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 4rem;
+}
+
+// if we add more sections to the site, we'll need to change this to class-based
+article {
+  max-width: 48rem;
+  width: 100%;
+  margin: auto;
+}
+
+.outlined {
+  font-family: 'Space Mono', monospace;
+  background-color: #236357;
+  border: none;
+  padding: .75rem;
+  border-radius: 5px;
+  color: #36ECAC;
+  text-transform: uppercase;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1.75em;
+  text-decoration: none;
+}
+
+.masthead {
+  font-size: 5rem;
+  text-align: center;
+  font-weight: bolder;
+  color: #36ECAC;
+  margin-bottom: 3rem;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  p {
+    font-size: 4.75rem;
+    font-weight: bold;
+    text-shadow: 0 0 12px white;
+    transition: transform 0.25s;
+  }
+}
+
+.contribute { 
+  max-width: 24rem;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.manifesto {
+  font-size: 1.5rem;
+  line-height: 1.75;
+  text-align: center;
+}
+
+.discord {
+  font-size: 1.25rem;
+}
+
+@media only screen and (max-width: 36rem) {
+  .masthead {
+    font-size: 3.5rem;
+  }
+}
