@@ -19,7 +19,7 @@ export default function Home() {
       <Meta />
       <nav>
         <img width="40" height="40" src="/tree.png"></img>
-        <a target="_blank" rel="noreferrer" className="outlined discord" href="https://discord.gg/elfdao">Join <img src="/discord.svg" width="25" height="25"></img></a>
+        <a target="_blank" rel="noreferrer" className="outlined discord" href="https://join.elfdao.com">Join <img src="/discord.svg" width="25" height="25"></img></a>
       </nav>
       <header>
         <h1 className="masthead">Santa ain't real,<br/> but his elves are.</h1>
