@@ -1,8 +1,8 @@
-import Head from "next/head";
 import ProgressBar from "../components/ProgressBar";
-import MoneyRaised from "../components/MoneyRaised"
+import MoneyRaised from "../components/MoneyRaised";
 import Meta from "../components/Meta";
-import { useEffect, useState } from 'react'
+import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Home() {
 
@@ -18,14 +18,16 @@ export default function Home() {
     <main>
       <Meta />
       <nav>
-        <img width="40" height="40" src="/tree.png"></img>
-        <a target="_blank" rel="noreferrer" className="outlined discord" href="https://join.elfdao.com">Join <img src="/discord.svg" width="25" height="25"></img></a>
+        <Image alt="tree" width="40" height="40" src="/tree.png" />
+        <a target="_blank" rel="noreferrer" className="outlined discord" href="https://join.elfdao.com">
+          Join <Image alt="discord logo" src="/discord.svg" width="25" height="25" />
+        </a>
       </nav>
       <header>
         <h1 className="masthead">Santa ain't real,<br/> but his elves are.</h1>
         <div className="progress">
           <p>{progress.toFixed(0)}%</p>
-          <img src="/gift.png" width="100" height="100"></img>
+          <Image alt="gift" src="/gift.png" width="100" height="100" />
         </div>
         <ProgressBar percent={progress}/>
         <MoneyRaised eth={eth} dollarGoal={dollarGoal} conversionRate={conversionRate} />
