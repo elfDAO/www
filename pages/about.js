@@ -60,14 +60,15 @@ export default function About() {
             link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>,
           })}
         </p>
-        <h3 className="headline" style={{textAlign: 'center'}}>
+        {/* TODO: add info about elfdao nfts */}
+        {/* <h3 className="headline" style={{textAlign: 'center'}}>
           {t.rich('about.elfDaoNFTs')}
         </h3>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.aboutElfDaoNFTs', {
             link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>,
           })}
-        </p>
+        </p> */}
         <h2 className="subheading" style={{marginTop: '2rem'}}>
           {t.rich('about.whereFunds')}
         </h2>
