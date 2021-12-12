@@ -2,6 +2,7 @@
   "navigation": {
     "join": "Join",
     "about": "About",
+    "faq": "FAQ",
     "mint": "Mint Instructions"
   },
   "home": {
@@ -17,6 +18,10 @@
   },
   "mint": {
     "howTo": "How to Mint",
+    "instructions": ""
+  },
+  "faq": {
+    "title": "FAQ",
     "instructions": ""
   }
 }

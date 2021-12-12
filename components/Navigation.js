@@ -13,9 +13,9 @@ export default function Navigation() {
         {t('about')}
         </a>
       </Link>
-      <Link href="/mint-instructions" passHref>
+      <Link href="/faq" passHref>
         <a className="nav">
-        {t('mint')}
+        {t('faq')}
         </a>
       </Link>
       <a target="_blank" rel="noreferrer" className="outlined discord" href="https://join.elfdao.com">
