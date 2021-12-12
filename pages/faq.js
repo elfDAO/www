@@ -12,30 +12,30 @@ export default function FAQ() {
       <h1 className="masthead">
         {t.rich('title')}
       </h1>
-      <div className="read">
+      <article>
         <h2 className="subheading">
           {t.rich('general')}
         </h2>
-        <h3 className="faq-question">
+        <h3 className="headline">
           {t.rich('inCharge')}
         </h3>
         <p className="faq-response">
           {t.rich('inChargeResponse')}
         </p>
-        <h3 className="faq-question">
+        <h3 className="headline">
           {t.rich('howProposal')}
         </h3>
         <p className="faq-response">
           {t.rich('howProposalResponse')}
         </p>
         {/* TODO: add response */}
-        {/* <h3 className="faq-question">
+        {/* <h3 className="headline">
           {t.rich('donationsLocked')}
         </h3>
         <p className="faq-response">
           {t.rich('donationsLockedResponse')}
         </p> */}
-        <h3 className="faq-question">
+        <h3 className="headline">
           {t.rich('whyJuicebox')}
         </h3>
         <p className="faq-response">
@@ -46,7 +46,7 @@ export default function FAQ() {
         <h2 className="subheading">
         {t.rich('legalStructural')}
         </h2>
-        <h3 className="faq-question">
+        <h3 className="headline">
           {t.rich('whatLegal')}
         </h3>
         <p className="faq-response">
@@ -54,7 +54,7 @@ export default function FAQ() {
             link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>
           })}
         </p>
-        <h3 className="faq-question">
+        <h3 className="headline">
           {t.rich('ownLegal')}
         </h3>
         <p className="faq-response">
@@ -62,7 +62,7 @@ export default function FAQ() {
             link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>
           })}
         </p>
-      </div>
+      </article>
     </ main>
   );
 }

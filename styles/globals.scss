@@ -147,6 +147,9 @@ article {
 .manifesto {
   font-size: 1.5rem;
   line-height: 1.75;
+}
+
+.center {
   text-align: center;
 }
 
@@ -168,20 +171,19 @@ article {
   margin-bottom: 2rem;
 }
 
-.faq-question {
-  font-size: 1.5rem;
+.headline {
+  font-size: 1.8rem;
   line-height: 1.5;
   margin-bottom: 0.5rem;
 }
 
 .faq-response {
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5;
   margin-bottom: 1rem;
 }
 
-.read {
-  padding: 3rem;
-  max-width: 60rem;
-  margin: auto;
+ol, ul {
+  padding-left: 2rem;
+  color: white;
 }

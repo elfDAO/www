@@ -36,12 +36,12 @@ export default function Home() {
         </a>
       </header>
       <article>
-        <p className="manifesto" style={{marginBottom: '2rem'}}>
+        <p className="manifesto center" style={{marginBottom: '2rem'}}>
           {t.rich('home.manifesto', {
             strong: (children) => <strong>{children} </strong>,
           })}
         </p>
-        <p className="manifesto">
+        <p className="manifesto center">
           {t.rich('home.why', {
             strong: (children) => <strong>{children} </strong>,
           })}
