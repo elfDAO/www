@@ -7,7 +7,7 @@ const Meta = () => {
       <meta name="title" content="ElfDAO" />
       <meta
         name="description"
-        content="Next week, a privately-owned copy of the Constitution will be auctioned. We're buying it and repatriating it to its rightful owner: the people."
+        content="Here at elfDAO, we are elves - the workers, builders, and contributors of holiday cheer. That's why we've created elfDAO - to fund, organize, and donate gifts to institutions, orphanages, and low-income neighborhood centers and bring holiday joy to as many children as possible."
       />
 
       <meta property="og:type" content="website" />
@@ -15,7 +15,7 @@ const Meta = () => {
       <meta property="og:title" content="ElfDAO" />
       <meta
         property="og:description"
-        content="Next week, a privately-owned copy of the Constitution will be auctioned. We're buying it and repatriating it to its rightful owner: the people."
+        content="Here at elfDAO, we are elves - the workers, builders, and contributors of holiday cheer. That's why we've created elfDAO - to fund, organize, and donate gifts to institutions, orphanages, and low-income neighborhood centers and bring holiday joy to as many children as possible."
       />
       <meta property="og:image" content="/meta_image.png" />
 
@@ -24,7 +24,7 @@ const Meta = () => {
       <meta property="twitter:title" content="ElfDAO" />
       <meta
         property="twitter:description"
-        content="Next week, a privately-owned copy of the Constitution will be auctioned. We're buying it and repatriating it to its rightful owner: the people."
+        content="Here at elfDAO, we are elves - the workers, builders, and contributors of holiday cheer. That's why we've created elfDAO - to fund, organize, and donate gifts to institutions, orphanages, and low-income neighborhood centers and bring holiday joy to as many children as possible."
       />
       <meta
         property="twitter:image"
