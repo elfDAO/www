@@ -22,6 +22,19 @@
   },
   "faq": {
     "title": "FAQ",
-    "instructions": ""
+    "general": "General Questions",
+    "inCharge": "Who is in charge at elfDAO?",
+    "inChargeResponse": "The core team coordinates to drive key efforts across the DAO, and lay the structure for governance to enable DAO community driven decisions. The people listed as signers on the Multisig are responsible for the transfer of funds.",
+    "howProposal": "How will proposals and voting work?",
+    "howProposalResponse": "We will be utilizing Snapshot, a governance tool built for DAOs like us. Snapshot provides governance – TODO elaborate more here",
+    "donationsLocked": "Are my donations locked in the contract or can I convert back to ETH at any time?",
+    "donationsLockedResponse": "TODO",
+    "whyJuicebox": "Why are we using Juicebox?",
+    "whyJuiceboxResponse": "Juicebox lets us receive your donations directly to our smart contract. In return, you’ll receive tokens in your wallet proportional to your donation amount! It is a great tool for the community to see the funding project, and it’s easy to distribute funds through the distribution mechanisms. Learn more about Juicebox <link>here</link>.",
+    "legalStructural": "Legal and Structural Questions",
+    "whatLegal": "What does the legal structure look like?",
+    "whatLegalResponse": "We’ve partnered with <link>Endaoment</link>, a 501(c)(3) U.S. PBC that specializes in facilitating the donation of digital assets to charities. They’ve committed to making sure that every bit of ETH we raise can be distributed to the charities we vote on; whether they take crypto or USD.",
+    "ownLegal": "Do you have your own legal entity?",
+    "ownLegalResponse": "No. The DAO does not plan to own any fiat or physical assets, so there is no need for our own entity. Conversion from digital assets to fiat for the purposes of charitable donations will be handled by our partner, <link>Endaoment</link>."
   }
 }

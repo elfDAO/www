@@ -94,6 +94,11 @@ article {
   text-decoration: none;
 }
 
+.link {
+  color: #36ECAC;
+  text-decoration: none;
+}
+
 .outlined {
   font-family: 'Space Mono', monospace;
   background-color: #236357;
@@ -153,4 +158,30 @@ article {
   .masthead {
     font-size: 3.5rem;
   }
+}
+
+.subheading {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bolder;
+  color: #36ECAC;
+  margin-bottom: 2rem;
+}
+
+.faq-question {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.faq-response {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.read {
+  padding: 3rem;
+  max-width: 60rem;
+  margin: auto;
 }
