@@ -4,6 +4,7 @@ import Meta from "../components/Meta";
 import { useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import Navigation from "../components/Navigation";
 
 export default function Home() {
   const t = useTranslations();
@@ -19,12 +20,7 @@ export default function Home() {
   return (
     <main>
       <Meta />
-      <nav>
-        <Image alt="tree" width="40" height="40" src="/tree.png" />
-        <a target="_blank" rel="noreferrer" className="outlined discord" href="https://join.elfdao.com">
-          {t('home.join')} <Image alt="discord logo" src="/discord.svg" width="25" height="25" />
-        </a>
-      </nav>
+      <Navigation />
       <header>
         <h1 className="masthead">
           {t.rich('home.tagline', { br: () => <br />})}
