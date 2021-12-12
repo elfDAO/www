@@ -1,15 +1,34 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 export default function Navigation() {
-  const t = useTranslations();
+  const t = useTranslations('navigation');
 
   return (
     <nav>
-      <Image alt="tree" width="40" height="40" src="/tree.png" />
+      <Link href="/" passHref><Image alt="tree" width="40" height="40" src="/tree.png" /></Link>
+      <Link href="/about" passHref>
+        <a className="nav">
+        {t('about')}
+        </a>
+      </Link>
+      <Link href="/mint-instructions" passHref>
+        <a className="nav">
+        {t('mint')}
+        </a>
+      </Link>
       <a target="_blank" rel="noreferrer" className="outlined discord" href="https://join.elfdao.com">
-        {t('home.join')} <Image alt="discord logo" src="/discord.svg" width="25" height="25" />
+        {t('join')} <Image alt="discord logo" src="/discord.svg" width="25" height="25" />
       </a>
     </nav>
   )
+}
+
+export function getStaticProps({ locale }) {
+  return {
+    props: {
+      messages: require(`../locales/${locale}.json`),
+    },
+  };
 }

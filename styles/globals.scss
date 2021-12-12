@@ -83,6 +83,17 @@ article {
   margin: auto;
 }
 
+.nav {
+  font-family: 'Space Mono', monospace;
+  padding: .75rem;
+  color: #36ECAC;
+  text-transform: uppercase;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1.75em;
+  text-decoration: none;
+}
+
 .outlined {
   font-family: 'Space Mono', monospace;
   background-color: #236357;
@@ -122,7 +133,7 @@ article {
   }
 }
 
-.contribute { 
+.contribute {
   max-width: 24rem;
   width: 100%;
   font-size: 2rem;
