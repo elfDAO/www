@@ -1,9 +1,63 @@
 {
+  "navigation": {
+    "join": "Join",
+    "about": "About",
+    "faq": "FAQ",
+    "mint": "Mint Instructions"
+  },
   "home": {
       "join": "Join",
       "contribute": "Contribute",
       "tagline": "Santa ain't real,<br></br> but his elves are.",
       "manifesto": "Here at elfDAO, we are elves - the workers, builders, and, contributors of holiday cheer. We elves see the activity of gift-giving as one of the best ways to use our platform to share cheer to children. And <strong>we're sick of seeing \"Santa\" never show up for children less fortunate.</strong>",
       "why": "That's why we've created elfDAO - to fund, organize, and donate gifts to institutions, orphanages, and low-income neighborhood centers and <strong>bring holiday joy to as many children as possible.</strong>"
+  },
+  "about": {
+    "title": "About Elf DAO",
+    "manyKids": "For many kids around the globe, Christmas marks one of the most special days of the year. As we gear up for the holiday season, we plan meaningful moments around gifting our loved ones. However, let's remember that <strong>there are many kids that don't get to celebrate Christmas like we do.</strong>",
+    "remember": "We must take the time to remember that there are those less fortunate, and in a world where we can utilize awesome tools like DAO to fund community projects, it's a no-brainer for us to help children have a happy Christmas.",
+    "joinElfDao": "So come one, come all. Join us on our adventure to work, build, and contribute to the greatest effort to spread holiday cheer in the world. Join elfDAO.",
+    "whatSuccess": "What does success look like?",
+    "oneIn10": "One in ten families can’t afford to buy gifts this year because of financial strain made worse by the pandemic. There are 74 million kids under 18 in the US. That’s 7.4 million kids missing out on the joys of Christmas in the US alone!",
+    "weCare": "We care about those kids. That’s why we’re aiming for a big but worthwhile goal.",
+    "goal": "We want to raise <strong>$1,000,000 USD</strong> by Christmas. At $25 USD per gift, our goal is to give 40,000 kids a gift this holiday season.",
+    "howRaising": "How are we raising funds?",
+    "raisingJuicebox": "Two ways: through collecting donations by exchanging governance tokens on <link>Juicebox</link> and selling elfDAO NFTs. Having two avenues gives you a lot of flexibility for how you want to support us.",
+    "theAntaToken": "The $ANTA Token",
+    "aboutAnta": "On <link>Juicebox</link>, contributors can donate any amount of ETH in return for $ANTA governance tokens. The amount of tokens you’ll receive is proportional to your donation size, at a 1,000,000 $ANTA/ETH ratio. Governance tokens give you voting power within elfDAO, meaning that you’ll help decide how our funds are spent. The tokens’ sole purpose is for governance and voting rights for elfDAO’s use of funds.",
+    "elfDaoNFTs": "elfDAO NFTs",
+    "aboutElfDaoNFTs": "TODO: add elfDAO nft about text",
+    "whereFunds": "Where will the Funds go?",
+    "shortAnswer": "<strong>The short answer</strong>: The DAO will have the ability to choose how and where we spend the funds. The core team has ideas listed below, but remember, we're all elves here, and we want to hear from you.",
+    "longAnswer": "<strong>The long answer</strong>: Depending on the size of the funds raised, we could go two ways.",
+    "longAnswerOption1": "If our fund size is smaller than 10,000 presents (10k * $25 = $250,000), the core team will present a handful of reputable charitable organizations for DAO members to vote on.",
+    "longAnswerOption2": "If our fund size is larger than 10,000 presents ($250,000) giving us the ability to distribute funds across many recipients, we will open for proposals from charitable organizations. Community members will be encouraged to nominate organizations and nudge them to submit proposals. DAO members will then vote on the proposals and help us determine distribution.",
+    "community": "As a community-run initiative, we’re decentralizing decision-making about our donation recipients. That’s what makes us unique compared to other Christmas gift-giving charities.",
+    "targetGoal": "If we reach our funding target of $1 million, we hope elfDAO’s members will push small, local organizations to submit funding proposals. These organizations could include community centers, orphanages, churches, or other groups who are registered as 501c3 in good standing with the IRS (U.S. Internal Revenue Service).",
+    "howContribute": "How to Contribute",
+    "donate": "<strong>Donate</strong>: Donate ETH on Juicebox or purchase our NFTs! All funds raised will go directly to charity.",
+    "contribute": "<strong>Contribute to elfDAO:</strong> We understand that not everyone has the means to provide monetary support. But, if you love our mission and want to help make it a reality, <link>hop into our discord!</link> We'd love any support in dev, mark”eting, partnerships, PR, and legal matters. :)",
+    "spreadTheWord": "<strong>Spread the word:</strong> Tell your friends about us, share on Twitter and other social media, add our emojis (🎄,🎄) to your bio, and spread the holiday love!"
+  },
+  "mint": {
+    "howTo": "How to Mint",
+    "instructions": ""
+  },
+  "faq": {
+    "title": "FAQ",
+    "general": "General Questions",
+    "inCharge": "Who is in charge at elfDAO?",
+    "inChargeResponse": "The core team coordinates to drive key efforts across the DAO, and lay the structure for governance to enable DAO community driven decisions. The people listed as signers on the Multisig are responsible for the transfer of funds.",
+    "howProposal": "How will proposals and voting work?",
+    "howProposalResponse": "We will be utilizing Snapshot, a governance tool built for DAOs like us. Snapshot provides governance – TODO elaborate more here",
+    "donationsLocked": "Are my donations locked in the contract or can I convert back to ETH at any time?",
+    "donationsLockedResponse": "TODO",
+    "whyJuicebox": "Why are we using Juicebox?",
+    "whyJuiceboxResponse": "Juicebox lets us receive your donations directly to our smart contract. In return, you’ll receive tokens in your wallet proportional to your donation amount! It is a great tool for the community to see the funding project, and it’s easy to distribute funds through the distribution mechanisms. Learn more about Juicebox <link>here</link>.",
+    "legalStructural": "Legal and Structural Questions",
+    "whatLegal": "What does the legal structure look like?",
+    "whatLegalResponse": "We’ve partnered with <link>Endaoment</link>, a 501(c)(3) U.S. PBC that specializes in facilitating the donation of digital assets to charities. They’ve committed to making sure that every bit of ETH we raise can be distributed to the charities we vote on; whether they take crypto or USD.",
+    "ownLegal": "Do you have your own legal entity?",
+    "ownLegalResponse": "No. The DAO does not plan to own any fiat or physical assets, so there is no need for our own entity. Conversion from digital assets to fiat for the purposes of charitable donations will be handled by our partner, <link>Endaoment</link>."
   }
 }
