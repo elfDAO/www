@@ -21,6 +21,7 @@ export default function Home() {
     <main>
       <Meta />
       <Navigation />
+      <br></br><br></br>
       <header>
         <h1 className="masthead">
           {t.rich('home.tagline', { br: () => <br />})}
