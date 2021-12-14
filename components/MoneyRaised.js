@@ -18,11 +18,10 @@ const MoneyRaised = ({ eth, dollarGoal, conversionRate }) => {
             </p>
             <style jsx>
                 {`
-
                 .raised {
                     margin-bottom: 2rem;
                 }
-                
+
                 .first {
                     margin-bottom: .25rem;
                 }
@@ -47,7 +46,17 @@ const MoneyRaised = ({ eth, dollarGoal, conversionRate }) => {
                 .ethGoal {
                     color: #46B4B4;
                 }
-                
+                @media only screen and (max-width: 36rem) {
+                    .raised {
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .count {
+                        font-weight: bold;
+                        font-size: 2rem;
+                        text-align: center;
+                    }
+                }
                 `}
             </style>
         </div>
