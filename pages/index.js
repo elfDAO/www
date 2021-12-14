@@ -27,7 +27,7 @@ export default function Home() {
           {t.rich('home.tagline', { br: () => <br />})}
         </h1>
         <div className="progress">
-          <p>{progress.toFixed(0)} gifts raised</p>
+          <p>{progress.toFixed(0)} gifts funded</p>
           <Image alt="gift" src="/gift.png" width="100" height="100" />
         </div>
         <ProgressBar percent={progress}/>
