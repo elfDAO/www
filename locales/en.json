@@ -54,10 +54,14 @@
     "donationsLockedResponse": "TODO",
     "whyJuicebox": "Why are we using Juicebox?",
     "whyJuiceboxResponse": "Juicebox lets us receive your donations directly to our smart contract. In return, you’ll receive tokens in your wallet proportional to your donation amount! It is a great tool for the community to see the funding project, and it’s easy to distribute funds through the distribution mechanisms. Learn more about Juicebox <link>here</link>.",
+    "whoSnapshot": "Who can start a proposal in Snapshot?",
+    "whoSnapshotResponse": "Any $GIFT token holder can start a proposal in Snapshot.",
     "legalStructural": "Legal and Structural Questions",
     "whatLegal": "What does the legal structure look like?",
     "whatLegalResponse": "We’ve partnered with <link>Endaoment</link>, a 501(c)(3) U.S. PBC that specializes in facilitating the donation of digital assets to charities. They’ve committed to making sure that every bit of ETH we raise can be distributed to the charities we vote on; whether they take crypto or USD.",
     "ownLegal": "Do you have your own legal entity?",
-    "ownLegalResponse": "No. The DAO does not plan to own any fiat or physical assets, so there is no need for our own entity. Conversion from digital assets to fiat for the purposes of charitable donations will be handled by our partner, <link>Endaoment</link>."
+    "ownLegalResponse": "No. The DAO does not plan to own any fiat or physical assets, so there is no need for our own entity. Conversion from digital assets to fiat for the purposes of charitable donations will be handled by our partner, <link>Endaoment</link>.",
+    "taxDeductible": "Are Contributions to elfDAO tax-deductible?",
+    "taxDeductibleResponse": "No. elfDAO is not a registered non-profit and all contributions to elfDAO are made voluntarily in exchange for $ANTA tokens. If you’d prefer to make a tax-deductible donation to elfDAO, please contact the team at Endaoment via <discord>Discord</discord> or <email>email.</email>"
   }
 }
