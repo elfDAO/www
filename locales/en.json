@@ -9,8 +9,8 @@
       "join": "Join",
       "contribute": "Contribute",
       "tagline": "Santa's not real,<br></br> but his elves are.",
-      "manifesto": "Here at elfDAO, we are elves - the workers, builders, and, contributors of holiday cheer. We elves see the activity of gift-giving as one of the best ways to use our platform to share cheer to children. And <strong>we're sick of seeing \"Santa\" never show up for children less fortunate.</strong>",
-      "why": "That's why we've created elfDAO - to fund, organize, and donate gifts to institutions, orphanages, and low-income neighborhood centers and <strong>bring holiday joy to as many children as possible.</strong>"
+      "manifesto": "Here at elfDAO, we are elves - the workers, builders, and contributors of holiday cheer. We elves see the activity of gift-giving as one of the best ways to use our platform to share cheer to children. And <strong>we're sick of seeing \"Santa\" never show up for children less fortunate.</strong>",
+      "why": "That's why we've created elfDAO - to fund, organize, and donate gifts to institutions, orphanages, and low-income neighborhood centers <strong>bring holiday joy to as many children as possible.</strong>"
   },
   "about": {
     "title": "About elfDAO",
@@ -49,7 +49,7 @@
     "inCharge": "Who is in charge at elfDAO?",
     "inChargeResponse": "The core team coordinates to drive key efforts across the DAO, and lay the structure for governance to enable DAO community driven decisions. The people listed as signers on the Multisig are responsible for the transfer of funds.",
     "howProposal": "How will proposals and voting work?",
-    "howProposalResponse": "We will be utilizing Snapshot, a governance tool built for DAOs like us. Snapshot provides governance – TODO elaborate more here",
+    "howProposalResponse": "We will be utilizing Snapshot, a governance tool built for DAOs like us. Initially, we will be starting the Snapshot process with our initial proposal which includes parameters on governance.",
     "donationsLocked": "Are my donations locked in the contract or can I convert back to ETH at any time?",
     "donationsLockedResponse": "TODO",
     "whyJuicebox": "Why are we using Juicebox?",
