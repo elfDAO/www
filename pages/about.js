@@ -102,6 +102,7 @@ export default function About() {
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.targetGoal', {
             strong: (children) => <strong>{children}</strong>,
+            link: (children) => <a className="link" href="https://docs.endaoment.org/governance/mission-values#organization-funding-policy" target="_blank" rel="noreferrer">{children}</a>,
           })}
         </p>
         <h2 className="subheading" style={{marginTop: '2rem'}}>
