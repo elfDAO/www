@@ -9,8 +9,8 @@ import Navigation from "../components/Navigation";
 export default function Home() {
   const t = useTranslations();
 
-  // these values need to be pulled from a server that can interact w/ the blockchain. I've already written the code, just need to get an API key.
-  const eth = 21.55
+  // TODO: these values need to be pulled from a server that can interact w/ the blockchain. I've already written the code, just need to get an API key.
+  const eth = 0
   const dollarGoal = 1_000_000
   const conversionRate = 4450.67
 
