@@ -49,7 +49,7 @@ export default function About() {
         </h2>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.raisingJuicebox', {
-            link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>,
+            link: (children) => <a className="link" href="https://juicebox.money/#/" target="_blank" rel="noreferrer">{children}</a>,
           })}
         </p>
         <h3 className="headline" style={{textAlign: 'center'}}>
@@ -57,7 +57,7 @@ export default function About() {
         </h3>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.aboutGift', {
-            link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>,
+            link: (children) => <a className="link" href="https://juicebox.money/#/" target="_blank" rel="noreferrer">{children}</a>,
             strong: (children) => <strong>{children}</strong>,
           })}
         </p>
