@@ -32,9 +32,13 @@ export default function Home() {
         </div>
         <ProgressBar percent={progress}/>
         <MoneyRaised eth={eth} dollarGoal={dollarGoal} conversionRate={conversionRate} />
-        <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/santa">
+        {/* TODO: swap it out to contribte when we are ready to launch
+        <a disabled target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/elfdao">
           {t('home.contribute')}
-        </a>
+        </a> */}
+        <div className="outlined contribute">
+          {t('home.comingSoon')}
+        </div>
       </header>
       <article>
         <p className="manifesto center" style={{marginBottom: '2rem'}}>
