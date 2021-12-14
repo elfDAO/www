@@ -1,4 +1,3 @@
-
 import { useTranslations } from 'next-intl';
 import Navigation from '../components/Navigation';
 import styled from 'styled-components';
@@ -36,6 +35,12 @@ export default function FAQ() {
           {t.rich('donationsLockedResponse')}
         </p> */}
         <h3 className="headline">
+          {t.rich('whoSnapshot')}
+        </h3>
+        <p className="faq-response">
+          {t.rich('whoSnapshotResponse')}
+        </p>
+        <h3 className="headline">
           {t.rich('whyJuicebox')}
         </h3>
         <p className="faq-response">
@@ -60,6 +65,15 @@ export default function FAQ() {
         <p className="faq-response">
           {t.rich('ownLegalResponse', {
             link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>
+          })}
+        </p>
+        <h3 className="headline">
+          {t.rich('taxDeductible')}
+        </h3>
+        <p className="faq-response">
+          {t.rich('taxDeductibleResponse', {
+            discord: (children) => <a className="link" href="https://discord.com/invite/endaoment" target="_blank" rel="noreferrer">{children}</a>,
+            email: (children) => <a className="link" href="mailto:admin+elfdao@endaoment.org" target="_blank" rel="noreferrer">{children}</a>
           })}
         </p>
       </article>
