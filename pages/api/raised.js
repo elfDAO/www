@@ -1,5 +1,8 @@
-import cors from 'cors'
-import cache from 'express-redis-cache'
+import cors from 'cors';
+import cache from 'express-redis-cache';
+import axios from 'axios';
+
+const JUICEBOX_CONTRACT = "0xd569d3cce55b71a8a3f3c418c329a66e5f714431";
 
 const c = cache()
 
@@ -9,7 +12,6 @@ const run = (req, res) => (fn) => new Promise((resolve, reject) => {
     )
 })
 
-
 const handler = async (req, res) => {
     const middleware = run(req, res)
     await middleware(cors())
@@ -17,17 +19,19 @@ const handler = async (req, res) => {
         expire: 30
     }))
 
-    const projectId = process.env.projectId;
-    const juiceboxContract = "0xd569d3cce55b71a8a3f3c418c329a66e5f714431";
-
+    /** Read Juicebox contract balance for specified project **/
+    const projectId = process.env.PROJECT_ID; // Juicebox project id
+    const juiceboxContract = JUICEBOX_CONTRACT;
     const contractPayload = {
         id: 1,
         jsonrpc: "2.0",
         method: "eth_call",
-        // I didn't know the ABI spec before this (and still only have a cursory understanding), here's a breakdown of this request:
-        // data: first 4 bytes of the Keccak hash of the ASCII form of the method signature (I know, it's a lot), followed by the method args padded to 32 bytes.
-        // from: address the call is coming from. it can be 0 because we're reading from the contract
-        // to: the contract
+        /** here's a breakdown of this request:
+            * data: first 4 bytes of the Keccak hash of the ASCII form of the method signature
+                followed by the method args padded to 32 bytes.
+            * from: address the call is coming from. blackhole address because this is a READ call
+            * to: the Juicebox contract
+        */
         params: [
             {
                 data: `0x9cc7f708${projectId.toString(16).padStart(64, "0")}`,
@@ -39,7 +43,6 @@ const handler = async (req, res) => {
     };
 
     let contractResponse;
-
     try {
         contractResponse = await axios.post(
             `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
@@ -53,11 +56,13 @@ const handler = async (req, res) => {
         contractResponse = {
             data: {
                 result:
+                    // TODO: add comment to explain what this is
                     "0x000000000000000000000000000000000000000000000001287f7ff0ec2a5c00",
             },
         };
     }
 
+     /** Read Multisig contract balance for specified project **/
     let multisigResponse;
 
     try {
@@ -67,7 +72,7 @@ const handler = async (req, res) => {
                 id: 1,
                 jsonrpc: "2.0",
                 method: "eth_getBalance",
-                params: [process.env.multisigAddr, "latest"],
+                params: [process.env.MULTISIG_ADDRESS, "latest"],
             }
         );
     } catch (e) {
@@ -78,11 +83,12 @@ const handler = async (req, res) => {
         multisigResponse = {
             data: {
                 result:
-                    "0x1a34cfb365b875574b",
+                    "0x1a34cfb365b875574b", // TODO: add comment to explain what this is
             },
         };
     }
 
+    /** Convert Juicebox balance and Multisig balance into USD **/
     let dollarResponse;
     try {
         dollarResponse = await axios.get(
@@ -98,7 +104,7 @@ const handler = async (req, res) => {
                 data: {
                     currency: "ETH",
                     rates: {
-                        USD: "4685.285",
+                        USD: "0",
                     },
                 },
             },
@@ -107,17 +113,19 @@ const handler = async (req, res) => {
 
     const ethToDollarRate = parseInt(dollarResponse.data.data.rates["USD"]);
 
-    // things are only verbose here because i want people to understand the conversions.
+    /** Convert Juicebox value to USD */
     const contractHexWei = contractResponse.data.result;
     const contractWei = parseInt(contractHexWei, 16);
-    const contractEth = (contractWei / 1000000000000000000)
+    const contractEth = (contractWei / 10e18) // divide by 10^18
     const contractDollars = (contractEth * ethToDollarRate)
 
+    /** Convert Multisig value to USD */
     const multisigHexWei = multisigResponse.data.result
     const multisigWei = parseInt(multisigHexWei, 16)
-    const multisigEth = (multisigWei / 1000000000000000000)
+    const multisigEth = (multisigWei / 10e18) // divide by 10^18
     const multisigDollars = (multisigEth * ethToDollarRate)
 
+    /** Format values */
     const totalEth = (contractEth + multisigEth).toFixed(3)
     const totalDollars = (contractDollars + multisigDollars).toFixed(2)
 
@@ -128,7 +136,6 @@ const handler = async (req, res) => {
         dollars: totalDollars,
         ethUsdConversion: ethToDollarRate
     });
-
 }
 
 export default handler
