@@ -1,10 +1,9 @@
-const MoneyRaised = ({ eth, dollarGoal, conversionRate }) => {
-    const dollars = (eth * conversionRate).toFixed(0)
+const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
     const ethGoal = (dollarGoal / conversionRate).toFixed(2)
 
     const numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      }
+    }
 
     return (
         <div className="raised">
