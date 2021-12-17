@@ -159,9 +159,54 @@ article {
 
 @media only screen and (max-width: 36rem) {
   .masthead {
-    font-size: 3.5rem;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bolder;
+    color: #36ECAC;
+    margin-bottom: 2rem;
+  }
+
+  .manifesto {
+    font-size: 1.25rem;
+    line-height: 1.75;
+  }
+
+  .contribute {
+    max-width: 15rem;
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  .discord {
+    font-size: 1.1rem;
+  }
+
+  .progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
+    p {
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 0 0 12px white;
+      transition: transform 0.25s;
+    }
+  }
+
+  .nav {
+    font-family: 'Space Mono', monospace;
+    padding: .75rem;
+    color: #36ECAC;
+    text-transform: uppercase;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.25em;
+    text-decoration: none;
   }
 }
+
 
 .subheading {
   font-size: 2rem;

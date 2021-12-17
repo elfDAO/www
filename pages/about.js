@@ -49,26 +49,27 @@ export default function About() {
         </h2>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.raisingJuicebox', {
-            link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>,
+            link: (children) => <a className="link" href="https://juicebox.money/#/" target="_blank" rel="noreferrer">{children}</a>,
           })}
         </p>
         <h3 className="headline" style={{textAlign: 'center'}}>
-          {t.rich('about.theAntaToken')}
+          {t.rich('about.theGiftToken')}
         </h3>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
-          {t.rich('about.aboutAnta', {
-            link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>,
+          {t.rich('about.aboutGift', {
+            link: (children) => <a className="link" href="https://juicebox.money/#/" target="_blank" rel="noreferrer">{children}</a>,
+            strong: (children) => <strong>{children}</strong>,
           })}
         </p>
         {/* TODO: add info about elfdao nfts */}
-        {/* <h3 className="headline" style={{textAlign: 'center'}}>
+        <h3 className="headline" style={{textAlign: 'center'}}>
           {t.rich('about.elfDaoNFTs')}
         </h3>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.aboutElfDaoNFTs', {
-            link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>,
+            link: (children) => <a className="link" href="" target="_blank" rel="noreferrer">{children}</a>,
           })}
-        </p> */}
+        </p>
         <h2 className="subheading" style={{marginTop: '2rem'}}>
           {t.rich('about.whereFunds')}
         </h2>
@@ -102,6 +103,7 @@ export default function About() {
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.targetGoal', {
             strong: (children) => <strong>{children}</strong>,
+            link: (children) => <a className="link" href="https://docs.endaoment.org/governance/mission-values#organization-funding-policy" target="_blank" rel="noreferrer">{children}</a>,
           })}
         </p>
         <h2 className="subheading" style={{marginTop: '2rem'}}>

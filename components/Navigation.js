@@ -18,7 +18,7 @@ export default function Navigation() {
         {t('faq')}
         </a>
       </Link>
-      <a target="_blank" rel="noreferrer" className="outlined discord" href="https://join.elfdao.com">
+      <a target="_blank" rel="noreferrer" className="outlined discord" href="https://discord.gg/elfdao">
         {t('join')} <Image alt="discord logo" src="/discord.svg" width="25" height="25" />
       </a>
     </nav>
