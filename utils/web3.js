@@ -2,7 +2,11 @@
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { useEffect, useState } from "react";
 
-const { ALCHEMY_KEY, ELFNFT_ADDRESS, NETWORK }  = process.env;
+/** Do not destructure env variables */
+const ALCHEMY_KEY = process.env.ALCHEMY_KEY;
+const ELFNFT_ADDRESS = process.env.ELFNFT_ADDRESS;
+const NETWORK = process.env.NETWORK;
+
 const alchemyUrl = `https://eth-${NETWORK}.alchemyapi.io/v2/${ALCHEMY_KEY}`;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyUrl);
@@ -11,6 +15,8 @@ const contractABI = require("../data/elfNFTABI.json");
 const contractAddress = ELFNFT_ADDRESS;
 
 export const elfDAONFT = new web3.eth.Contract(contractABI.abi, contractAddress);
+
+console.log('elfDAONFT contract', elfDAONFT);
 
 export const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 
@@ -51,7 +57,6 @@ export const mintElf = async (account, proof, ethereum) => {
   const tx = {
     'from': account,
     'to': contractAddress,
-    'gas': 200000, // set the gas limit
     'data': elfDAONFT.methods.mintElf(proof).encodeABI()
   };
 
@@ -59,7 +64,7 @@ export const mintElf = async (account, proof, ethereum) => {
     const txHash = await ethereum
         .request({
             method: 'eth_sendTransaction',
-            params: [transactionParameters],
+            params: [tx],
         });
     return {
         success: true,
@@ -78,7 +83,7 @@ export const mintReindeer = async (account, proof, ethereum) => {
   const tx = {
     'from': account,
     'to': contractAddress,
-    'gas': 200000, // set the gas limit
+    'gas': '200000', // set the gas limit
     'data': elfDAONFT.methods.mintReindeer(proof).encodeABI()
   };
 
@@ -86,7 +91,7 @@ export const mintReindeer = async (account, proof, ethereum) => {
     const txHash = await ethereum
         .request({
             method: 'eth_sendTransaction',
-            params: [transactionParameters],
+            params: [tx],
         });
     return {
         success: true,
@@ -105,14 +110,14 @@ export const mintReindeer = async (account, proof, ethereum) => {
     const tx = {
       'from': account,
       'to': contractAddress,
-      'gas': 200000, // set the gas limit
+      'gas': '200000', // set the gas limit
       'data': elfDAONFT.methods.mintSanta(proof).encodeABI()
     };
     try {
       const txHash = await ethereum
           .request({
               method: 'eth_sendTransaction',
-              params: [transactionParameters],
+              params: [tx],
           });
       return {
           success: true,

@@ -60,7 +60,18 @@ export default function MintInstructions() {
   }
 
   const onMintElf = async () => {
-    await mintElf(account, elfProof, window.ethereum);
+    const { success, status } = await mintElf(account, elfProof, window.ethereum);
+    console.log(success, status);
+  };
+
+  const onMintReindeer = async () => {
+    const { success, status } = await mintReindeer(account, reindeerProof, window.ethereum);
+    console.log(success, status);
+  };
+
+  const onMintSanta = async () => {
+    const { success, status } = await mintSanta(account, santaProof, window.ethereum);
+    console.log(success, status);
   };
 
   return (
@@ -82,10 +93,10 @@ export default function MintInstructions() {
         <PrimaryButton onClick={onMintElf} disabled={!elfValid}>
           Mint Elf
         </PrimaryButton>
-        <PrimaryButton onClick={mintReindeer} disabled={!reindeerValid}>
+        <PrimaryButton onClick={onMintReindeer} disabled={!reindeerValid}>
           Mint Reindeer
         </PrimaryButton>
-        <PrimaryButton onClick={mintSanta} disabled={!santaValid}>
+        <PrimaryButton onClick={onMintSanta} disabled={!santaValid}>
           Mint Santa
         </PrimaryButton>
       </article>
