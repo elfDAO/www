@@ -56,8 +56,7 @@ const handler = async (req, res) => {
         contractResponse = {
             data: {
                 result:
-                    // TODO: add comment to explain what this is
-                    "0x000000000000000000000000000000000000000000000001287f7ff0ec2a5c00",
+                    "0x0", // return 0 when fail
             },
         };
     }
@@ -83,7 +82,7 @@ const handler = async (req, res) => {
         multisigResponse = {
             data: {
                 result:
-                    "0x1a34cfb365b875574b", // TODO: add comment to explain what this is
+                    "0x0", // return 0 when fail
             },
         };
     }
@@ -111,22 +110,23 @@ const handler = async (req, res) => {
         };
     }
 
-    const ethToDollarRate = parseInt(dollarResponse.data.data.rates["USD"]);
+    const ethToDollarRate = parseFloat(dollarResponse.data.data.rates["USD"]).toFixed(4);
 
     /** Convert Juicebox value to USD */
     const contractHexWei = contractResponse.data.result;
-    const contractWei = parseInt(contractHexWei, 16);
-    const contractEth = (contractWei / 10e18) // divide by 10^18
+    const contractWei = parseInt(contractHexWei, 16); // parsing a base 16 number
+    const contractEth = (contractWei / 1e18) // divide by 10^18
     const contractDollars = (contractEth * ethToDollarRate)
 
     /** Convert Multisig value to USD */
     const multisigHexWei = multisigResponse.data.result
-    const multisigWei = parseInt(multisigHexWei, 16)
-    const multisigEth = (multisigWei / 10e18) // divide by 10^18
+    console.log(`Sucessfully queried services. multisigHexWei: ${multisigHexWei}`);
+    const multisigWei = parseInt(multisigHexWei, 16); // parsing a base 16 number
+    const multisigEth = (multisigWei / 1e18) // divide by 10^18
     const multisigDollars = (multisigEth * ethToDollarRate)
 
     /** Format values */
-    const totalEth = (contractEth + multisigEth).toFixed(3)
+    const totalEth = (contractEth + multisigEth).toFixed(4)
     const totalDollars = (contractDollars + multisigDollars).toFixed(2)
 
     console.log(`Sucessfully queried services. ETH: ${totalEth}, USD: ${totalDollars}`);
