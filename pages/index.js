@@ -2,7 +2,6 @@ import Meta from "../components/Meta";
 import { useTranslations } from 'next-intl';
 import Navigation from "../components/Navigation";
 import Progress from "../components/Progress";
-import { useState } from "react";
 
 export default function Home() {
   const t = useTranslations();

@@ -2,13 +2,13 @@
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { useEffect, useState } from "react";
 
-const { ALCHEMY_KEY }  = process.env;
-const alchemyUrl = `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_KEY}`;
+const { ALCHEMY_KEY, ELFNFT_ADDRESS, NETWORK }  = process.env;
+const alchemyUrl = `https://eth-${NETWORK}.alchemyapi.io/v2/${ALCHEMY_KEY}`;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyUrl);
 
 const contractABI = require("../data/elfNFTABI.json");
-const contractAddress = "0x6f3f635A9762B47954229Ea479b4541eAF402A6A";
+const contractAddress = ELFNFT_ADDRESS;
 
 export const elfDAONFT = new web3.eth.Contract(contractABI.abi, contractAddress);
 
@@ -45,3 +45,83 @@ export const useENSName = (address, library) => {
 
   return ENSName;
 }
+
+export const mintElf = async (account, proof, ethereum) => {
+  console.log('minting elf...')
+  const tx = {
+    'from': account,
+    'to': contractAddress,
+    'gas': 200000, // set the gas limit
+    'data': elfDAONFT.methods.mintElf(proof).encodeABI()
+  };
+
+  try {
+    const txHash = await ethereum
+        .request({
+            method: 'eth_sendTransaction',
+            params: [transactionParameters],
+        });
+    return {
+        success: true,
+        status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + txHash
+    }
+ } catch (error) {
+    return {
+        success: false,
+        status: "😥 Something went wrong: " + error.message
+    }
+  }
+}
+
+export const mintReindeer = async (account, proof, ethereum) => {
+  console.log('minting reindeer...');
+  const tx = {
+    'from': account,
+    'to': contractAddress,
+    'gas': 200000, // set the gas limit
+    'data': elfDAONFT.methods.mintReindeer(proof).encodeABI()
+  };
+
+  try {
+    const txHash = await ethereum
+        .request({
+            method: 'eth_sendTransaction',
+            params: [transactionParameters],
+        });
+    return {
+        success: true,
+        status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + txHash
+    }
+  } catch (error) {
+    return {
+        success: false,
+        status: "😥 Something went wrong: " + error.message
+    }
+  }
+};
+
+  export const mintSanta = async (account, proof, ethereum) => {
+    console.log('minting santa...')
+    const tx = {
+      'from': account,
+      'to': contractAddress,
+      'gas': 200000, // set the gas limit
+      'data': elfDAONFT.methods.mintSanta(proof).encodeABI()
+    };
+    try {
+      const txHash = await ethereum
+          .request({
+              method: 'eth_sendTransaction',
+              params: [transactionParameters],
+          });
+      return {
+          success: true,
+          status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + txHash
+      }
+  } catch (error) {
+    return {
+        success: false,
+        status: "😥 Something went wrong: " + error.message
+    }
+  }
+};

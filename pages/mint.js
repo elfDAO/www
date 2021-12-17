@@ -3,8 +3,8 @@ import { useTranslations } from 'next-intl';
 import useSWR from 'swr';
 import Navigation from '../components/Navigation';
 import styled from 'styled-components';
-import React, { useEffect, useMemo, useState } from 'react';
-import { injected, useENSName, abridgeAddress } from '../utils/web3';
+import React from 'react';
+import { injected, useENSName, abridgeAddress, mintElf, mintReindeer, mintSanta } from '../utils/web3';
 import { useWeb3React } from '@web3-react/core';
 
 export default function MintInstructions() {
@@ -59,6 +59,10 @@ export default function MintInstructions() {
     santaValid = valid;
   }
 
+  const onMintElf = async () => {
+    await mintElf(account, elfProof, window.ethereum);
+  };
+
   return (
     <main>
       <Navigation />
@@ -75,13 +79,13 @@ export default function MintInstructions() {
         </PrimaryButton>
         }
        <p>{account ? ENSName || abridgeAddress(account): "Please connect account"}</p>
-        <PrimaryButton disabled={elfValid}>
+        <PrimaryButton onClick={onMintElf} disabled={!elfValid}>
           Mint Elf
         </PrimaryButton>
-        <PrimaryButton disabled={reindeerValid}>
+        <PrimaryButton onClick={mintReindeer} disabled={!reindeerValid}>
           Mint Reindeer
         </PrimaryButton>
-        <PrimaryButton disabled={santaValid}>
+        <PrimaryButton onClick={mintSanta} disabled={!santaValid}>
           Mint Santa
         </PrimaryButton>
       </article>
