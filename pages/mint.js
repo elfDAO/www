@@ -33,24 +33,30 @@ export default function MintInstructions() {
   const ENSName = useENSName(account, library);
 
   let elfProof = [];
+  let elfValid = false;
   let { data, error } = useSWR(active ? `/api/elfProof?address=${account}` : null, { fetcher, refreshInterval: 0 });
   if (!error && data) {
-    const { proof } = data;
+    const { proof, valid  } = data;
     elfProof = proof;
+    elfValid = valid;
   }
 
   let reindeerProof = [];
+  let reindeerValid = false;
   ({ data, error } = useSWR(active ? `/api/reindeerProof?address=${account}` : null, { fetcher, refreshInterval: 0 }));
   if (!error && data) {
-    const { proof } = data;
+    const { proof, valid } = data;
     reindeerProof = proof;
+    reindeerValid = valid;
   }
 
   let santaProof = [];
+  let santaValid = false;
   ({ data, error } = useSWR(active ? `/api/santaProof?address=${account}` : null, { fetcher, refreshInterval: 0 }));
   if (!error && data) {
-    const { proof } = data;
+    const { proof, valid } = data;
     santaProof = proof;
+    santaValid = valid;
   }
 
   return (
@@ -69,23 +75,15 @@ export default function MintInstructions() {
         </PrimaryButton>
         }
        <p>{account ? ENSName || abridgeAddress(account): "Please connect account"}</p>
-        <PrimaryButton>
+        <PrimaryButton disabled={elfValid}>
           Mint Elf
         </PrimaryButton>
-        <PrimaryButton>
+        <PrimaryButton disabled={reindeerValid}>
           Mint Reindeer
         </PrimaryButton>
-        <div>
-          Santa Proof: {santaProof}
-        </div>
-
-        <div>
-          Elf proof: {elfProof}
-        </div>
-
-        <div>
-          Reindeer proof: {reindeerProof}
-        </div>
+        <PrimaryButton disabled={santaValid}>
+          Mint Santa
+        </PrimaryButton>
       </article>
     </ main>
   );
