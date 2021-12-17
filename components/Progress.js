@@ -5,7 +5,7 @@ import ProgressBar from "./subcomponents/ProgressBar";
 import MoneyRaised from "./subcomponents/MoneyRaised";
 import Image from 'next/image';
 
-const DOLLAR_GOAL = 1000000;
+const DOLLAR_GOAL = 1000000; // constant value of $M
 
 export default function Progress() {
   const t = useTranslations();
