@@ -9,8 +9,9 @@ export default function MintInstructions() {
     <main>
       <Navigation />
       <h1 className="masthead">
-        {t.rich('howTo')}
+        {t.rich('title')}
       </h1>
+
     </ main>
   );
 }
