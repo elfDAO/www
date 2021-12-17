@@ -1,30 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useSWR from 'swr';
 import { useTranslations } from 'next-intl';
 import ProgressBar from "./subcomponents/ProgressBar";
 import MoneyRaised from "./subcomponents/MoneyRaised";
 import Image from 'next/image';
 
+const DOLLAR_GOAL = 1000000;
+
 export default function Progress() {
   const t = useTranslations();
-    // TODO: these values need to be pulled from a server that can interact w/ the blockchain.
-    // I've already written the code, just need to get an API key.
-    const eth = 21.55
-    const dollarGoal = 1_000_000
-    const conversionRate = 4450.67
+  const [progress, setProgress] = useState()
+  const fetcher = (url) => fetch(url).then((res) => res.json());
 
-    const [progress, setProgress] = useState(((eth * conversionRate) / dollarGoal) * 100)
+  let eth, ethUsdConversion;
+  let dollars = 0;
+  const { data, error } = useSWR('/api/raised', { fetcher, refreshInterval: 60000 }); // refresh every minute
+  if (!error && data) {
+    ({ eth, dollars, ethUsdConversion } = data);
+  }
 
-  return (
-    <>
-      <div className="progress">
-          {/* <p>{progress.toFixed(0)} gifts funded</p> */}
-        <Image alt="gift" src="/gift.png" width="100" height="100" />
-      </div>
-      <ProgressBar percent={progress}/>
-      <MoneyRaised eth={eth} dollarGoal={dollarGoal} conversionRate={conversionRate} />
-      <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/santa">
-        {t('home.contribute')}
-      </a>
-    </>
-  )
+return (
+  <>
+    <div className="progress">
+        {/* <p>{progress.toFixed(0)} gifts funded</p> */}
+      <Image alt="gift" src="/gift.png" width="100" height="100" />
+    </div>
+    <ProgressBar percent={progress}/>
+    <MoneyRaised eth={eth} dollarGoal={DOLLAR_GOAL} dollars={dollars} conversionRate={ethUsdConversion} />
+    <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/santa">
+      {t('home.contribute')}
+    </a>
+  </>
+)
 }
