@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import FAQ from '../components/faq';
 import Navigation from '../components/Navigation';
 
 export default function About() {
@@ -127,6 +128,7 @@ export default function About() {
             })}
           </li>
         </ul>
+        <FAQ />
       </article>
     </ main>
   );
