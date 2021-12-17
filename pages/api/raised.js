@@ -42,7 +42,7 @@ const handler = async (req, res) => {
 
     try {
         contractResponse = await axios.post(
-            `https://eth-mainnet.alchemyapi.io/v2/${process.env.alchemyKey}`,
+            `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
             contractPayload
         );
     } catch (e) {
@@ -62,7 +62,7 @@ const handler = async (req, res) => {
 
     try {
         multisigResponse = await axios.post(
-            `https://eth-mainnet.alchemyapi.io/v2/${process.env.alchemyKey}`,
+            `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
             {
                 id: 1,
                 jsonrpc: "2.0",
