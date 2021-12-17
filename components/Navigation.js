@@ -13,11 +13,6 @@ export default function Navigation() {
         {t('about')}
         </a>
       </Link>
-      <Link href="/faq" passHref>
-        <a className="nav">
-        {t('faq')}
-        </a>
-      </Link>
       <a target="_blank" rel="noreferrer" className="outlined discord" href="https://discord.gg/elfdao">
         {t('join')} <Image alt="discord logo" src="/discord.svg" width="25" height="25" />
       </a>
