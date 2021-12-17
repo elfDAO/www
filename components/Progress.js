@@ -19,6 +19,10 @@ export default function Progress() {
     ({ eth, dollars, ethUsdConversion } = data);
   }
 
+  useEffect(() => {
+    setProgress(dollars/DOLLAR_GOAL);
+  },[dollars]);
+
 return (
   <>
     <div className="progress">
