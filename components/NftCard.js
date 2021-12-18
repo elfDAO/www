@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { Button } from '@material-ui/core';
 
 export default function Nft(props) {
   const t = useTranslations('nft');
-  const { name, value } = props;
+  const { name, value, image } = props;
 
   return (
     <div
@@ -12,36 +13,35 @@ export default function Nft(props) {
         boxSizing: "border-box",
         padding: "1.25em",
         borderRadius: "5px",
-        background: "linear-gradient(to bottom right, rgba(255,255,255,0.12), rgba(0,0,0,0))",
+        background: "rgba(130, 255, 172, 0.5)",
         backdropFilter: "blur(2px)"
       }}>
         <Image
           style={{
             borderRadius: "5px",
-            width: "100%",
-            height: "280px",
-            background: "#EEEEEE"
           }}
           alt="nft image"
-          src={'/src/gift.png'}
+          src={image}
           width={300}
           height={300}
         />
         <div style={{
           paddingTop:"1.25em"
-        }}>{name}</div>
-        <div>{value} {t('eth').toUpperCase()}</div>
-        <div
+        }}>
+          <h3 style={{color: 'white'}}>{name.toUpperCase()}</h3>
+        </div>
+        <h3 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{value}</h3>
+        <Button
           style={{
-            background: "#243E32",
-            color: "#36ECAC",
+            background: "#A7EAB6",
+            color: "#10392A",
             padding: "0.25em 0.5em",
             display: "table",
             marginTop: "1em",
             borderRadius: "5px"
           }}>
           {t('mint').toUpperCase()}
-        </div>
+        </Button>
     </div>
   )
 }

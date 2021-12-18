@@ -34,13 +34,13 @@ export default function Home() {
       <Spacer />
       <Grid container width="100%" spacing={3} direction="row" justifyContent="center">
         <Grid item>
-          <Nft name={t('nft.elf')} value={'> 0.1'} />
+          <Nft name={t('nft.elf')} value={'Contributions > 0.1 ETH'} image={'/../public/nfts/elf.svg'} />
         </Grid>
         <Grid item>
-          <Nft name={t('nft.reindeer')} value={'> 0.5'} />
+          <Nft name={t('nft.reindeer')} value={'Contributions > 0.5 ETH'} image={'/../public/nfts/reindeer.svg'} />
         </Grid>
         <Grid item>
-          <Nft name={t('nft.santa')} value={'Top 5 Contributers'} />
+          <Nft name={t('nft.santa')} value={'Top 5 Contributers'} image={'/../public/nfts/santa.svg'} />
         </Grid>
       </Grid>
     </main>

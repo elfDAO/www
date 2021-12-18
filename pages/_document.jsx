@@ -29,7 +29,7 @@ class MyDocument extends Document {
                 box-sizing: border-box;
               }
               body {
-                font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+                font-family: 'Labil Grotesk Basic', 'Helvetica', 'Arial', sans-serif;
                 font-size: 1rem;
                 margin: 0;
               }
