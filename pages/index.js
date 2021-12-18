@@ -37,19 +37,25 @@ export default function Home() {
           <Nft
             name={t('nft.elf')}
             value={'Contributions > 0.1 ETH'}
-            image={'/elf.svg'} />
+            image={'/elf.svg'}
+            claimable={true}
+          />
         </Grid>
         <Grid item>
           <Nft
             name={t('nft.reindeer')}
             value={'Contributions > 0.5 ETH'}
-            image={'/reindeer.svg'} />
+            image={'/reindeer.svg'}
+            claimable={false}
+          />
         </Grid>
         <Grid item>
           <Nft
             name={t('nft.santa')}
             value={'Top 5 Contributers'}
-            image={'/santa.svg'} />
+            image={'/santa.svg'}
+            claimable={false}
+          />
         </Grid>
       </Grid>
     </main>

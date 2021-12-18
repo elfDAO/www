@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 
 export default function Nft(props) {
   const t = useTranslations('nft');
-  const { name, value, image } = props;
+  const { name, value, image, claimable } = props;
 
   return (
     <div
@@ -16,30 +16,36 @@ export default function Nft(props) {
         background: "rgba(130, 255, 172, 0.5)",
         backdropFilter: "blur(2px)"
       }}>
-        <Image
-          className='nftImage'
-          alt="nft image"
-          src={image}
-          width={300}
-          height={300}
-        />
-        <div style={{
-          paddingTop:"1.25em"
-        }}>
-          <h3 style={{color: 'white'}}>{name.toUpperCase()}</h3>
-        </div>
-        <h3 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{value}</h3>
-        <Button
-          style={{
-            background: "#A7EAB6",
-            color: "#10392A",
-            padding: "0.25em 0.5em",
-            display: "table",
-            marginTop: "1em",
-            borderRadius: "5px"
-          }}>
-          {t('mint').toUpperCase()}
-        </Button>
+        <Grid container spacing={1} direction="column">
+          <Grid item>
+            <Image
+              className='nftImage'
+              alt="nft image"
+              src={image}
+              width={300}
+              height={300}
+            />
+            <div style={{paddingTop: '1rem'}}>
+              <h3 style={{color: 'white'}}>{name.toUpperCase()}</h3>
+            </div>
+            <h3 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{value}</h3>
+            {!claimable && <h5 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{t('notEligible')}</h5>}
+            {claimable && <h5 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{t('readyToClaim')}</h5>}
+
+          </Grid>
+          <Grid item>
+            <Button
+              style={{
+                backgroundColor: '#A7EAB6 !important'
+              }}
+              variant="contained"
+              color="#10392A"
+              disabled={!claimable}
+            >
+              {t('claim').toUpperCase()}
+            </Button>
+          </Grid>
+        </Grid>
     </div>
   )
 }
