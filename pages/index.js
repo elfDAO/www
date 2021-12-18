@@ -48,7 +48,7 @@ export default function Home() {
 }
 
 const Spacer = styled.div`
-  height: 2rem;
+  height: 1.5rem;
 `;
 
 export function getStaticProps({ locale }) {
