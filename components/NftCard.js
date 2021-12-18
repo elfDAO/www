@@ -17,9 +17,7 @@ export default function Nft(props) {
         backdropFilter: "blur(2px)"
       }}>
         <Image
-          style={{
-            borderRadius: "5px",
-          }}
+          className='nftImage'
           alt="nft image"
           src={image}
           width={300}
