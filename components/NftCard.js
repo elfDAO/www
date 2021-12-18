@@ -42,7 +42,7 @@ export default function Nft(props) {
               color="#10392A"
               disabled={!claimable}
             >
-              {t('claim').toUpperCase()}
+              {t('mint').toUpperCase()}
             </Button>
           </Grid>
         </Grid>

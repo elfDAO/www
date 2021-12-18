@@ -71,7 +71,7 @@
     "eth": "eth",
     "santa": "Santa",
     "elf": "Elf",
-    "claim": "claim",
+    "mint": "Mint",
     "readyToClaim": "Ready to claim.",
     "notEligible": "You are not eligible to claim."
   }
