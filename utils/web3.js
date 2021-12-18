@@ -16,8 +16,6 @@ const contractAddress = ELFNFT_ADDRESS;
 
 export const elfDAONFT = new web3.eth.Contract(contractABI.abi, contractAddress);
 
-console.log('elfDAONFT contract', elfDAONFT);
-
 export const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 
 export function abridgeAddress(hex, length = 4) {
