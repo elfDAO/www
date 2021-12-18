@@ -7,6 +7,7 @@
   },
   "home": {
       "join": "Join",
+      "tldr": "tl;dr: donate crypto, receive an NFT, fund 40,000 gifts for kids.",
       "contribute": "Contribute",
       "comingSoon": "Coming soon...",
       "tagline": "Santa's not real,<br></br> but his elves are.",
@@ -65,5 +66,14 @@
     "ownLegalResponse": "No. The DAO does not plan to own any fiat or physical assets, so there is no need for our own entity. Conversion from digital assets to fiat for the purposes of charitable donations will be handled by our partner, <link>Endaoment</link>.",
     "taxDeductible": "Are Contributions to elfDAO tax-deductible?",
     "taxDeductibleResponse": "No. elfDAO is not a registered non-profit and all contributions to elfDAO are made voluntarily in exchange for $ANTA tokens. If you’d prefer to make a tax-deductible donation to elfDAO, please contact the team at Endaoment via <discord>Discord</discord> or <email>email.</email>"
+  },
+  "nft": {
+    "reindeer": "Reindeer",
+    "eth": "eth",
+    "santa": "Santa",
+    "elf": "Elf",
+    "mint": "Mint",
+    "readyToClaim": "Ready to claim.",
+    "notEligible": "You are not eligible to claim."
   }
 }

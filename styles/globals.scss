@@ -62,7 +62,8 @@ nav {
 
 body {
   background-color: #10392A;
-  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,51,9,1) 35%, rgba(0,212,255,1) 100%); */
+  // Gradient background
+  // background: radial-gradient(ellipse at left, rgba(0, 215, 0, 0.5), #071F18), radial-gradient(ellipse at left, #071F18, #071F18);
 }
 
 header {
@@ -133,7 +134,7 @@ article {
   p {
     font-size: 4.75rem;
     font-weight: bold;
-    text-shadow: 0 0 12px white;
+    text-shadow: 0 0 5px white;
     transition: transform 0.25s;
   }
 }
@@ -231,4 +232,8 @@ article {
 ol, ul {
   padding-left: 2rem;
   color: white;
+}
+
+.nftImage {
+  border-radius: 5px;
 }
