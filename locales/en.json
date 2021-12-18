@@ -65,5 +65,10 @@
     "ownLegalResponse": "No. The DAO does not plan to own any fiat or physical assets, so there is no need for our own entity. Conversion from digital assets to fiat for the purposes of charitable donations will be handled by our partner, <link>Endaoment</link>.",
     "taxDeductible": "Are Contributions to elfDAO tax-deductible?",
     "taxDeductibleResponse": "No. elfDAO is not a registered non-profit and all contributions to elfDAO are made voluntarily in exchange for $ANTA tokens. If you’d prefer to make a tax-deductible donation to elfDAO, please contact the team at Endaoment via <discord>Discord</discord> or <email>email.</email>"
+  },
+  "nft": {
+    "reindeer": "Reindeer",
+    "eth": "eth",
+    "mint": "mint"
   }
 }
