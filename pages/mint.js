@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import React from 'react';
 import { injected, useENSName, abridgeAddress, mintElf, mintReindeer, mintSanta } from '../utils/web3';
 import { useWeb3React } from '@web3-react/core';
+import { Button } from '@material-ui/core';
 
 export default function MintInstructions() {
   const t = useTranslations('mint');
@@ -82,23 +83,23 @@ export default function MintInstructions() {
       </h1>
       <article className='center'>
         {!active ?
-        (<PrimaryButton onClick={connect}>
+        (<Button variant="contained" onClick={connect}>
           Connect Wallet
-        </PrimaryButton>)
-        : <PrimaryButton onClick={disconnect}>
+        </Button>)
+        : <Button variant="contained" onClick={disconnect}>
           Disconnect Wallet
-        </PrimaryButton>
+        </Button>
         }
        <p>{account ? ENSName || abridgeAddress(account): "Please connect account"}</p>
-        <PrimaryButton onClick={onMintElf} disabled={!elfValid}>
+        <Button variant="contained" onClick={onMintElf} disabled={!elfValid}>
           Mint Elf
-        </PrimaryButton>
-        <PrimaryButton onClick={onMintReindeer} disabled={!reindeerValid}>
+        </Button>
+        <Button variant="contained" onClick={onMintReindeer} disabled={!reindeerValid}>
           Mint Reindeer
-        </PrimaryButton>
-        <PrimaryButton onClick={onMintSanta} disabled={!santaValid}>
+        </Button>
+        <Button variant="contained" onClick={onMintSanta} disabled={!santaValid}>
           Mint Santa
-        </PrimaryButton>
+        </Button>
       </article>
     </ main>
   );
@@ -112,18 +113,3 @@ export function getStaticProps({ locale }) {
     },
   };
 }
-
-const PrimaryButton = styled.button`
-  font-family: 'Space Mono', monospace;
-  background-color: #236357;
-  border: none;
-  padding: .5rem;
-  border-radius: 5px;
-  color: #36ECAC;
-  text-transform: uppercase;
-  gap: .5rem;
-  font-size: 1.5em;
-  text-decoration: none;
-  margin-left: 2rem;
-  margin-right: 2rem;
-`;
