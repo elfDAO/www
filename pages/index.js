@@ -9,7 +9,7 @@ export default function Home() {
     <main>
       <Meta />
       <Navigation />
-      <br></br><br></br>
+      <br></br>
       <header>
         <h1 className="masthead">
           {t.rich('home.tagline', { br: () => <br />})}
@@ -28,6 +28,7 @@ export default function Home() {
           })}
         </p>
       </article>
+      <Nft />
     </main>
   );
 }
