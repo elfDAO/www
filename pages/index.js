@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import Progress from "../components/Progress";
 import Nft from "../components/NftCard";
 import { Grid } from "@material-ui/core";
+import styled from 'styled-components';
 
 export default function Home() {
   const t = useTranslations();
@@ -30,7 +31,8 @@ export default function Home() {
           })}
         </p>
       </article>
-      <Grid container spacing={3} direction="row">
+      <Spacer />
+      <Grid container width="100%" spacing={3} direction="row" justifyContent="center">
         <Grid item>
           <Nft name={t('nft.elf')} value={'> 0.1'} />
         </Grid>
@@ -44,6 +46,10 @@ export default function Home() {
     </main>
   );
 }
+
+const Spacer = styled.div`
+  height: 2rem;
+`;
 
 export function getStaticProps({ locale }) {
   return {

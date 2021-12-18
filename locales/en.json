@@ -69,6 +69,8 @@
   "nft": {
     "reindeer": "Reindeer",
     "eth": "eth",
+    "santa": "Santa",
+    "elf": "Elf",
     "mint": "mint"
   }
 }
