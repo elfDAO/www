@@ -12,11 +12,11 @@ export default function Home() {
     <main>
       <Meta />
       <Navigation />
-      <br></br>
       <header>
         <h1 className="masthead">
           {t.rich('home.tagline', { br: () => <br />})}
         </h1>
+        <h2 style={{paddingBottom: '1.5rem', color: '#36ECAC'}}>{t('home.tldr')}</h2>
         <Progress />
       </header>
       <article>
@@ -63,7 +63,7 @@ export default function Home() {
 }
 
 const Spacer = styled.div`
-  height: 1.5rem;
+  height: 2rem;
 `;
 
 export function getStaticProps({ locale }) {
