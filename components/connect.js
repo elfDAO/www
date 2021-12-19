@@ -77,10 +77,12 @@ const CustomButton = muiStyled(Button)(({ theme }) => ({
 }));
 
 export const Connected = styled.div`
-  width: 240px;
+  width: 250px;
   background: #236357;
   border-radius: 5px;
   align-items: center;
   justify-content: center;
   height: 45px;
+  padding-left: 5px;
+  padding-right: 5px;
 `

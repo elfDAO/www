@@ -3,6 +3,7 @@ import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 import { useEffect, useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 
 /** Do not destructure env variables */
 const ALCHEMY_KEY = process.env.ALCHEMY_KEY;
@@ -122,8 +123,9 @@ export function abridgeAddress(hex, length = 4) {
   )}`;
 }
 
-export const useENSName = (address, library) => {
+export const useENSName = (address) => {
   const [ENSName, setENSName] = useState("");
+  const { library, chainId } = useWeb3React();
 
   useEffect(() => {
     if (library && typeof address === "string") {
@@ -132,6 +134,7 @@ export const useENSName = (address, library) => {
       library
         .lookupAddress(address)
         .then((name) => {
+          console.log('ENS name', name);
           if (!stale && typeof name === "string") {
             setENSName(name);
           }
@@ -143,7 +146,7 @@ export const useENSName = (address, library) => {
         setENSName("");
       };
     }
-  }, [library, address]);
+  }, [library, address, chainId]);
 
   return ENSName;
 }

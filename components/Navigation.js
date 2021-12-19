@@ -10,7 +10,7 @@ export default function Navigation() {
 
   return (
     <nav>
-      <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent={'space-between'} width={"100%"} alignItems="center">
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} justifyContent={'space-between'} width={"100%"} alignItems="center">
         <Stack direction="row" justifyContent={'space-between'} width={"100%"}>
           <Link href="/" passHref><Image alt="tree" width="40" height="40" src="/tree.png" /></Link>
           <Link href="/about" passHref>
