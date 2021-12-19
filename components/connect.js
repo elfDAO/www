@@ -34,7 +34,7 @@ export default function Connect() {
     await deactivate();
   }
 
-  const ENSName = useENSName(account, library);
+  const ENSName = useENSName(library, account);
 
   return (
     <div>

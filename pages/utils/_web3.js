@@ -87,10 +87,8 @@ export function abridgeAddress(hex, length = 4) {
   )}`;
 }
 
-export const useENSName = (address) => {
+export const useENSName = (library, address) => {
   const [ENSName, setENSName] = useState("");
-  const { library, chainId } = useWeb3React();
-
   useEffect(() => {
     if (library && typeof address === "string") {
       let stale = false;
@@ -109,7 +107,7 @@ export const useENSName = (address) => {
         setENSName("");
       };
     }
-  }, [library, address, chainId]);
+  }, [library, address]);
 
   return ENSName;
 }

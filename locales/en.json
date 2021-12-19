@@ -78,6 +78,7 @@
     "readyToClaim": "Ready to claim.",
     "notEligible": "You are not eligible to claim.",
     "successful": "Success!",
+    "alreadyClaimed": "You've already claimed!",
     "unsuccessful": "There was a problem with your mint..."
   }
 }

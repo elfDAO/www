@@ -10,13 +10,14 @@ export default function Nft(props) {
   const { name, value, image, claimable, onMint, active, mintStatus } = props;
 
   const message = useMemo(() => {
-    console.log('message', active, 'claimable', claimable, mintStatus)
     if (!active) {
       return t('connectWallet');
-    } else if (!claimable) {
+    } else if (claimable === 0) {
       return t('notEligible');
-    } else if (claimable ){
+    } else if (claimable === 1){
       return t('readyToClaim');
+    } else if (claimable === 2) {
+      return t('alreadyClaimed');
     } else if (mintStatus) {
       return t('successful');
     } else {
@@ -46,11 +47,10 @@ export default function Nft(props) {
               <h3 style={{color: 'white'}}>{name.toUpperCase()}</h3>
             </div>
             <h3 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{value}</h3>
-            {!claimable && <h4 style={{color: '#A8EAB6'}}>{message}</h4>}
-            {claimable && <h4 style={{color: '#A8EAB6'}}>{message}</h4>}
+            <h4 style={{color: '#A8EAB6'}}>{message}</h4>
             <CustomButton
               variant="contained"
-              disabled={!claimable}
+              disabled={!active || claimable !== 1}
               disableElevation
               color="secondary"
               onClick={onMint}
