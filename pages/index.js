@@ -48,7 +48,7 @@ export default function Home() {
             <h3 className="manifesto">
               Contributed on Juicebox already? Claim your NFT here.
               <br />
-              Claimlists are updated everyday at 8pm EST.
+              Claimlists are updated everyday at ~8pm EST. Join our Discord for daily updates.
             </h3>
           </Box>
           <MintNFTs />
