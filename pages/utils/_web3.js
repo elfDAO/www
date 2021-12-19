@@ -3,13 +3,11 @@ import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 import { useEffect, useState } from "react";
-import { useWeb3React } from "@web3-react/core";
 import Web3 from 'web3';
 
 /** Do not destructure env variables */
-const INFURA_ID =  process.env.INFURA_ID;
-const ELFNFT_ADDRESS = process.env.ELFNFT_ADDRESS;
-const NETWORK = process.env.NETWORK;
+const INFURA_ID =  process.env.NEXT_PUBLIC_INFURA_ID;
+const ELFNFT_ADDRESS = process.env.NEXT_PUBLIC_ELFNFT_ADDRESS;
 
 const web3 = new Web3(Web3.givenProvider)
 const contractABI = require("/data/elfNFTABI.json");
