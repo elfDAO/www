@@ -1,23 +1,28 @@
-import cors from 'cors';
-import cache from 'express-redis-cache';
+import Cors from 'cors';
 import axios from 'axios';
 
 const JUICEBOX_CONTRACT = "0xd569d3cce55b71a8a3f3c418c329a66e5f714431";
 
-const c = cache()
-
-const run = (req, res) => (fn) => new Promise((resolve, reject) => {
-    fn(req, res, (result) =>
-        result instanceof Error ? reject(result) : resolve(result)
-    )
+// Initializing the cors middleware
+const cors = Cors({
+    methods: ['GET', 'HEAD'],
 })
 
+function runMiddleware(req, res, fn) {
+    return new Promise((resolve, reject) => {
+      fn(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result)
+        }
+
+        return resolve(result)
+      })
+    })
+  }
+
 const handler = async (req, res) => {
-    const middleware = run(req, res)
-    await middleware(cors())
-    await middleware(c.route({
-        expire: 30
-    }))
+    console.log('raised call', req);
+    await runMiddleware(req, res, cors);
 
     /** Read Juicebox contract balance for specified project **/
     const projectId = process.env.PROJECT_ID; // Juicebox project id
