@@ -48,7 +48,7 @@ export default function MintNFTs() {
 
   let reindeerProof = [];
   let reindeerValid = false;
-  ({ data, error } = useSWR(active ? `/api/reindeerProof?address=${account}` : null, { fetcher, refreshInterval: 0 }));
+  ({ data, error } = useSWR(account ? `/api/reindeerProof?address=${account}` : null, { fetcher, refreshInterval: 0 }));
   if (!error && data) {
     const { proof, valid } = data;
     reindeerProof = proof;
