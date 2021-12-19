@@ -18,11 +18,9 @@ export default function Navigation() {
             {t('about')}
             </a>
           </Link>
-          <Link href="/" passHref>
-            <a className="nav">
+          <a className="nav" href="https://docs.elfdao.com/" target="_blank" rel="noreferrer">
             {t('docs')}
-            </a>
-          </Link>
+          </a>
         </Stack>
         <Stack direction={{ xs: 'column', sm: 'row' }} width={"100%"} justifyContent={'flex-end'} spacing={3} alignItems="center">
           <Connect />
