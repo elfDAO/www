@@ -8,7 +8,6 @@ import { useMemo } from 'react';
 export default function Nft(props) {
   const t = useTranslations('nft');
   const { name, value, image, claimable, onMint, active, mintStatus } = props;
-
   const message = useMemo(() => {
     if (!active) {
       return t('connectWallet');
