@@ -19,9 +19,8 @@ const merkleTree = new MerkleTree(hashedAddresses, keccak256, { sortPairs: true 
 const handler = async (req, res) => {
   const middleware = run(req, res);
   await middleware(cors());
-  await middleware(c.route({
-      expire: 30
-  }))
+  await middleware(c.route());
+
   /** validate req type **/
   if (req.method !== 'GET') {
     res.status(400).json({});

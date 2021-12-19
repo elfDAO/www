@@ -8,21 +8,25 @@ import Web3 from 'web3';
 /** Do not destructure env variables */
 const INFURA_ID =  process.env.NEXT_PUBLIC_INFURA_ID;
 const ELFNFT_ADDRESS = process.env.NEXT_PUBLIC_ELFNFT_ADDRESS;
+const ENVIRONMENT = process.env.NEXT_PUBLIC_ENVIRONMENT;
 
 const web3 = new Web3(Web3.givenProvider)
 const contractABI = require("/data/elfNFTABI.json");
 const contractAddress = ELFNFT_ADDRESS;
 
+const acceptedChains = ENVIRONMENT === 'development' ? [1, 3, 4, 5, 42] : [1, 2];
+
 export const elfDAONFT = new web3.eth.Contract(contractABI.abi, contractAddress);
 
-export const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
+export const injected = new InjectedConnector({ supportedChainIds: acceptedChains, });
 export const walletConnect = new WalletConnectConnector({
   infuraId: INFURA_ID,
+  supportedChainIds: acceptedChains,
 });
 
 export const walletlink = new WalletLinkConnector({
   appName: 'elfDAO',
-  supportedChainIds: [1, 3, 4, 5, 42]
+  supportedChainIds: acceptedChains,
 })
 
 export const mintElf = async (account, proof) => {

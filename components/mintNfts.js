@@ -7,10 +7,12 @@ import { elfDAONFT, mintElf, mintReindeer, mintSanta } from '../pages/utils/_web
 import { useWeb3React } from '@web3-react/core';
 import Connect from "./connect";
 
+const ETH = 1;
+
 export default function MintNFTs() {
   const t = useTranslations('nft');
   const fetcher = (url) => fetch(url).then((res) => res.json());
-  const { active, account } = useWeb3React();
+  const { active, account, chainId } = useWeb3React();
 
   // 0: not claimable
   // 1: already claimed
@@ -25,7 +27,8 @@ export default function MintNFTs() {
 
   let elfProof = [];
   let elfValid = false;
-  let { data, error } = useSWR(active ? `/api/elfProof?address=${account}` : null, { fetcher, refreshInterval: 0 });
+  let { data, error } = useSWR(active && account ? `/api/elfProof?address=${account}` : null, { fetcher,
+    fetcher, revalidateIfStale: false, revalidateOnFocus: false, revalidateOnReconnect: false });
   if (!error && data) {
     const { proof, valid  } = data;
     elfProof = proof;
@@ -39,7 +42,7 @@ export default function MintNFTs() {
         setElfClaimable(1);
       }).catch((err) => {
         if (err.toString().includes('claimed')) { setElfClaimable(2)}
-        else { setElfClaimable(1) }
+        else { setElfClaimable(0) }
       });
     }
     validateElfClaim();
@@ -48,7 +51,8 @@ export default function MintNFTs() {
 
   let reindeerProof = [];
   let reindeerValid = false;
-  ({ data, error } = useSWR(account ? `/api/reindeerProof?address=${account}` : null, { fetcher, refreshInterval: 0 }));
+  ({ data, error } = useSWR(active && account ? `/api/reindeerProof?address=${account}` : null, {
+    fetcher, revalidateIfStale: false, revalidateOnFocus: false, revalidateOnReconnect: false }));
   if (!error && data) {
     const { proof, valid } = data;
     reindeerProof = proof;
@@ -71,7 +75,8 @@ export default function MintNFTs() {
 
   let santaProof = [];
   let santaValid = false;
-  ({ data, error } = useSWR(active ? `/api/santaProof?address=${account}` : null, { fetcher, refreshInterval: 0 }));
+  ({ data, error } = useSWR(active && account ? `/api/santaProof?address=${account}` : null, { fetcher,
+    fetcher, revalidateIfStale: false, revalidateOnFocus: false, revalidateOnReconnect: false}));
   if (!error && data) {
     const { proof, valid } = data;
     santaProof = proof;
@@ -94,25 +99,34 @@ export default function MintNFTs() {
 
   const onMintElf = async () => {
     const { success, status } = await mintElf(account, elfProof);
-    console.log(success, status);
+    console.log(status);
     setElfMintStatus(success);
   };
 
   const onMintReindeer = async () => {
     const { success, status } = await mintReindeer(account, reindeerProof);
-    console.log(success, status);
+    console.log(status);
     setReindeerMintStatus(success);
   };
 
   const onMintSanta = async () => {
     const { success, status } = await mintSanta(account, santaProof);
-    console.log(success, status);
+    console.log(status);
     setSantaMintStatus(success);
   };
 
+  const notOnCorrectNetwork = useMemo(() => {
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'production') {
+      return active && chainId !== 1; // eth chain id
+    } else {
+      return active && chainId !== 4; // rinkeby chain id
+    }
+  }, [active, chainId]);
+
   return (
-    <Stack spacing={1} alignItems={'center'}>
+    <Stack spacing={2} alignItems={'center'}>
       <Connect />
+      {notOnCorrectNetwork && <p>{process.env.NEXT_PUBLIC_ENVIRONMENT === 'production' ? t('connectMainnet') : t('connectRinkeby')}</p>}
       <Grid container width="100%" spacing={{xs: 0, sm: 2}} direction={{xs: 'column', sm: 'row'}} justifyContent="center">
         <Grid item>
           <Nft

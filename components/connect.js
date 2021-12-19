@@ -8,7 +8,7 @@ import { abridgeAddress, injected, useENSName, walletConnect, walletlink } from 
 import ConnectModal from "./subcomponents/connectModal";
 
 export default function Connect() {
-  const { activate, deactivate, active, account, library } = useWeb3React();
+  const { activate, deactivate, active, account, library, chainId } = useWeb3React();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const walletConnectConnector = walletConnect;
   const handleClose = () => setIsModalVisible(false);

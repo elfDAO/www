@@ -8,7 +8,6 @@ import { useMemo } from 'react';
 export default function Nft(props) {
   const t = useTranslations('nft');
   const { name, value, image, claimable, onMint, active, mintStatus } = props;
-
   const message = useMemo(() => {
     if (!active) {
       return t('connectWallet');
@@ -30,7 +29,7 @@ export default function Nft(props) {
       className="card"
       style={{
         padding: "1.25rem",
-        marginTop: "0.75rem",
+        marginBottom: "0.75rem",
         borderRadius: "5px",
         background: "rgba(130, 255, 172, 0.5)",
         backdropFilter: "blur(2px)"
