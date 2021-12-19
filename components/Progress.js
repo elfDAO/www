@@ -16,7 +16,7 @@ export default function Progress() {
 
   let eth, ethUsdConversion;
   let dollars = 0;
-  const { data, error } = useSWR('/api/raised', { fetcher, refreshInterval: 60000 }); // refresh every minute
+  const { data, error } = useSWR('/api/raised', { fetcher, refreshInterval: 120000 }); // refresh every 2 minutes
   if (!error && data) {
     ({ eth, dollars, ethUsdConversion } = data);
   }

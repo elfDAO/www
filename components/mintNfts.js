@@ -3,7 +3,7 @@ import Nft from "./subcomponents/NftCard";
 import { useTranslations } from 'next-intl';
 import useSWR from 'swr';
 import React from 'react';
-import { web3, mintElf, mintReindeer, mintSanta } from '../utils/web3';
+import { web3, mintElf, mintReindeer, mintSanta } from '../pages/utils/_web3';
 import { useWeb3React } from '@web3-react/core';
 import Connect from "./connect";
 
@@ -11,11 +11,6 @@ export default function MintNFTs() {
   const t = useTranslations('nft');
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { active, account } = useWeb3React();
-
-  // set up contract abi
-  const contractABI = require("../data/elfNFTABI.json");
-  const contractAddress = process.env.ELFNFT_ADDRESS;
-  const elfDAONFT = new web3.eth.Contract(contractABI.abi, contractAddress);
 
   let elfProof = [];
   let elfValid = false;
@@ -45,17 +40,17 @@ export default function MintNFTs() {
   }
 
   const onMintElf = async () => {
-    const { success, status } = await mintElf(elfDAONFT, account, elfProof);
+    const { success, status } = await mintElf(account, elfProof);
     console.log(success, status);
   };
 
   const onMintReindeer = async () => {
-    const { success, status } = await mintReindeer(account, reindeerProof, window.ethereum);
+    const { success, status } = await mintReindeer(account, reindeerProof);
     console.log(success, status);
   };
 
   const onMintSanta = async () => {
-    const { success, status } = await mintSanta(account, santaProof, window.ethereum);
+    const { success, status } = await mintSanta(account, santaProof);
     console.log(success, status);
   };
 

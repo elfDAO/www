@@ -4,91 +4,62 @@ import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
 import { useEffect, useState } from "react";
 import { useWeb3React } from "@web3-react/core";
+import Web3 from 'web3';
 
 /** Do not destructure env variables */
-const ALCHEMY_KEY = process.env.ALCHEMY_KEY;
+const INFURA_ID =  process.env.INFURA_ID;
 const ELFNFT_ADDRESS = process.env.ELFNFT_ADDRESS;
 const NETWORK = process.env.NETWORK;
+console.log('ELFNFT_ADDRESS', process.env.ELFNFT_ADDRESS, 'NETWORK', NETWORK)
 
-const alchemyUrl = `https://eth-${NETWORK}.alchemyapi.io/v2/${ALCHEMY_KEY}`;
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-export const web3 = createAlchemyWeb3(alchemyUrl);
-
-const contractABI = require("../data/elfNFTABI.json");
+const web3 = new Web3(Web3.givenProvider)
+const contractABI = require("/data/elfNFTABI.json");
 const contractAddress = ELFNFT_ADDRESS;
 
 export const elfDAONFT = new web3.eth.Contract(contractABI.abi, contractAddress);
 
 export const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
-export const walletConnect = new WalletConnectConnector({alchemyUrl: alchemyUrl});
+export const walletConnect = new WalletConnectConnector({
+  infuraId: INFURA_ID,
+});
 
 export const walletlink = new WalletLinkConnector({
-  url: alchemyUrl,
   appName: 'elfDAO',
   supportedChainIds: [1, 3, 4, 5, 42]
 })
 
-export const mintElf = async (contract, account, proof) => {
+export const mintElf = async (account, proof) => {
   console.log('minting elf...');
-  contract.methods.mintElf(proof).send({ from: account }).then((result) => {
-    console.log({
-      success: true,
-      status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
-      });
+  elfDAONFT.methods.mintElf(proof).send({ from: account }).then((result) => {
+    console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
+      return {
+        success: true,
+        status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
+        };
   }).catch((err) => {
     console.log("Mint transaction failed!");
-    console.log(err);
+    return {
+      success: false,
+      status: "😥 Something went wrong: " + err.message
+      }
   });
-
-  // const tx = {
-  //   'from': account,
-  //   'to': contractAddress,
-  //   'data': elfDAONFT.methods.mintElf(proof).send({from: account}).encodeABI()
-  // };
-
-//   try {
-//     const txHash = await ethereum
-//         .request({
-//             method: 'eth_sendTransaction',
-//             params: [tx],
-//         });
-//     return {
-//         success: true,
-//         status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + txHash
-//     }
-//  } catch (error) {
-//     return {
-//         success: false,
-//         status: "😥 Something went wrong: " + error.message
-//     }
-//   }
 }
 
-export const mintReindeer = async (account, proof, ethereum) => {
+export const mintReindeer = async (account, proof) => {
   console.log('minting reindeer...', account, proof);
-  const tx = {
-    'from': account,
-    'to': contractAddress,
-    'gas': '200000', // set the gas limit
-    'data': elfDAONFT.methods.mintReindeer(proof).encodeABI()
-  };
-
-  try {
-    const txHash = await ethereum
-        .request({
-            method: 'eth_sendTransaction',
-            params: [tx],
-        });
-    return {
+  elfDAONFT.methods.mintReindeer(proof).send({ from: account }).then((result) => {
+    console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
+      return {
         success: true,
-        status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + txHash
-    }
-  } catch (error) {
+        status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
+        };
+  }).catch((err) => {
+    console.log("Mint transaction failed!");
     return {
-        success: false,
-        status: "😥 Something went wrong: " + error.message
-    }
-  }
+      success: false,
+      status: "😥 Something went wrong: " + err.message
+      }
+  });
 };
 
   export const mintSanta = async (account, proof, ethereum) => {
@@ -134,7 +105,6 @@ export const useENSName = (address) => {
       library
         .lookupAddress(address)
         .then((name) => {
-          console.log('ENS name', name);
           if (!stale && typeof name === "string") {
             setENSName(name);
           }
