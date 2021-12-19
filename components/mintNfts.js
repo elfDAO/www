@@ -115,15 +115,18 @@ export default function MintNFTs() {
     setSantaMintStatus(success);
   };
 
-  const notOnMainnet = useMemo(() => {
-    return process.env.NEXT_PUBLIC_ENVIRONMENT === 'production'
-     && active && chainId !== 1; // eth chain id
+  const notOnCorrectNetwork = useMemo(() => {
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'production') {
+      return active && chainId !== 1; // eth chain id
+    } else {
+      return active && chainId !== 4; // rinkeby chain id
+    }
   }, [active, chainId]);
 
   return (
-    <Stack spacing={1} alignItems={'center'}>
+    <Stack spacing={2} alignItems={'center'}>
       <Connect />
-      {notOnMainnet && <p>Please connect to Ethereum mainnet.</p>}
+      {notOnCorrectNetwork && <p>{process.env.NEXT_PUBLIC_ENVIRONMENT === 'production' ? t('connectMainnet') : t('connectRinkeby')}</p>}
       <Grid container width="100%" spacing={{xs: 0, sm: 2}} direction={{xs: 'column', sm: 'row'}} justifyContent="center">
         <Grid item>
           <Nft

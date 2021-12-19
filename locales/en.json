@@ -79,6 +79,8 @@
     "notEligible": "You are not eligible to claim.",
     "successful": "Success!",
     "alreadyClaimed": "You've already claimed!",
-    "unsuccessful": "There was a problem with your mint..."
+    "unsuccessful": "There was a problem with your mint...",
+    "connectMainnet": "Please connect to Ethereum mainnet.",
+    "connectRinkeby": "This is a development environment. Please connect to Rinkeby."
   }
 }

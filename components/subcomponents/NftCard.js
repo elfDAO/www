@@ -29,7 +29,7 @@ export default function Nft(props) {
       className="card"
       style={{
         padding: "1.25rem",
-        marginTop: "0.75rem",
+        marginBottom: "0.75rem",
         borderRadius: "5px",
         background: "rgba(130, 255, 172, 0.5)",
         backdropFilter: "blur(2px)"
