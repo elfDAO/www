@@ -30,7 +30,7 @@ export const walletlink = new WalletLinkConnector({
 
 export const mintElf = async (account, proof) => {
   console.log('minting elf...');
-  elfDAONFT.methods.mintElf(proof).send({ from: account }).then((result) => {
+  const result = elfDAONFT.methods.mintElf(proof).send({ from: account }).then((result) => {
     console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
       return {
         success: true,
@@ -42,50 +42,44 @@ export const mintElf = async (account, proof) => {
       success: false,
       status: "😥 Something went wrong: " + err.message
       }
+  }).finally((result) => {
+    return result;
   });
+  return result;
 }
 
 export const mintReindeer = async (account, proof) => {
-  console.log('minting reindeer...', account, proof);
-  elfDAONFT.methods.mintReindeer(proof).send({ from: account }).then((result) => {
-    console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
+  console.log('minting reindeer...');
+  const result = elfDAONFT.methods.mintReindeer(proof).send({ from: account }).then((result) => {
       return {
         success: true,
         status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
         };
   }).catch((err) => {
-    console.log("Mint transaction failed!");
     return {
       success: false,
       status: "😥 Something went wrong: " + err.message
       }
   });
+  return result;
 };
 
   export const mintSanta = async (account, proof, ethereum) => {
     console.log('minting santa...')
-    const tx = {
-      'from': account,
-      'to': contractAddress,
-      'gas': '200000', // set the gas limit
-      'data': elfDAONFT.methods.mintSanta(proof).encodeABI()
-    };
-    try {
-      const txHash = await ethereum
-          .request({
-              method: 'eth_sendTransaction',
-              params: [tx],
-          });
-      return {
+    const result = elfDAONFT.methods.mintSanta(proof).send({ from: account }).then((result) => {
+      console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
+        return {
           success: true,
-          status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + txHash
-      }
-  } catch (error) {
-    return {
+          status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
+          };
+    }).catch((err) => {
+      console.log("Mint transaction failed!");
+      return {
         success: false,
-        status: "😥 Something went wrong: " + error.message
-    }
-  }
+        status: "😥 Something went wrong: " + err.message
+        }
+    });
+    return result;
 };
 
 export function abridgeAddress(hex, length = 4) {

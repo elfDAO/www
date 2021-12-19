@@ -120,7 +120,6 @@ const handler = async (req, res) => {
 
     /** Convert Multisig value to USD */
     const multisigHexWei = multisigResponse.data.result
-    console.log(`Sucessfully queried services. multisigHexWei: ${multisigHexWei}`);
     const multisigWei = parseInt(multisigHexWei, 16); // parsing a base 16 number
     const multisigEth = (multisigWei / 1e18) // divide by 10^18
     const multisigDollars = (multisigEth * ethToDollarRate)
