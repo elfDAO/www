@@ -6,7 +6,7 @@ import { Stack } from '@mui/material';
 
 export default function Nft(props) {
   const t = useTranslations('nft');
-  const { name, value, image, claimable } = props;
+  const { name, value, image, claimable, onMint } = props;
 
   return (
     <div
@@ -37,6 +37,7 @@ export default function Nft(props) {
               disabled={!claimable}
               disableElevation
               color="secondary"
+              onClick={onMint}
             >
               {t('mint').toUpperCase()}
             </CustomButton>

@@ -19,25 +19,6 @@ export default function MintInstructions() {
 
   const { library, active, account, activate, deactivate } = useWeb3React();
 
-  const connect = async () => {
-    try {
-      await activate(injected);
-      console.log('activate');
-    } catch(err) {
-      console.log(err);
-    }
-  }
-
-  const disconnect = async () => {
-    try {
-      await deactivate();
-    } catch(err) {
-      console.log(err);
-    }
-  }
-
-  const ENSName = useENSName(account, library);
-
   let elfProof = [];
   let elfValid = false;
   let { data, error } = useSWR(active ? `/api/elfProof?address=${account}` : null, { fetcher, refreshInterval: 0 });
