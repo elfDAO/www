@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { styled as muiStyled } from '@mui/material/styles';
 import { useTranslations } from 'next-intl';
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import { Stack } from '@mui/material';
 
 export default function Nft(props) {
