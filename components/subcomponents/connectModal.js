@@ -12,7 +12,7 @@ export default function ConnectModal(props) {
       <Modal
         open={isModalVisible}
         onClose={handleClose}
-        onBackdropClick={handleClose && console.log('onbackdropclick')}
+        onBackdropClick={handleClose}
       >
         <Box sx={style}>
         <Stack>

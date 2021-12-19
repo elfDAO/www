@@ -21,7 +21,6 @@ function runMiddleware(req, res, fn) {
   }
 
 const handler = async (req, res) => {
-    console.log('raised call', req);
     await runMiddleware(req, res, cors);
 
     /** Read Juicebox contract balance for specified project **/

@@ -14,8 +14,6 @@ export default function Connect() {
   const handleClose = () => setIsModalVisible(false);
   const handleOpen = () => setIsModalVisible(true);
 
-  console.log('chainId', chainId, account);
-
   const handleBodyScroll = () => {
     document.body.style.overflow = 'visible';
   }
