@@ -18,7 +18,7 @@ export default function Navigation() {
             {t('about')}
             </a>
           </Link>
-          <Link href="/about" passHref>
+          <Link href="/" passHref>
             <a className="nav">
             {t('docs')}
             </a>
