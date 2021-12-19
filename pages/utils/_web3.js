@@ -10,7 +10,6 @@ import Web3 from 'web3';
 const INFURA_ID =  process.env.INFURA_ID;
 const ELFNFT_ADDRESS = process.env.ELFNFT_ADDRESS;
 const NETWORK = process.env.NETWORK;
-console.log('ELFNFT_ADDRESS', process.env.ELFNFT_ADDRESS, 'NETWORK', NETWORK)
 
 const web3 = new Web3(Web3.givenProvider)
 const contractABI = require("/data/elfNFTABI.json");
@@ -114,3 +113,5 @@ export const useENSName = (address) => {
 
   return ENSName;
 }
+
+export default function blank() { return <></>}

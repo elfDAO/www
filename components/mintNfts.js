@@ -2,8 +2,8 @@ import { Grid, Stack } from "@mui/material";
 import Nft from "./subcomponents/NftCard";
 import { useTranslations } from 'next-intl';
 import useSWR from 'swr';
-import React, { useState } from 'react';
-import { web3, mintElf, mintReindeer, mintSanta } from '../pages/utils/_web3';
+import React, { useEffect, useMemo, useState } from 'react';
+import { elfDAONFT, mintElf, mintReindeer, mintSanta } from '../pages/utils/_web3';
 import { useWeb3React } from '@web3-react/core';
 import Connect from "./connect";
 
@@ -24,6 +24,17 @@ export default function MintNFTs() {
     elfProof = proof;
     elfValid = valid;
   }
+
+  let elfClaimable= false;
+  elfClaimable = useMemo(async () => {
+    if (!active || !elfValid) { return false; }
+    console.log('finding elfClaimable');
+    await elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
+      return true;
+    }).catch(() => {
+      return false;
+    });
+  }, [account, elfProof, elfValid, active])
 
   let reindeerProof = [];
   let reindeerValid = false;
@@ -72,7 +83,7 @@ export default function MintNFTs() {
             image={'/elf.svg'}
             active={active}
             mintStatus={elfMintStatus}
-            claimable={elfValid}
+            claimable={elfClaimable}
             onMint={onMintElf}
           />
         </Grid>

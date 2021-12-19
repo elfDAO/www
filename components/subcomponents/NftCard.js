@@ -10,7 +10,7 @@ export default function Nft(props) {
   const { name, value, image, claimable, onMint, active, mintStatus } = props;
 
   const message = useMemo(() => {
-    console.log('message', active, claimable, mintStatus)
+    console.log('message', active, 'claimable', claimable, mintStatus)
     if (!active) {
       return t('connectWallet');
     } else if (!claimable) {
