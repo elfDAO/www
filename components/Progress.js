@@ -34,7 +34,7 @@ return (
     </div>
     <ProgressBar percent={progress}/>
     <MoneyRaised eth={eth} dollarGoal={DOLLAR_GOAL} dollars={dollars} conversionRate={ethUsdConversion} />
-    <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/santa">
+    <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/elfdao">
       {t('home.contribute')}
     </a>
   </>
