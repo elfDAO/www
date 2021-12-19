@@ -2,15 +2,20 @@
 import { useTranslations } from 'next-intl';
 import useSWR from 'swr';
 import Navigation from '../components/Navigation';
-import styled from 'styled-components';
 import React from 'react';
-import { injected, useENSName, abridgeAddress, mintElf, mintReindeer, mintSanta } from '../utils/web3';
+import { web3, injected, useENSName, abridgeAddress, mintElf, mintReindeer, mintSanta } from '../utils/web3';
 import { useWeb3React } from '@web3-react/core';
-import { Button } from '@material-ui/core';
+import Button from '@mui/material/Button';
+import Connect from '../components/connect';
 
 export default function MintInstructions() {
   const t = useTranslations('mint');
   const fetcher = (url) => fetch(url).then((res) => res.json());
+
+  // set up contract abi
+  const contractABI = require("../data/elfNFTABI.json");
+  const contractAddress = process.env.ELFNFT_ADDRESS;
+  const elfDAONFT = new web3.eth.Contract(contractABI.abi, contractAddress);
 
   const { library, active, account, activate, deactivate } = useWeb3React();
 
@@ -61,7 +66,7 @@ export default function MintInstructions() {
   }
 
   const onMintElf = async () => {
-    const { success, status } = await mintElf(account, elfProof, window.ethereum);
+    const { success, status } = await mintElf(elfDAONFT, account, elfProof);
     console.log(success, status);
   };
 
@@ -82,15 +87,8 @@ export default function MintInstructions() {
         {t.rich('title')}
       </h1>
       <article className='center'>
-        {!active ?
-        (<Button variant="contained" onClick={connect}>
-          Connect Wallet
-        </Button>)
-        : <Button variant="contained" onClick={disconnect}>
-          Disconnect Wallet
-        </Button>
-        }
-       <p>{account ? ENSName || abridgeAddress(account): "Please connect account"}</p>
+        <Connect />
+        <p>{account ? ENSName || abridgeAddress(account): "Please connect account"}</p>
         <Button variant="contained" onClick={onMintElf} disabled={!elfValid}>
           Mint Elf
         </Button>

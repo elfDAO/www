@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import Navigation from "../components/Navigation";
 import Progress from "../components/Progress";
 import Nft from "../components/NftCard";
-import { Grid } from "@material-ui/core";
+import Grid from '@mui/material/Grid';
 import styled from 'styled-components';
 
 export default function Home() {

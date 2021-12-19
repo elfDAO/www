@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Button, Grid } from '@material-ui/core';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 
 export default function Nft(props) {
   const t = useTranslations('nft');
@@ -39,8 +40,9 @@ export default function Nft(props) {
                 backgroundColor: '#A7EAB6 !important'
               }}
               variant="contained"
-              color="#10392A"
+              color="primary"
               disabled={!claimable}
+              disableElevation
             >
               {t('mint').toUpperCase()}
             </Button>
