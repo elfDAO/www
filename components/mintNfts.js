@@ -2,7 +2,7 @@ import { Grid, Stack } from "@mui/material";
 import Nft from "./subcomponents/NftCard";
 import { useTranslations } from 'next-intl';
 import useSWR from 'swr';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { elfDAONFT, mintElf, mintReindeer, mintSanta } from '../pages/utils/_web3';
 import { useWeb3React } from '@web3-react/core';
 import Connect from "./connect";
@@ -11,6 +11,13 @@ export default function MintNFTs() {
   const t = useTranslations('nft');
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { active, account } = useWeb3React();
+
+  // 0: not claimable
+  // 1: already claimed
+  // 2: claimable
+  const [elfClaimable, setElfClaimable] = useState(0);
+  const [reindeerClaimable, setReindeerClaimable] = useState(0);
+  const [santaClaimable, setSantaClaimable] = useState(0);
 
   const [elfMintStatus, setElfMintStatus] = useState();
   const [reindeerMintStatus, setReindeerMintStatus] = useState();
@@ -25,16 +32,19 @@ export default function MintNFTs() {
     elfValid = valid;
   }
 
-  let elfClaimable= false;
-  elfClaimable = useMemo(async () => {
-    if (!active || !elfValid) { return false; }
-    console.log('finding elfClaimable');
-    await elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
-      return true;
-    }).catch(() => {
-      return false;
-    });
-  }, [account, elfProof, elfValid, active])
+    useEffect(() => {
+    if (!active || !elfValid) { setElfClaimable(0) }
+    async function validateElfClaim() {
+      elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
+        setElfClaimable(1);
+      }).catch((err) => {
+        if (err.toString().includes('claimed')) { setElfClaimable(2)}
+        else { setElfClaimable(1) }
+      });
+    }
+    validateElfClaim();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, account])
 
   let reindeerProof = [];
   let reindeerValid = false;
@@ -45,6 +55,20 @@ export default function MintNFTs() {
     reindeerValid = valid;
   }
 
+  useEffect(() => {
+    if (!active || !reindeerValid) { setReindeerClaimable(0) }
+    async function validateReindeerClaim() {
+      elfDAONFT.methods.mintReindeer(elfProof).call({ from: account }).then(() => {
+        setReindeerClaimable(1);
+      }).catch((err) => {
+        if (err.toString().includes('claimed')) { setReindeerClaimable(2)}
+        setReindeerClaimable(0);
+      });
+    }
+    validateReindeerClaim();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, account])
+
   let santaProof = [];
   let santaValid = false;
   ({ data, error } = useSWR(active ? `/api/santaProof?address=${account}` : null, { fetcher, refreshInterval: 0 }));
@@ -53,6 +77,20 @@ export default function MintNFTs() {
     santaProof = proof;
     santaValid = valid;
   }
+
+  useEffect(() => {
+    if (!active || !santaValid) { setSantaClaimable(0) }
+    async function validateSantaClaim() {
+      elfDAONFT.methods.mintReindeer(elfProof).call({ from: account }).then(() => {
+        setSantaClaimable(1);
+      }).catch((err) => {
+        if (err.toString().includes('claimed')) { setSantaClaimable(2)}
+        setSantaClaimable(0);
+      });
+    }
+    validateSantaClaim();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, account])
 
   const onMintElf = async () => {
     const { success, status } = await mintElf(account, elfProof);
@@ -94,7 +132,7 @@ export default function MintNFTs() {
             image={'/reindeer.svg'}
             mintStatus={reindeerMintStatus}
             active={active}
-            claimable={reindeerValid}
+            claimable={reindeerClaimable}
             onMint={onMintReindeer}
           />
         </Grid>
@@ -105,7 +143,7 @@ export default function MintNFTs() {
             image={'/santa.svg'}
             mintStatus={santaMintStatus}
             active={active}
-            claimable={santaValid}
+            claimable={santaClaimable}
             onMint={onMintSanta}
           />
         </Grid>
