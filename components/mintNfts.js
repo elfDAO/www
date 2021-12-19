@@ -25,7 +25,7 @@ export default function MintNFTs() {
 
   let elfProof = [];
   let elfValid = false;
-  let { data, error } = useSWR(active ? `/api/elfProof?address=${account}` : null, { fetcher,
+  let { data, error } = useSWR(active && account ? `/api/elfProof?address=${account}` : null, { fetcher,
     fetcher, revalidateIfStale: false, revalidateOnFocus: false, revalidateOnReconnect: false });
   if (!error && data) {
     const { proof, valid  } = data;
@@ -49,7 +49,7 @@ export default function MintNFTs() {
 
   let reindeerProof = [];
   let reindeerValid = false;
-  ({ data, error } = useSWR(account ? `/api/reindeerProof?address=${account}` : null, {
+  ({ data, error } = useSWR(active && account ? `/api/reindeerProof?address=${account}` : null, {
     fetcher, revalidateIfStale: false, revalidateOnFocus: false, revalidateOnReconnect: false }));
   if (!error && data) {
     const { proof, valid } = data;
@@ -73,7 +73,7 @@ export default function MintNFTs() {
 
   let santaProof = [];
   let santaValid = false;
-  ({ data, error } = useSWR(active ? `/api/santaProof?address=${account}` : null, { fetcher,
+  ({ data, error } = useSWR(active && account ? `/api/santaProof?address=${account}` : null, { fetcher,
     fetcher, revalidateIfStale: false, revalidateOnFocus: false, revalidateOnReconnect: false}));
   if (!error && data) {
     const { proof, valid } = data;
