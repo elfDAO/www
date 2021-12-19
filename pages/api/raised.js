@@ -131,7 +131,7 @@ const handler = async (req, res) => {
 
     console.log(`Sucessfully queried services. ETH: ${totalEth}, USD: ${totalDollars}`);
 
-    res.json({
+    res.status(200).json({
         eth: totalEth,
         dollars: totalDollars,
         ethUsdConversion: ethToDollarRate

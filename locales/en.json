@@ -2,7 +2,7 @@
   "navigation": {
     "join": "Join",
     "about": "About",
-    "faq": "FAQ",
+    "docs": "Docs",
     "mint": "Mint Instructions"
   },
   "home": {
@@ -43,6 +43,7 @@
     "spreadTheWord": "<strong>Spread the word:</strong> Tell your friends about us, share on Twitter and other social media, add our emojis (🎄,🎄) to your bio, and spread the holiday love!"
   },
   "mint": {
+    "title": "Mint",
     "howTo": "How to Mint",
     "instructions": ""
   },

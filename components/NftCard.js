@@ -1,6 +1,9 @@
 import Image from 'next/image';
+import { styled as muiStyled } from '@mui/material/styles';
 import { useTranslations } from 'next-intl';
-import { Button, Grid } from '@material-ui/core';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import { Stack } from '@mui/material';
 
 export default function Nft(props) {
   const t = useTranslations('nft');
@@ -10,14 +13,13 @@ export default function Nft(props) {
     <div
       className="card"
       style={{
-        boxSizing: "border-box",
-        padding: "1.25em",
+        padding: "1.25rem",
+        marginTop: "0.75rem",
         borderRadius: "5px",
         background: "rgba(130, 255, 172, 0.5)",
         backdropFilter: "blur(2px)"
       }}>
-        <Grid container spacing={1} direction="column">
-          <Grid item>
+        <Stack spacing={1}>
             <Image
               className='nftImage'
               alt="nft image"
@@ -29,23 +31,32 @@ export default function Nft(props) {
               <h3 style={{color: 'white'}}>{name.toUpperCase()}</h3>
             </div>
             <h3 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{value}</h3>
-            {!claimable && <h5 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{t('notEligible')}</h5>}
-            {claimable && <h5 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{t('readyToClaim')}</h5>}
-
-          </Grid>
-          <Grid item>
-            <Button
-              style={{
-                backgroundColor: '#A7EAB6 !important'
-              }}
+            {!claimable && <h4 style={{color: '#A8EAB6'}}>{t('notEligible')}</h4>}
+            {claimable && <h4 style={{color: '#A8EAB6'}}>{t('readyToClaim')}</h4>}
+            <CustomButton
               variant="contained"
-              color="#10392A"
               disabled={!claimable}
+              disableElevation
+              color="secondary"
             >
               {t('mint').toUpperCase()}
-            </Button>
-          </Grid>
-        </Grid>
+            </CustomButton>
+        </Stack>
     </div>
   )
 }
+
+const CustomButton = muiStyled(Button)(({ theme }) => ({
+  color: '#10392A',
+  backgroundColor: '#A7EAB6',
+  height: '35px',
+  fontSize: '1.2rem',
+  fontFamily: [
+    'Labil Grotesk Basic',
+    'Space Mono,monospace',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+  ].join(','),
+}));
