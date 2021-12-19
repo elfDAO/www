@@ -21,6 +21,8 @@ const handler = async (req, res) => {
 
     /** Read Juicebox contract balance for specified project **/
     const projectId = process.env.PROJECT_ID; // Juicebox project id
+
+    console.log('projectId', projectId);
     const juiceboxContract = JUICEBOX_CONTRACT;
     const contractPayload = {
         id: 1,
