@@ -17,7 +17,7 @@ export default function Home() {
         <h1 className="masthead">
           {t.rich('home.tagline', { br: () => <br />})}
         </h1>
-        <h2 style={{paddingBottom: '1.5rem', color: '#36ECAC'}}>{t('home.tldr')}</h2>
+        <h2 style={{paddingBottom: '1.5rem', color: '#36ECAC', textAlign:"center"}}>{t('home.tldr')}</h2>
         <Progress />
       </header>
       <article>

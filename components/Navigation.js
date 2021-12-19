@@ -10,19 +10,21 @@ export default function Navigation() {
 
   return (
     <nav>
-      <Stack direction="row" justifyContent={'space-between'} width={"100%"} alignItems="center">
-        <Link href="/" passHref><Image alt="tree" width="40" height="40" src="/tree.png" /></Link>
-        <Link href="/about" passHref>
-          <a className="nav">
-          {t('about')}
-          </a>
-        </Link>
-        <Link href="/about" passHref>
-          <a className="nav">
-          {t('docs')}
-          </a>
-        </Link>
-        <Stack direction="row" justifyContent={'flex-end'} spacing={3} alignItems="center">
+      <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent={'space-between'} width={"100%"} alignItems="center">
+        <Stack direction="row" justifyContent={'space-between'} width={"100%"}>
+          <Link href="/" passHref><Image alt="tree" width="40" height="40" src="/tree.png" /></Link>
+          <Link href="/about" passHref>
+            <a className="nav">
+            {t('about')}
+            </a>
+          </Link>
+          <Link href="/about" passHref>
+            <a className="nav">
+            {t('docs')}
+            </a>
+          </Link>
+        </Stack>
+        <Stack direction={{ xs: 'column', sm: 'row' }} width={"100%"} justifyContent={'flex-end'} spacing={3} alignItems="center">
           <Connect />
           <CustomButton
             disableElevation
