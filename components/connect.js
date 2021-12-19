@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from '@mui/material/Button';
 import styled from 'styled-components';
+import { styled as muiStyled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import { useWeb3React } from '@web3-react/core';
 import { abridgeAddress, injected, useENSName, walletConnect, walletlink } from '../utils/web3';
@@ -38,19 +39,18 @@ export default function Connect() {
   return (
     <div>
     {!active ? (
-      <Button variant="contained"
-        style={{
-                backgroundColor: '#236357 !important'
-              }}
-        color="secondary"
+      <CustomButton variant="contained"
+        disableElevation
         onClick={handleOpen}>
           Connect Wallet
-        </Button>) :
+        </CustomButton>
+        ) :
     <div>
       <Connected>
-        <Stack></Stack>
-        <p>{account && (ENSName || abridgeAddress(account))}</p>
-        <Button variant="contained" disableElevation size="small" onClick={handleLogoutClick}>Disconnect</Button>
+        <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" height={"100%"}>
+          <p>{account && (ENSName || abridgeAddress(account))}</p>
+          <Button variant="contained" disableElevation size="small" onClick={handleLogoutClick}>Disconnect</Button>
+        </Stack>
       </Connected>
     </div>
     }
@@ -62,9 +62,25 @@ export default function Connect() {
   )
 }
 
+const CustomButton = muiStyled(Button)(({ theme }) => ({
+  color: '#36ECAC',
+  backgroundColor: '#236357',
+  height: '45px',
+  fontSize: '1.2rem',
+  fontFamily: [
+    'Space Mono,monospace',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+  ].join(','),
+}));
+
 export const Connected = styled.div`
   width: 240px;
-  height: 50px;
   background: #236357;
   border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
 `
