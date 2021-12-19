@@ -2,12 +2,11 @@ import Meta from "../components/Meta";
 import { useTranslations } from 'next-intl';
 import Navigation from "../components/Navigation";
 import Progress from "../components/Progress";
-import Nft from "../components/NftCard";
-import Grid from '@mui/material/Grid';
 import styled from 'styled-components';
 import Footer from "@components/footer";
 import { Stack } from "@mui/material";
 import { Box } from "@mui/system";
+import MintNFTs from "../components/mintNfts";
 
 export default function Home() {
   const t = useTranslations();
@@ -52,32 +51,7 @@ export default function Home() {
               Claimlists are updated everyday at 8pm EST.
             </h3>
           </Box>
-          <Grid container width="100%" spacing={{xs: 0, sm: 2}} direction={{xs: 'column', sm: 'row'}} justifyContent="center">
-            <Grid item>
-              <Nft
-                name={t('nft.elf')}
-                value={'Contributions > 0.1 ETH'}
-                image={'/elf.svg'}
-                claimable={true}
-              />
-            </Grid>
-            <Grid item>
-              <Nft
-                name={t('nft.reindeer')}
-                value={'Contributions > 0.5 ETH'}
-                image={'/reindeer.svg'}
-                claimable={false}
-              />
-            </Grid>
-            <Grid item>
-              <Nft
-                name={t('nft.santa')}
-                value={'Top 5 Contributers'}
-                image={'/santa.svg'}
-                claimable={false}
-              />
-            </Grid>
-          </Grid>
+          <MintNFTs />
         </Stack>
       </main>
       <Footer />

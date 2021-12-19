@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { styled as muiStyled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import { useWeb3React } from '@web3-react/core';
-import { abridgeAddress, injected, useENSName, walletConnect, walletlink } from '../utils/web3';
+import { abridgeAddress, injected, useENSName, walletConnect, walletlink } from '../pages/utils/_web3';
 import ConnectModal from "./subcomponents/connectModal";
 
 export default function Connect() {
