@@ -45,6 +45,11 @@ export default function About() {
             strong: (children) => <strong>{children}</strong>,
           })}
         </p>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.stats', {
+            strong: (children) => <strong>{children}</strong>,
+          })}
+        </p>
         <h2 className="subheading" style={{marginTop: '2rem'}}>
           {t.rich('about.howRaising')}
         </h2>
@@ -124,6 +129,11 @@ export default function About() {
           </li>
           <li className="manifesto">
             {t.rich('about.spreadTheWord', {
+              strong: (children) => <strong>{children}</strong>,
+            })}
+          </li>
+          <li className="manifesto">
+            {t.rich('about.docslink', {
               strong: (children) => <strong>{children}</strong>,
             })}
           </li>
