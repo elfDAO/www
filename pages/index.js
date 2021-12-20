@@ -46,9 +46,9 @@ export default function Home() {
             }}
             >
             <h3 className="manifesto">
-              Contributed on Juicebox already? Claim your NFT here.
+              Contributed on Juicebox already? NFTs will be available for claiming soon.
               <br />
-              Claimlists are updated everyday at ~8pm EST. Join our Discord for daily updates.
+              Join our Discord and follow our Twitter for daily updates.
             </h3>
           </Box>
           <MintNFTs />
