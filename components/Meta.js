@@ -17,18 +17,14 @@ const Meta = () => {
         property="og:description"
         content="This holiday season, we elves at elfDAO are on a mission to get gifts to kids in need."
       />
-      <meta property="og:image" content="/meta_image.png" />
+      <meta property="og:image" content="https://gateway.pinata.cloud/ipfs/QmP1a7sk5LHr8HrzJTD7uRMWVsd5JMtpop4HSdTcwJjJAr" />
 
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://www.elfDAO.com/" />
-      <meta property="twitter:title" content="elfDAO" />
-      <meta
-        property="twitter:description"
-        content="This holiday season, we elves at elfDAO are on a mission to get gifts to kids in need."
-      />
+      <meta property="twitter:url" content="https://twitter.com/elf_DAO" />
+      <meta property="twitter:title" content="elfDAO. We're all gonna buy gifts." />
       <meta
         property="twitter:image"
-        content="https://www.elfDAO.com/meta_image.png"
+        content="https://gateway.pinata.cloud/ipfs/QmP1a7sk5LHr8HrzJTD7uRMWVsd5JMtpop4HSdTcwJjJAr"
       ></meta>
     </Head>
   );

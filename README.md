@@ -1,6 +1,6 @@
 # elfDAO
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+elfDAO is launching a 12-day fundraising campaign from December 20th to December 31st for the first ever Web3 toy drive.
 
 ## Getting Started
 

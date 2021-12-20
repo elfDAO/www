@@ -1,10 +1,10 @@
-const MoneyRaised = ({ eth, dollarGoal, conversionRate }) => {
-    const dollars = (eth * conversionRate).toFixed(0)
+const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
     const ethGoal = (dollarGoal / conversionRate).toFixed(2)
+    const ethGoalFallback = 259.96;
 
     const numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      }
+    }
 
     return (
         <div className="raised">
@@ -14,7 +14,7 @@ const MoneyRaised = ({ eth, dollarGoal, conversionRate }) => {
             </p>
             {/* ETH */}
             <p className="count">
-            <span className="eth">Ξ{eth}</span><span className="ethGoal"> / Ξ{ethGoal}</span>
+            <span className="eth">Ξ{eth}</span><span className="ethGoal"> / Ξ{ethGoal ? ethGoal : ethGoalFallback}</span>
             </p>
             <style jsx>
                 {`

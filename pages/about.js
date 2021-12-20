@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import FAQ from '../components/faq';
 import Navigation from '../components/Navigation';
 
 export default function About() {
@@ -17,7 +18,12 @@ export default function About() {
           })}
         </p>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
-          {t.rich('about.remember', {
+          {t.rich('about.tools', {
+            strong: (children) => <strong>{children}</strong>,
+          })}
+        </p>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.12days', {
             strong: (children) => <strong>{children}</strong>,
           })}
         </p>
@@ -49,7 +55,7 @@ export default function About() {
         </h2>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.raisingJuicebox', {
-            link: (children) => <a className="link" href="https://juicebox.money/#/" target="_blank" rel="noreferrer">{children}</a>,
+            link: (children) => <a className="link" href="https://juicebox.money/#/elfdao" target="_blank" rel="noreferrer">{children}</a>,
           })}
         </p>
         <h3 className="headline" style={{textAlign: 'center'}}>
@@ -61,14 +67,47 @@ export default function About() {
             strong: (children) => <strong>{children}</strong>,
           })}
         </p>
-        {/* TODO: add info about elfdao nfts */}
-        <h3 className="headline" style={{textAlign: 'center'}}>
-          {t.rich('about.elfDaoNFTs')}
-        </h3>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
-          {t.rich('about.aboutElfDaoNFTs', {
+          {t.rich('about.coreTeam', {
             link: (children) => <a className="link" href="" target="_blank" rel="noreferrer">{children}</a>,
           })}
+        </p>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.burn')}
+        </p>
+        <h3 className="headline" style={{textAlign: 'center'}}>
+          {t.rich('about.aboutNFT')}
+        </h3>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.aboutElfDaoNFTs')}
+        </p>
+        <ol className="manifesto" style={{marginBottom: '2rem'}}>
+          <li className="manifesto">
+            {t.rich('about.tier1', {
+              strong: (children) => <strong>{children}</strong>,
+            })}
+          </li>
+          <li className="manifesto">
+            {t.rich('about.tier2', {
+              strong: (children) => <strong>{children}</strong>,
+            })}
+          </li>
+          <li className="manifesto">
+            {t.rich('about.tier3', {
+              strong: (children) => <strong>{children}</strong>,
+            })}
+          </li>
+        </ol>
+        <p style={{marginBottom: '2rem'}}>
+          <i>
+            {t('about.note')}
+          </i>
+        </p>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.reserving')}
+        </p>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.claiming')}
         </p>
         <h2 className="subheading" style={{marginTop: '2rem'}}>
           {t.rich('about.whereFunds')}
@@ -79,31 +118,45 @@ export default function About() {
           })}
         </p>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
-          {t.rich('about.longAnswer', {
-            strong: (children) => <strong>{children}</strong>,
-          })}
-        </p>
-        <ol className="manifesto" style={{marginBottom: '2rem'}}>
-          <li className="manifesto">
-            {t.rich('about.longAnswerOption1', {
-              strong: (children) => <strong>{children}</strong>,
-            })}
-          </li>
-          <li className="manifesto">
-            {t.rich('about.longAnswerOption2', {
-              strong: (children) => <strong>{children}</strong>,
-            })}
-          </li>
-        </ol>
-        <p className="manifesto" style={{marginBottom: '2rem'}}>
-          {t.rich('about.community', {
+          {t.rich('about.governanceTokens', {
             strong: (children) => <strong>{children}</strong>,
           })}
         </p>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
-          {t.rich('about.targetGoal', {
+          {t.rich('about.criteria', {
             strong: (children) => <strong>{children}</strong>,
-            link: (children) => <a className="link" href="https://docs.endaoment.org/governance/mission-values#organization-funding-policy" target="_blank" rel="noreferrer">{children}</a>,
+          })}
+        </p>
+        <ul className="manifesto" style={{marginBottom: '2rem'}}>
+          <li className="manifesto">
+            {t.rich('about.registered', {
+              strong: (children) => <strong>{children}</strong>,
+            })}
+          </li>
+          <li className="manifesto">
+            {t.rich('about.endaoment', {
+              link: (children) => <a className="link" href="https://docs.endaoment.org/governance/mission-values#organization-funding-policy" target="_blank" rel="noreferrer">{children}</a>,
+            })}
+          </li>
+          <li className="manifesto">
+            {t.rich('about.aligned', {
+              strong: (children) => <strong>{children}</strong>,
+            })}
+          </li>
+        </ul>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.holders', {
+            strong: (children) => <strong>{children}</strong>,
+          })}
+        </p>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.reservedAmount', {
+            strong: (children) => <strong>{children}</strong>,
+          })}
+        </p>
+        <p className="manifesto" style={{marginBottom: '2rem'}}>
+          {t.rich('about.codified', {
+            strong: (children) => <strong>{children}</strong>,
           })}
         </p>
         <h2 className="subheading" style={{marginTop: '2rem'}}>
@@ -118,7 +171,7 @@ export default function About() {
           <li className="manifesto">
             {t.rich('about.contribute', {
               strong: (children) => <strong>{children}</strong>,
-              link: (children) => <a className="link" href="https://join.elfdao.com/" target="_blank" rel="noreferrer">{children}</a>,
+              link: (children) => <a className="link" href="https://discord.com/invite/elfdao" target="_blank" rel="noreferrer">{children}</a>,
             })}
           </li>
           <li className="manifesto">
@@ -127,6 +180,13 @@ export default function About() {
             })}
           </li>
         </ul>
+        <FAQ />
+        <h2 className="subheading">
+          . . .
+        </h2>
+        <p className="manifesto">
+          More information in our comprehensive <a className="link" href="https://docs.elfdao.com/" target="_blank" rel="noreferrer">docs</a> site.
+        </p>
       </article>
     </ main>
   );
