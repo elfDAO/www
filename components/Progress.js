@@ -5,7 +5,7 @@ import ProgressBar from "./subcomponents/ProgressBar";
 import MoneyRaised from "./subcomponents/MoneyRaised";
 import Image from 'next/image';
 
-const DOLLAR_GOAL = 1000000; // constant value of $M
+const DOLLAR_GOAL = 1000000.0; // constant value of $M
 const GIFT_VALUE = 25; // assuming $25 gift value
 
 export default function Progress() {
@@ -22,7 +22,7 @@ export default function Progress() {
   }
 
   useEffect(() => {
-    setProgress(dollars/DOLLAR_GOAL);
+    setProgress(dollars/DOLLAR_GOAL * 100);
     setGifts(dollars/GIFT_VALUE);
   },[dollars]);
 
