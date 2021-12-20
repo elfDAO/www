@@ -55,7 +55,7 @@ export default function About() {
         </h2>
         <p className="manifesto" style={{marginBottom: '2rem'}}>
           {t.rich('about.raisingJuicebox', {
-            link: (children) => <a className="link" href="https://juicebox.money/#/" target="_blank" rel="noreferrer">{children}</a>,
+            link: (children) => <a className="link" href="https://juicebox.money/#/elfdao" target="_blank" rel="noreferrer">{children}</a>,
           })}
         </p>
         <h3 className="headline" style={{textAlign: 'center'}}>
@@ -171,7 +171,7 @@ export default function About() {
           <li className="manifesto">
             {t.rich('about.contribute', {
               strong: (children) => <strong>{children}</strong>,
-              link: (children) => <a className="link" href="https://join.elfdao.com/" target="_blank" rel="noreferrer">{children}</a>,
+              link: (children) => <a className="link" href="https://discord.com/invite/elfdao" target="_blank" rel="noreferrer">{children}</a>,
             })}
           </li>
           <li className="manifesto">

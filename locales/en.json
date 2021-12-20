@@ -62,7 +62,7 @@
     "title": "FAQ",
     "general": "General Questions",
     "inCharge": "Who is in charge at elfDAO?",
-    "inChargeResponse": "The core team coordinates to drive key efforts across the DAO, and lay the structure for governance to enable DAO community-driven decisions. The people listed as signers on the Multisig are responsible for the transfer of funds.",
+    "inChargeResponse": "The core team coordinates to drive key efforts across the DAO, and lay the structure for governance to enable DAO community-driven decisions. The <link>Multisig</link> is responsible for the transfer of funds.",
     "howProposal": "How will proposals and voting work?",
     "howProposalResponse": "We will be utilizing <link>Snapshot</link>, a decentralized governance built for DAOs like us. We will be starting our Snapshot process by putting forth our initial governance proposal which includes parameters on governance on January 2nd, 2022.",
     "donationsLocked": "Are my donations locked in the contract or can I convert back to ETH at any time?",

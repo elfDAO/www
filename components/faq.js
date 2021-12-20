@@ -13,7 +13,11 @@ export default function FAQ() {
         {t.rich('inCharge')}
       </h3>
       <p className="faq-response">
-        {t.rich('inChargeResponse')}
+        {t.rich('inChargeResponse', {
+          link: (children) => {
+            <a className="link" href="https://etherscan.io/address/0xeb846e297c6f34337e2a6a65136ff8f29d48dd3a" target="_blank" rel="noreferrer">{children}</a>
+          },
+          })}
       </p>
       <h3 className="headline">
         {t.rich('howProposal')}
