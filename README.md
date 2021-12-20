@@ -2,8 +2,12 @@
 
 elfDAO is launching a 12-day fundraising campaign from December 20th to December 31st for the first ever Web3 toy drive.
 
-## Getting Started
+Deployed on: [elfdao.com](https://elfdao.com/).
 
+## Contributing
+Want to contribute? Fork this repo and make a pull request!
+
+# Local Development
 First, run the development server:
 
 ```bash
