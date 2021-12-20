@@ -25,8 +25,9 @@ const handler = async (req, res) => {
 
     /** Read Juicebox contract balance for specified project **/
     const projectId = process.env.PROJECT_ID; // Juicebox project id
+    const projectIdDec = parseInt(projectId, 10);
+    const projectIdHex = projectIdDec.toString(16);
 
-    console.log('projectId', projectId);
     const juiceboxContract = JUICEBOX_CONTRACT;
     const contractPayload = {
         id: 1,
@@ -38,9 +39,10 @@ const handler = async (req, res) => {
             * from: address the call is coming from. blackhole address because this is a READ call
             * to: the Juicebox contract
         */
+       // 9cc7f70800000000000000000000000000000000000000000000000000000000000000b1
         params: [
             {
-                data: `0x9cc7f708${projectId.toString(16).padStart(64, "0")}`,
+                data: `0x9cc7f708${projectIdHex.padStart(64, "0")}`,
                 from: "0x0000000000000000000000000000000000000000",
                 to: juiceboxContract,
             },
