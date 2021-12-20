@@ -29,7 +29,7 @@ export default function ConnectModal(props) {
               src="/wallets/walletconnect.svg"
               height={100}
               width={300}
-              alt="login with Wallet Connect!"
+              alt="login with WalletConnect!"
             />
           </WalletConnect>
           <Metamask onClick={() => handleLoginClick('metamask')}>
@@ -59,6 +59,7 @@ const style = {
   marginLeft: 'auto',
   marginRight: 'auto',
   p: 4,
+  borderRadius: '5px',
 };
 
 export const Coinbase = styled.div`

@@ -38,7 +38,7 @@ export default function Home() {
         <Spacer />
         <Stack spacing={2} justifyContent={'center'} alignItems={'center'}>
             <Box sx={{
-              width: { xs: 250, sm: 800 },
+              width: { xs: 400, sm: 1000 },
               borderRadius: '5px',
               backgroundColor: 'primary.dark',
               textAlign: 'center',
