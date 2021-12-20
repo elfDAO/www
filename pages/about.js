@@ -181,6 +181,12 @@ export default function About() {
           </li>
         </ul>
         <FAQ />
+        <h2 className="subheading">
+          . . .
+        </h2>
+        <p className="manifesto">
+          More information in our comprehensive <a className="link" href="https://docs.elfdao.com/" target="_blank" rel="noreferrer">docs</a> site.
+        </p>
       </article>
     </ main>
   );
