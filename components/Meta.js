@@ -19,7 +19,7 @@ const Meta = () => {
       />
       <meta property="og:image" content="/website-preview.png" />
 
-      <meta property="twitter:card" content="/website-preview.png" />
+      <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://twitter.com/elf_DAO" />
       <meta property="twitter:title" content="elfDAO. WAGBG." />
       <meta
