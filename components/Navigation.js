@@ -17,7 +17,7 @@ export default function Navigation() {
               width: '45px',
               height: '45px',
               }}>
-              <Image alt="tree" height={45} width={45} style={{
+              <Image alt="tree" height={45} width={45} className={{
                 width: '45px',
                 height: '45px',
                 }} src="/tree.png" />
