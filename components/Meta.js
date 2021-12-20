@@ -21,7 +21,7 @@ const Meta = () => {
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://twitter.com/elf_DAO" />
-      <meta property="twitter:title" content="elfDAO. WAGBG." />
+      <meta property="twitter:title" content="elfDAO. We're all gonna buy gifts." />
       <meta
         property="twitter:image"
         content="https://gateway.pinata.cloud/ipfs/QmP1a7sk5LHr8HrzJTD7uRMWVsd5JMtpop4HSdTcwJjJAr"
