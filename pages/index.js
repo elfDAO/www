@@ -38,7 +38,7 @@ export default function Home() {
         <Spacer />
         <Stack spacing={2} justifyContent={'center'} alignItems={'center'}>
             <Box sx={{
-              width: { xs: 250, sm: 800 },
+              width: { xs: 250, sm: 850 },
               borderRadius: '5px',
               backgroundColor: 'primary.dark',
               textAlign: 'center',
@@ -47,7 +47,6 @@ export default function Home() {
             >
             <h3 className="manifesto">
               Contributed on Juicebox already? NFTs will be available for claiming soon.
-              <br />
               Join our Discord and follow our Twitter for daily updates.
             </h3>
           </Box>
