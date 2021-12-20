@@ -12,7 +12,17 @@ export default function Navigation() {
     <nav>
       <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} justifyContent={'space-between'} width={"100%"} alignItems="center">
         <Stack direction="row" justifyContent={'space-between'} width={"100%"}>
-          <Link href="/" passHref><Image alt="tree" width="40" height="40" src="/tree.png" /></Link>
+          <Link href="/" passHref>
+            <div style={{
+              width: '45px',
+              height: '45px',
+              }}>
+              <Image alt="tree" height={45} width={45} style={{
+                width: '45px',
+                height: '45px',
+                }} src="/tree.png" />
+            </div>
+          </Link>
           <Link href="/about" passHref>
             <a className="nav">
             {t('about')}
