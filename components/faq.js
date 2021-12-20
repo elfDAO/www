@@ -13,21 +13,20 @@ export default function FAQ() {
         {t.rich('inCharge')}
       </h3>
       <p className="faq-response">
-        {t.rich('inChargeResponse')}
+        {t.rich('inChargeResponse', {
+          link: (children) => {
+            <a className="link" href="https://etherscan.io/address/0xeb846e297c6f34337e2a6a65136ff8f29d48dd3a" target="_blank" rel="noreferrer">{children}</a>
+          },
+          })}
       </p>
       <h3 className="headline">
         {t.rich('howProposal')}
       </h3>
       <p className="faq-response">
-        {t.rich('howProposalResponse')}
+        {t.rich('howProposalResponse', {
+          link: (children) => <a className="link" href="https://snapshot.org/#/" target="_blank" rel="noreferrer">{children}</a>,
+        })}
       </p>
-      {/* TODO: add response */}
-      {/* <h3 className="headline">
-        {t.rich('donationsLocked')}
-      </h3>
-      <p className="faq-response">
-        {t.rich('donationsLockedResponse')}
-      </p> */}
       <h3 className="headline">
         {t.rich('whoSnapshot')}
       </h3>
@@ -40,6 +39,14 @@ export default function FAQ() {
       <p className="faq-response">
         {t.rich('whyJuiceboxResponse',
         {link: (children) => <a className="link" href="https://juicebox.money/#/" target="_blank" rel="noreferrer">{children}</a>})}
+      </p>
+      <h3 className="headline">
+        {t.rich('whoHandling')}
+      </h3>
+      <p className="faq-response">
+        {t.rich('whoHandlingResponse', {
+          link: (children) => <a className="link" href="https://etherscan.io/address/0xeb846e297c6f34337e2a6a65136ff8f29d48dd3a" target="_blank" rel="noreferrer">{children}</a>,
+        })}
       </p>
       <Spacer />
       <h2 className="subheading">
@@ -54,21 +61,38 @@ export default function FAQ() {
         })}
       </p>
       <h3 className="headline">
-        {t.rich('ownLegal')}
-      </h3>
-      <p className="faq-response">
-        {t.rich('ownLegalResponse', {
-          link: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>
-        })}
-      </p>
-      <h3 className="headline">
         {t.rich('taxDeductible')}
       </h3>
       <p className="faq-response">
         {t.rich('taxDeductibleResponse', {
+          endaoment: (children) => <a className="link" href="https://endaoment.org/" target="_blank" rel="noreferrer">{children}</a>,
           discord: (children) => <a className="link" href="https://discord.com/invite/endaoment" target="_blank" rel="noreferrer">{children}</a>,
           email: (children) => <a className="link" href="mailto:admin+elfdao@endaoment.org" target="_blank" rel="noreferrer">{children}</a>
         })}
+      </p>
+      <h3 className="headline">
+        {t.rich('whyNotCrowdfund')}
+      </h3>
+      <p className="faq-response">
+        {t.rich('whyNotCrowdfundResponse')}
+      </p>
+      <Spacer />
+      <h2 className="subheading">
+      {t.rich('juicebox')}
+      </h2>
+      <h3 className="headline">
+        {t.rich('whyJuicebox')}
+      </h3>
+      <p className="faq-response">
+        {t.rich('whyJuiceboxResponse',
+        {link: (children) => <a className="link" href="https://juicebox.money/#/" target="_blank" rel="noreferrer">{children}</a>})}
+      </p>
+      <h3 className="headline">
+        {t.rich('giftValue')}
+      </h3>
+      <p className="faq-response">
+        {t.rich('giftValueResponse',
+        {strong: (children) => <strong>{children}</strong>})}
       </p>
     </>
   );
