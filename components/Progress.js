@@ -29,7 +29,7 @@ export default function Progress() {
 return (
   <>
     <div className="progress">
-        <p>{progress.toFixed(0)} gifts funded</p>
+        <p>{gifts.toFixed(0)} gifts funded</p>
       <Image alt="gift" src="/gift.png" width="100" height="100" />
     </div>
     <ProgressBar percent={progress}/>

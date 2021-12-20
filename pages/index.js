@@ -42,7 +42,9 @@ export default function Home() {
               borderRadius: '5px',
               backgroundColor: 'primary.dark',
               textAlign: 'center',
-              padding: '10px',
+              padding: '15px',
+              marginTop: '1rem',
+              marginBottom: '1rem',
             }}
             >
             <h3 className="manifesto">
@@ -51,6 +53,11 @@ export default function Home() {
             </h3>
           </Box>
           <MintNFTs />
+          <p className="manifesto center" style={{marginTop: '2rem'}}>
+            {t.rich('home.firstTime', {
+              link: (children) => <a className="link" href="https://docs.elfdao.com/donate-and-mint" target="_blank" rel="noreferrer">{children} </a>,
+            })}
+          </p>
         </Stack>
       </main>
       <Footer />

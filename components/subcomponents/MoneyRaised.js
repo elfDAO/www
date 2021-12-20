@@ -1,5 +1,6 @@
 const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
     const ethGoal = (dollarGoal / conversionRate).toFixed(2)
+    const ethGoalFallback = 259.96;
 
     const numberWithCommas = (x) => {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -13,7 +14,7 @@ const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
             </p>
             {/* ETH */}
             <p className="count">
-            <span className="eth">Ξ{eth}</span><span className="ethGoal"> / Ξ{ethGoal}</span>
+            <span className="eth">Ξ{eth}</span><span className="ethGoal"> / Ξ{ethGoal ? ethGoal : ethGoalFallback}</span>
             </p>
             <style jsx>
                 {`
