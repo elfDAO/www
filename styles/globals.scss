@@ -40,7 +40,7 @@ html, body {
 }
 
 main {
-  padding: 3rem;
+  padding-bottom:3rem;
   max-width: 84rem;
   margin: auto;
 }
@@ -52,18 +52,12 @@ p, h1, h2, h3 {
   font-style:normal;
 }
 
-nav {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
 body {
-  background-color: #10392A;
+  background-color: #071f18;
   // Gradient background
-  // background: radial-gradient(ellipse at left, rgba(0, 215, 0, 0.5), #071F18), radial-gradient(ellipse at left, #071F18, #071F18);
+  // background: radial-gradient(ellipse at left, rgba(0, 215, 0, 0.14), #071F18), 
+  //             radial-gradient(ellipse at left, rgba(0, 108, 104, 0.5), #071F18);
+  background: radial-gradient(circle at center left, rgba(0,215,0,0.1) 0%, rgba(0,215,0,0.1) 15%, rgba(0,108,104,0.15) 60%, rgba(7,31,24,1) 100%);
 }
 
 header {
@@ -75,23 +69,48 @@ header {
   align-items: center;
   flex-direction: column;
   margin-bottom: 4rem;
+  padding-top: 8rem; // offset absolute position nav
 }
 
 // if we add more sections to the site, we'll need to change this to class-based
 article {
   max-width: 48rem;
   width: 100%;
-  margin: auto;
+  margin:6rem auto;
 }
 
-.nav {
-  font-family: 'Space Mono', monospace;
+nav {
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(7, 24, 18, 0.5), rgba(7, 24, 18, 0.2));
+  padding:0.5rem 2rem;
+  position:absolute;
+  width:100%;
+  left:0;
+}
+
+nav .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width:84rem;
+  margin:0 auto;
+  flex-wrap:wrap;
+}
+
+nav .nav-links,
+nav .nav-actions {
+  display: flex;
+  align-items:center;
+  gap:1rem;
+}
+
+a.nav {
+  font-family: 'Labil Grotesk Basic', sans-serif;
+  font-weight:300;
+
   padding: .75rem;
   color: #36ECAC;
-  text-transform: uppercase;
-  align-items: center;
-  gap: .5rem;
-  font-size: 1.5em;
+  font-size: 1.4em;
   text-decoration: none;
 }
 
@@ -117,12 +136,28 @@ article {
   text-decoration: none;
 }
 
+.outlined.contribute {
+  margin-left:auto;
+  margin-right:auto;
+  background: #173630;
+  font-size:1.5rem;
+  padding:0.7rem 1.5rem;
+  transition:0.2s all cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.outlined.contribute:hover {
+  opacity:0.8;
+}
+
 .masthead {
-  font-size: 5rem;
+  font-size: 6rem;
+  line-height:90%;
   text-align: center;
   font-weight: bolder;
   color: #36ECAC;
-  margin-bottom: 3rem;
+  letter-spacing:-1px;
+  margin-top:5rem;
+  margin-bottom: 1rem;
 }
 
 .progress {
@@ -134,7 +169,7 @@ article {
   p {
     font-size: 4.75rem;
     font-weight: bold;
-    text-shadow: 0 0 5px white;
+    text-shadow: 0 0 5px rgba(255,255,255,0.3);
     transition: transform 0.25s;
   }
 }
@@ -192,7 +227,39 @@ article {
     }
   }
 
-  .nav {
+  .content,
+  .progress-wrapper {
+    padding:0 1.5rem;
+  }
+
+  article {
+    margin:0 auto;
+  }
+
+  nav {
+    padding:1rem;
+  }
+
+  nav .nav-inner {
+    gap:1rem;
+  }
+
+  nav .nav-links {
+    gap:0rem;
+    flex-grow:1;
+    justify-items:flex-end;
+  }
+
+  nav .nav-links *:first-child {
+    flex-grow:1;
+  }
+  
+  nav .nav-actions {
+    flex-grow:1;
+    justify-content:space-between;
+  }
+
+  a.nav {
     font-family: 'Space Mono', monospace;
     padding: .75rem;
     color: #36ECAC;
@@ -232,4 +299,22 @@ ol, ul {
 
 .nftImage {
   border-radius: 5px;
+}
+
+// style for gradients on background
+
+.bg-gradient1-wrapper,
+.bg-gradient2-wrapper {
+  overflow:hidden;
+} .bg-gradient1-wrapper > span {
+  z-index:-1 !important;
+  position:absolute !important;
+  top:100vh;
+  transform:translateY(-50%) translateX(-50%);
+} .bg-gradient2-wrapper > span {
+  z-index:-1 !important;
+  position:absolute !important;
+  top:25vh;
+  transform:translateX(-30%) scale(1.3);
+  overflow:hidden;
 }

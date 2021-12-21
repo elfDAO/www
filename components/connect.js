@@ -64,7 +64,8 @@ export default function Connect() {
 
 const CustomButton = muiStyled(Button)(({ theme }) => ({
   color: '#36ECAC',
-  backgroundColor: '#236357',
+  backgroundColor: 'rgba(25, 171, 166, 0.2)',
+  borderRadius: '20px',
   height: '45px',
   fontSize: '1.2rem',
   fontFamily: [
