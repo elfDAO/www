@@ -131,7 +131,7 @@ export default function MintNFTs() {
         <Grid item>
           <Nft
             name={t('elf')}
-            value={'Contributions > 0.1 ETH'}
+            value={'Contributions of 0.1 ETH or more'}
             image={'/elf.svg'}
             active={active}
             mintStatus={elfMintStatus}
@@ -142,7 +142,7 @@ export default function MintNFTs() {
         <Grid item>
           <Nft
             name={t('reindeer')}
-            value={'Contributions > 0.5 ETH'}
+            value={'Contributions of 0.5 ETH or more'}
             image={'/reindeer.svg'}
             mintStatus={reindeerMintStatus}
             active={active}
@@ -162,6 +162,7 @@ export default function MintNFTs() {
           />
         </Grid>
       </Grid>
+      <p><i>*A wallet may only claim a reindeer <strong>or</strong> an elf depending on their contribution level. Top 5 contributors will be eligible for both a reindeer and a santa token.</i></p>
     </Stack>
   )
 }
