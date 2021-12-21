@@ -135,7 +135,8 @@ export default function MintNFTs() {
             image={'/elf.svg'}
             active={active}
             mintStatus={elfMintStatus}
-            claimable={elfClaimable}
+            claimable={0}
+            // claimable={elfClaimable}
             onMint={onMintElf}
           />
         </Grid>
@@ -146,7 +147,8 @@ export default function MintNFTs() {
             image={'/reindeer.svg'}
             mintStatus={reindeerMintStatus}
             active={active}
-            claimable={reindeerClaimable}
+            claimable={0}
+            // claimable={reindeerClaimable}
             onMint={onMintReindeer}
           />
         </Grid>
@@ -157,7 +159,8 @@ export default function MintNFTs() {
             image={'/santa.svg'}
             mintStatus={santaMintStatus}
             active={active}
-            claimable={santaClaimable}
+            claimable={0}
+            // claimable={santaClaimable}
             onMint={onMintSanta}
           />
         </Grid>
