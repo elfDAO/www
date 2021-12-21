@@ -162,7 +162,7 @@ export default function MintNFTs() {
           />
         </Grid>
       </Grid>
-      <p><i>*A wallet may only claim a reindeer or an elf depending on their contribution level. Top 5 contributors will be eligible for both a reindeer and a santa token.</i></p>
+      <p><i>*A wallet may only claim a reindeer <strong>or</strong> an elf depending on their contribution level. Top 5 contributors will be eligible for both a reindeer and a santa token.</i></p>
     </Stack>
   )
 }
