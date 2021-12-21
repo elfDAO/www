@@ -25,7 +25,7 @@ export default function Footer() {
         </>
         <>
         <a
-          href="https://discord.gg/elfdao"
+          href="https://join.elfdao.com/"
           target="_blank"
           rel="noreferrer"
         >

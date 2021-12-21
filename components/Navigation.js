@@ -36,7 +36,7 @@ export default function Navigation() {
           <Connect />
           <CustomButton
             disableElevation
-            href="https://discord.gg/elfdao" target="_blank" rel="noreferrer" variant="contained"
+            href="https://join.elfdao.com/" target="_blank" rel="noreferrer" variant="contained"
             endIcon={<Image alt="discord logo" src="/discord.svg" width="25" height="25"/>}
           >
             {t('join')}
