@@ -4,12 +4,16 @@ import { useWeb3React } from '@web3-react/core';
 import Footer from "@components/footer";
 import { useEffect, useState } from 'react';
 import { elfDAONFT, giftToken } from '@src/pages/utils/_web3';
+import axios from 'axios';
+import Image from 'next/image';
+import { Stack } from '@mui/material';
 
 export default function Wallet() {
   const t = useTranslations('community');
-  const { active, account } = useWeb3React();
+  const { active, account, chainId } = useWeb3React();
   const [alreadyClaimed, setAlreadyClaimed] = useState(false);
   const [giftBalance, setGiftBalance] = useState();
+  const [displayTokens, setDisplayTokens] = useState([]);
 
   useEffect(() => {
     if (!active || !account) {
@@ -47,11 +51,53 @@ export default function Wallet() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
 
+  // check nft balance
+  useEffect(() => {
+    if (!active || !account) {
+      return;
+    }
+    async function checkNFTBalance() {
+      elfDAONFT.methods.balanceOf(account).call().then((result) => {
+        if (result === 1) {
+          return;
+        }
+        const resultDec = parseFloat(result, 10);
+        const resultDiv = resultDec/1e18;
+        setGiftBalance(resultDiv);
+      }).catch((err) => {
+        console.log('err', err);
+        setGiftBalance(0);
+      });
+    }
+    checkNFTBalance();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account]);
+
   // TODO: pull nft information
-  // const contract_address = process.env.NEXT_PUBLIC_ELFNFT_ADDRESS;
-  // useEffect(() => {
-  //   const response = axios.get(`https://api.opensea.io/api/v1/assets?owner=${account}&asset_contract_address=${contract_address}&order_direction=desc&offset=0&limit=20`);
-  // }, []);
+  const contract_address = process.env.NEXT_PUBLIC_ELFNFT_ADDRESS;
+  useEffect(() => {
+    if (!active || !account) {
+      return;
+    }
+    async function getContractInfo() {
+      try {
+        if (chainId === 4) {
+          const response = await axios.get(
+            `https://testnets-api.opensea.io/api/v1/assets?owner=${account}&asset_contract_address=${contract_address}`);
+            console.log(response.data.assets);
+            setDisplayTokens(Array(response.data.assets));
+        } else if (chainId === 1) {
+          const response = await axios.get(
+            `https://api.wallet.coinbase.com/rpc/v2/collectibles/getUserTokenList?chainId=1&userAddress=${account}`);
+            console.log(response.data.result.tokenList);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getContractInfo()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account]);
 
   return (
     <>
@@ -67,6 +113,20 @@ export default function Wallet() {
               <div>
                 <h2 style={{paddingBottom: '1.5rem', color: '#36ECAC', textAlign:"center"}}>{t('thankYou')}</h2>
                 <p className="manifesto center">{t('giftBalance')}: {giftBalance}</p>
+                {displayTokens.map((token, i) => {
+                  return <Stack
+                      key={i}
+                      paddingTop={4}
+                      paddingBottom={4}
+                      width={'100%'}
+                      justifyContent="center"
+                      alignItems="center"
+                    >
+                    {token.image_url ? <Image alt="nft" height={350} width={350} src={token.image_url} /> :
+                    <Image alt="nft" height={350} width={350} src={'/not-available.png'} /> }
+                    <p className="manifesto center">{token.name}</p>
+                  </Stack>
+                })}
               </div> :
               <div>
                 <h2 style={{paddingBottom: '1.5rem', color: '#36ECAC', textAlign:"center"}}>

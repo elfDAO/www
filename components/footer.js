@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { Icon, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 export default function Footer() {
