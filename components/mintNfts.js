@@ -2,12 +2,14 @@ import { Grid, Stack } from "@mui/material";
 import Nft from "./subcomponents/NftCard";
 import { useTranslations } from 'next-intl';
 import useSWR from 'swr';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { elfDAONFT, mintElf, mintReindeer, mintSanta } from '../pages/utils/_web3';
+import React, { useEffect, useMemo, useState } from 'react';
+import { elfDAONFT, mintElf, mintReindeer } from '../pages/utils/_web3';
 import { useWeb3React } from '@web3-react/core';
 import Connect from "./connect";
 
-const ETH = 1;
+const NOT_CLAIMABLE = 0;
+const ALREADY_CLAIMED = 1;
+const CLAIMABLE = 2;
 
 export default function MintNFTs() {
   const t = useTranslations('nft');
@@ -17,13 +19,11 @@ export default function MintNFTs() {
   // 0: not claimable
   // 1: already claimed
   // 2: claimable
-  const [elfClaimable, setElfClaimable] = useState(0);
+  const [elfClaimable, setElfClaimable] = useState(NOT_CLAIMABLE);
   const [reindeerClaimable, setReindeerClaimable] = useState(0);
-  const [santaClaimable, setSantaClaimable] = useState(0);
 
   const [elfMintStatus, setElfMintStatus] = useState();
   const [reindeerMintStatus, setReindeerMintStatus] = useState();
-  const [santaMintStatus, setSantaMintStatus] = useState();
 
   let elfProof = [];
   let elfValid = false;
@@ -39,15 +39,15 @@ export default function MintNFTs() {
     if (!active || !elfValid) { setElfClaimable(0) }
     async function validateElfClaim() {
       elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
-        setElfClaimable(1);
+        setElfClaimable(CLAIMABLE);
       }).catch((err) => {
-        if (err.toString().includes('claimed')) { setElfClaimable(2)}
-        else { setElfClaimable(0) }
+        if (err.toString().includes('claimed')) { setElfClaimable(ALREADY_CLAIMED)}
+        else { setElfClaimable(NOT_CLAIMABLE) }
       });
     }
     validateElfClaim();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, account])
+  }, [elfProof])
 
   let reindeerProof = [];
   let reindeerValid = false;
@@ -63,39 +63,15 @@ export default function MintNFTs() {
     if (!active || !reindeerValid) { setReindeerClaimable(0) }
     async function validateReindeerClaim() {
       elfDAONFT.methods.mintReindeer(elfProof).call({ from: account }).then(() => {
-        setReindeerClaimable(1);
+        setReindeerClaimable(CLAIMABLE);
       }).catch((err) => {
-        if (err.toString().includes('claimed')) { setReindeerClaimable(2)}
-        setReindeerClaimable(0);
+        if (err.toString().includes('claimed')) { setReindeerClaimable(ALREADY_CLAIMED)}
+        setReindeerClaimable(NOT_CLAIMABLE);
       });
     }
     validateReindeerClaim();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, account])
-
-  let santaProof = [];
-  let santaValid = false;
-  ({ data, error } = useSWR(active && account ? `/api/santaProof?address=${account}` : null, { fetcher,
-    fetcher, revalidateIfStale: false, revalidateOnFocus: false, revalidateOnReconnect: false}));
-  if (!error && data) {
-    const { proof, valid } = data;
-    santaProof = proof;
-    santaValid = valid;
-  }
-
-  useEffect(() => {
-    if (!active || !santaValid) { setSantaClaimable(0) }
-    async function validateSantaClaim() {
-      elfDAONFT.methods.mintReindeer(elfProof).call({ from: account }).then(() => {
-        setSantaClaimable(1);
-      }).catch((err) => {
-        if (err.toString().includes('claimed')) { setSantaClaimable(2)}
-        setSantaClaimable(0);
-      });
-    }
-    validateSantaClaim();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, account])
+  }, [reindeerProof])
 
   const onMintElf = async () => {
     const { success, status } = await mintElf(account, elfProof);
@@ -107,12 +83,6 @@ export default function MintNFTs() {
     const { success, status } = await mintReindeer(account, reindeerProof);
     console.log(status);
     setReindeerMintStatus(success);
-  };
-
-  const onMintSanta = async () => {
-    const { success, status } = await mintSanta(account, santaProof);
-    console.log(status);
-    setSantaMintStatus(success);
   };
 
   const notOnCorrectNetwork = useMemo(() => {
@@ -153,12 +123,10 @@ export default function MintNFTs() {
         <Grid item>
           <Nft
             name={t('santa')}
-            value={'Top 5 Contributers'}
+            value={'Top 5 Contributors'}
             image={'/santa.svg'}
-            mintStatus={santaMintStatus}
             active={active}
-            claimable={santaClaimable}
-            onMint={onMintSanta}
+            claimable={0}
           />
         </Grid>
       </Grid>

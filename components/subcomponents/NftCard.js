@@ -5,18 +5,22 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
 import { useMemo } from 'react';
 
+const NOT_CLAIMABLE = 0;
+const ALREADY_CLAIMED = 1;
+const CLAIMABLE = 2;
+
 export default function Nft(props) {
   const t = useTranslations('nft');
   const { name, value, image, claimable, onMint, active, mintStatus } = props;
   const message = useMemo(() => {
     if (!active) {
       return t('connectWallet');
-    } else if (claimable === 0) {
+    } else if (claimable === NOT_CLAIMABLE) {
       return t('notEligible');
-    } else if (claimable === 1){
-      return t('readyToClaim');
-    } else if (claimable === 2) {
+    } else if (claimable === ALREADY_CLAIMED){
       return t('alreadyClaimed');
+    } else if (claimable === CLAIMABLE) {
+      return t('readyToClaim');
     } else if (mintStatus) {
       return t('successful');
     } else {
@@ -49,7 +53,7 @@ export default function Nft(props) {
             <h4 style={{color: '#A8EAB6'}}>{message}</h4>
             <CustomButton
               variant="contained"
-              disabled={!active || claimable !== 1}
+              disabled={!active || claimable !== CLAIMABLE}
               disableElevation
               color="secondary"
               onClick={onMint}
