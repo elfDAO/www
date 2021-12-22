@@ -36,7 +36,7 @@ export default function MintNFTs() {
   }
 
     useEffect(() => {
-    if (!active || !elfValid) { setElfClaimable(0) }
+    if (!active || !elfValid) { setElfClaimable(NOT_CLAIMABLE) }
     async function validateElfClaim() {
       elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
         setElfClaimable(CLAIMABLE);
@@ -60,9 +60,9 @@ export default function MintNFTs() {
   }
 
   useEffect(() => {
-    if (!active || !reindeerValid) { setReindeerClaimable(0) }
+    if (!active || !reindeerValid) { setReindeerClaimable(NOT_CLAIMABLE) }
     async function validateReindeerClaim() {
-      elfDAONFT.methods.mintReindeer(elfProof).call({ from: account }).then(() => {
+      elfDAONFT.methods.mintReindeer(reindeerProof).call({ from: account }).then(() => {
         setReindeerClaimable(CLAIMABLE);
       }).catch((err) => {
         if (err.toString().includes('claimed')) { setReindeerClaimable(ALREADY_CLAIMED)}
@@ -75,13 +75,11 @@ export default function MintNFTs() {
 
   const onMintElf = async () => {
     const { success, status } = await mintElf(account, elfProof);
-    console.log(status);
     setElfMintStatus(success);
   };
 
   const onMintReindeer = async () => {
     const { success, status } = await mintReindeer(account, reindeerProof);
-    console.log(status);
     setReindeerMintStatus(success);
   };
 
