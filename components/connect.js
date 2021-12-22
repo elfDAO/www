@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useRouter } from 'next/router';
 import Button from '@mui/material/Button';
 import { styled as muiStyled, alpha } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useWeb3React } from '@web3-react/core';
