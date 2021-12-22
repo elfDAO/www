@@ -168,7 +168,7 @@ const CustomMenu = muiStyled(Menu)(({ theme }) => ({
       },
       '&:active': {
         backgroundColor: alpha(
-          theme.palette.primary.main,
+          theme.palette.primary.light,
           theme.palette.action.selectedOpacity,
         ),
       },
