@@ -33,6 +33,7 @@ export default function MintNFTs() {
     const { proof, valid  } = data;
     elfProof = proof;
     elfValid = valid;
+    console.log('elfProof', elfProof, valid);
   }
 
     useEffect(() => {
@@ -41,6 +42,7 @@ export default function MintNFTs() {
       elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
         setElfClaimable(CLAIMABLE);
       }).catch((err) => {
+        console.log('validateElfClaim', err);
         if (err.toString().includes('claimed')) { setElfClaimable(ALREADY_CLAIMED)}
         else { setElfClaimable(NOT_CLAIMABLE) }
       });
@@ -57,6 +59,7 @@ export default function MintNFTs() {
     const { proof, valid } = data;
     reindeerProof = proof;
     reindeerValid = valid;
+    console.log('reindeerProof', reindeerProof, valid);
   }
 
   useEffect(() => {
@@ -65,6 +68,7 @@ export default function MintNFTs() {
       elfDAONFT.methods.mintReindeer(reindeerProof).call({ from: account }).then(() => {
         setReindeerClaimable(CLAIMABLE);
       }).catch((err) => {
+        console.log('validateReindeerClaim', err);
         if (err.toString().includes('claimed')) { setReindeerClaimable(ALREADY_CLAIMED)}
         setReindeerClaimable(NOT_CLAIMABLE);
       });
@@ -75,11 +79,13 @@ export default function MintNFTs() {
 
   const onMintElf = async () => {
     const { success, status } = await mintElf(account, elfProof);
+    console.log(status);
     setElfMintStatus(success);
   };
 
   const onMintReindeer = async () => {
     const { success, status } = await mintReindeer(account, reindeerProof);
+    console.log(status);
     setReindeerMintStatus(success);
   };
 
@@ -106,6 +112,7 @@ export default function MintNFTs() {
             claimable={elfClaimable}
             onMint={onMintElf}
           />
+          <p>elfClaimable: {elfClaimable}, proofValid: {elfValid.toString()}</p>
         </Grid>
         <Grid item>
           <Nft
@@ -117,6 +124,7 @@ export default function MintNFTs() {
             claimable={reindeerClaimable}
             onMint={onMintReindeer}
           />
+          <p>reindeerClaimable: {reindeerClaimable}, proofValid: {reindeerValid.toString()}</p>
         </Grid>
         <Grid item>
           <Nft
