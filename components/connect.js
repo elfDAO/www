@@ -138,8 +138,9 @@ const Connected = muiStyled(Button)(({ theme }) => ({
   color: '#36ECAC',
   backgroundColor: '#236357',
   height: '45px',
-  fontSize: '1rem',
+  fontSize: '1.15rem',
   padding: '1rem',
+  textTransform: 'none',
   fontFamily: [
     'Space Mono,monospace',
     'Roboto',
@@ -153,7 +154,7 @@ const CustomMenu = muiStyled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
     borderRadius: 6,
     marginTop: theme.spacing(0.5),
-    minWidth: 160,
+    minWidth: 180,
     color: theme.palette.primary,
     background: theme.palette.primary.light,
     boxShadow:
