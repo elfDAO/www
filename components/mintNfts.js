@@ -25,6 +25,24 @@ export default function MintNFTs() {
   const [elfMintStatus, setElfMintStatus] = useState();
   const [reindeerMintStatus, setReindeerMintStatus] = useState();
 
+  const [alreadyClaimed, setAlreadyClaimed] = useState(false);
+
+  useEffect(() => {
+    if (!active || !account) {
+      setAlreadyClaimed(false);
+      return;
+    }
+    async function checkIfClaimed() {
+      elfDAONFT.methods.claimed(account).call({ from: account }).then((result) => {
+        setAlreadyClaimed(result);
+      }).catch((err) => {
+        setAlreadyClaimed(false);
+      });
+    }
+    checkIfClaimed();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account])
+
   let elfProof = [];
   let elfValid = false;
   let { data, error } = useSWR(active && account ? `/api/elfProof?address=${account}` : null, { fetcher,
@@ -37,13 +55,15 @@ export default function MintNFTs() {
   }
 
     useEffect(() => {
-    if (!active || !elfValid) { setElfClaimable(NOT_CLAIMABLE) }
+    if (!active || !elfValid) {
+      setElfClaimable(NOT_CLAIMABLE);
+      return;
+    }
     async function validateElfClaim() {
       elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
         setElfClaimable(CLAIMABLE);
       }).catch((err) => {
-        console.log('validateElfClaim', err);
-        if (err.toString().includes('claimed')) { setElfClaimable(ALREADY_CLAIMED)}
+        if (alreadyClaimed) { setElfClaimable(ALREADY_CLAIMED)}
         else { setElfClaimable(NOT_CLAIMABLE) }
       });
     }
@@ -63,14 +83,18 @@ export default function MintNFTs() {
   }
 
   useEffect(() => {
-    if (!active || !reindeerValid) { setReindeerClaimable(NOT_CLAIMABLE) }
+    if (!active || !reindeerValid) {
+      setReindeerClaimable(NOT_CLAIMABLE);
+      return;
+    }
     async function validateReindeerClaim() {
       elfDAONFT.methods.mintReindeer(reindeerProof).call({ from: account }).then(() => {
         setReindeerClaimable(CLAIMABLE);
       }).catch((err) => {
         console.log('validateReindeerClaim', err);
-        if (err.toString().includes('claimed')) { setReindeerClaimable(ALREADY_CLAIMED)}
-        setReindeerClaimable(NOT_CLAIMABLE);
+        if (alreadyClaimed) { setReindeerClaimable(ALREADY_CLAIMED)}
+        else {setReindeerClaimable(NOT_CLAIMABLE)}
+
       });
     }
     validateReindeerClaim();
