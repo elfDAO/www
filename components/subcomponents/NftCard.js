@@ -12,19 +12,20 @@ const CLAIMABLE = 2;
 export default function Nft(props) {
   const t = useTranslations('nft');
   const { name, value, image, claimable, onMint, active, mintStatus } = props;
+
   const message = useMemo(() => {
     if (!active) {
       return t('connectWallet');
-    } else if (claimable === NOT_CLAIMABLE) {
-      return t('notEligible');
+    } else if (mintStatus) {
+      return t('successful')
+    } else if (mintStatus === false) {
+      return t('unsuccessful');
     } else if (claimable === ALREADY_CLAIMED){
       return t('alreadyClaimed');
     } else if (claimable === CLAIMABLE) {
       return t('readyToClaim');
-    } else if (mintStatus) {
-      return t('successful');
     } else {
-      return t('unsuccessful');
+      return t('notEligible');
     }
   }, [t, active, claimable, mintStatus])
 
