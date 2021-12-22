@@ -141,7 +141,6 @@ export default function MintNFTs(props) {
             claimable={elfClaimable}
             onMint={onMintElf}
           />
-          <p>elfClaimable: {elfClaimable}, proofValid: {elfValid.toString()}</p>
         </Grid>
         <Grid item>
           <Nft
@@ -153,7 +152,6 @@ export default function MintNFTs(props) {
             claimable={reindeerClaimable}
             onMint={onMintReindeer}
           />
-          <p>reindeerClaimable: {reindeerClaimable}, proofValid: {reindeerValid.toString()}</p>
         </Grid>
         <Grid item>
           <Nft
