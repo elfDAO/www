@@ -81,16 +81,10 @@ export default function Wallet() {
     }
     async function getContractInfo() {
       try {
-        if (chainId === 4) {
-          const response = await axios.get(
-            `https://testnets-api.opensea.io/api/v1/assets?owner=${account}&asset_contract_address=${contract_address}`);
-            console.log(response.data.assets);
-            setDisplayTokens(Array(response.data.assets));
-        } else if (chainId === 1) {
-          const response = await axios.get(
-            `https://api.wallet.coinbase.com/rpc/v2/collectibles/getUserTokenList?chainId=1&userAddress=${account}`);
-            console.log(response.data.result.tokenList);
-        }
+        const response = await axios.get(
+          `https://testnets-api.opensea.io/api/v1/assets?owner=${account}&asset_contract_address=${contract_address}`);
+          console.log(response.data.assets);
+        setDisplayTokens(Array(response.data.assets));
       } catch (err) {
         console.log(err);
       }
