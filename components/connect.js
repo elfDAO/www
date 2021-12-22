@@ -71,13 +71,12 @@ export default function Connect() {
         ) :
     <div>
       <Connected
+        variant="contained"
         onClick={handleMenuClick}
         disableElevation
         endIcon={<KeyboardArrowDownIcon />}
       >
-        <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" height={"100%"}>
-          <p>{account && (ENSName || abridgeAddress(account))}</p>
-        </Stack>
+        {account && (ENSName || abridgeAddress(account))}
       </Connected>
       <CustomMenu
         id="basic-menu"
@@ -138,7 +137,7 @@ const Connected = muiStyled(Button)(({ theme }) => ({
   color: '#36ECAC',
   backgroundColor: '#236357',
   height: '45px',
-  fontSize: '1.15rem',
+  fontSize: '1.1rem',
   padding: '1rem',
   textTransform: 'none',
   fontFamily: [
