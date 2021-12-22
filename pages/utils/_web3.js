@@ -18,6 +18,10 @@ const acceptedChains = ENVIRONMENT === 'development' ? [1, 3, 4, 5, 42] : [1, 2]
 
 export const elfDAONFT = new web3.eth.Contract(contractABI.abi, contractAddress);
 
+const giftTokenAddress = "0x4b2697AB3F0793160B566b92188e20c88b24C831";
+const giftTokenABI = require("/data/giftABI.json");
+export const giftToken = new web3.eth.Contract(giftTokenABI.abi, giftTokenAddress);
+
 export const injected = new InjectedConnector({ supportedChainIds: acceptedChains, });
 export const walletConnect = new WalletConnectConnector({
   infuraId: INFURA_ID,

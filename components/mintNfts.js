@@ -1,17 +1,17 @@
+import React, { useEffect, useMemo, useState } from 'react';
 import { Grid, Stack } from "@mui/material";
-import Nft from "./subcomponents/NftCard";
+import Nft from "@components/subcomponents/NftCard";
 import { useTranslations } from 'next-intl';
 import useSWR from 'swr';
-import React, { useEffect, useMemo, useState } from 'react';
-import { elfDAONFT, mintElf, mintReindeer } from '../pages/utils/_web3';
+import { elfDAONFT, mintElf, mintReindeer } from '@src/pages/utils/_web3';
 import { useWeb3React } from '@web3-react/core';
-import Connect from "./connect";
+import Connect from "@components/connect";
 
 const NOT_CLAIMABLE = 0;
 const ALREADY_CLAIMED = 1;
 const CLAIMABLE = 2;
 
-export default function MintNFTs() {
+export default function MintNFTs(props) {
   const t = useTranslations('nft');
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { active, account, chainId } = useWeb3React();

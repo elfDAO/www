@@ -1,18 +1,37 @@
 import { useState } from "react";
+import { useRouter } from 'next/router';
 import Button from '@mui/material/Button';
-import styled from 'styled-components';
-import { styled as muiStyled } from '@mui/material/styles';
+import { styled as muiStyled, alpha } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { useWeb3React } from '@web3-react/core';
 import { abridgeAddress, injected, useENSName, walletConnect, walletlink } from '../pages/utils/_web3';
 import ConnectModal from "./subcomponents/connectModal";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export default function Connect() {
-  const { activate, deactivate, active, account, library, chainId } = useWeb3React();
+  const { activate, deactivate, active, account, library } = useWeb3React();
+  const router = useRouter();
+
+  // for the modal
   const [isModalVisible, setIsModalVisible] = useState(false);
   const walletConnectConnector = walletConnect;
   const handleClose = () => setIsModalVisible(false);
-  const handleOpen = () => setIsModalVisible(true);
+  const handleConnect = () => {
+    setIsModalVisible(true);
+    handleMenuClose();
+  };
+
+  // for the dropdown menu
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleBodyScroll = () => {
     document.body.style.overflow = 'visible';
@@ -30,7 +49,11 @@ export default function Connect() {
     handleClose();
   }
 
-  const handleLogoutClick = async () => {
+  const goToWallet = async () => {
+    router.push('/community/wallet');
+  }
+
+  const handleDisconnect = async () => {
     await deactivate();
   }
 
@@ -41,17 +64,52 @@ export default function Connect() {
     {!active ? (
       <CustomButton variant="contained"
         disableElevation
-        onClick={handleOpen}>
+        onClick={handleConnect}
+        >
           Connect Wallet
         </CustomButton>
         ) :
     <div>
-      <Connected>
+      <Connected
+        onClick={handleMenuClick}
+        disableElevation
+        endIcon={<KeyboardArrowDownIcon />}
+      >
         <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" height={"100%"}>
           <p>{account && (ENSName || abridgeAddress(account))}</p>
-          <Button variant="contained" disableElevation size="small" onClick={handleLogoutClick}>Disconnect</Button>
         </Stack>
       </Connected>
+      <CustomMenu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleMenuClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <MenuItem
+          variant="contained"
+          onClick={goToWallet}
+          divider
+        >
+          Your wallet
+        </MenuItem>
+        <MenuItem
+          variant="contained"
+          onClick={handleDisconnect}
+        >
+          Disconnect
+        </MenuItem>
+      </CustomMenu>
     </div>
     }
     <ConnectModal
@@ -76,13 +134,46 @@ const CustomButton = muiStyled(Button)(({ theme }) => ({
   ].join(','),
 }));
 
-export const Connected = styled.div`
-  width: 250px;
-  background: #236357;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center;
-  height: 45px;
-  padding-left: 5px;
-  padding-right: 5px;
-`
+const Connected = muiStyled(Button)(({ theme }) => ({
+  color: '#36ECAC',
+  backgroundColor: '#236357',
+  height: '45px',
+  fontSize: '1rem',
+  padding: '1rem',
+  fontFamily: [
+    'Space Mono,monospace',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+  ].join(','),
+}));
+
+const CustomMenu = muiStyled(Menu)(({ theme }) => ({
+  '& .MuiPaper-root': {
+    borderRadius: 6,
+    marginTop: theme.spacing(0.5),
+    minWidth: 160,
+    color: theme.palette.primary,
+    background: theme.palette.primary.light,
+    boxShadow:
+      'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+    '& .MuiMenu-list': {
+      padding: '4px 0',
+    },
+    '& .MuiMenuItem-root': {
+      '& .MuiSvgIcon-root': {
+        fontSize: 18,
+        color: theme.palette.text.secondary,
+        marginRight: theme.spacing(1.5),
+      },
+      '&:active': {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          theme.palette.action.selectedOpacity,
+        ),
+      },
+    },
+  },
+}));
+
