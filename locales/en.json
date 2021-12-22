@@ -94,7 +94,7 @@
     "connectWallet": "Connect your wallet to check eligibility.",
     "readyToClaim": "Ready to claim.",
     "notEligible": "You are not eligible to claim.",
-    "successful": "Success!",
+    "successful": "Success! Check your wallet in a few minutes.",
     "alreadyClaimed": "You've already claimed!",
     "unsuccessful": "There was a problem with your mint...",
     "connectMainnet": "Please connect to Ethereum mainnet.",
