@@ -15,12 +15,12 @@ export default function Nft(props) {
   const message = useMemo(() => {
     if (!active) {
       return t('connectWallet');
+    } else if (claimable === ALREADY_CLAIMED){
+      return t('alreadyClaimed');
     } else if (mintStatus) {
       return t('successful')
     } else if (mintStatus === false) {
       return t('unsuccessful');
-    } else if (claimable === ALREADY_CLAIMED){
-      return t('alreadyClaimed');
     } else if (claimable === CLAIMABLE) {
       return t('readyToClaim');
     } else { // NOT_CLAIMABLE

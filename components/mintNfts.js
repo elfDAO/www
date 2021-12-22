@@ -34,6 +34,7 @@ export default function MintNFTs() {
     }
     async function checkIfClaimed() {
       elfDAONFT.methods.claimed(account).call({ from: account }).then((result) => {
+        console.log('claimed', result);
         setAlreadyClaimed(result);
       }).catch((err) => {
         setAlreadyClaimed(false);
@@ -51,19 +52,21 @@ export default function MintNFTs() {
     const { proof, valid  } = data;
     elfProof = proof;
     elfValid = valid;
-    console.log('elfProof', elfProof, valid);
   }
 
     useEffect(() => {
     if (!active || !elfValid) {
       setElfClaimable(NOT_CLAIMABLE);
       return;
+    } else if (alreadyClaimed) {
+      setElfClaimable(ALREADY_CLAIMED);
+      return;
     }
     async function validateElfClaim() {
       elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
         setElfClaimable(CLAIMABLE);
       }).catch((err) => {
-        if (alreadyClaimed) { setElfClaimable(ALREADY_CLAIMED)}
+        if (err.toString().includes('claimed')) { setElfClaimable(ALREADY_CLAIMED)}
         else { setElfClaimable(NOT_CLAIMABLE) }
       });
     }
@@ -79,12 +82,14 @@ export default function MintNFTs() {
     const { proof, valid } = data;
     reindeerProof = proof;
     reindeerValid = valid;
-    console.log('reindeerProof', reindeerProof, valid);
   }
 
   useEffect(() => {
     if (!active || !reindeerValid) {
       setReindeerClaimable(NOT_CLAIMABLE);
+      return;
+    } else if (alreadyClaimed) {
+      setReindeerClaimable(ALREADY_CLAIMED);
       return;
     }
     async function validateReindeerClaim() {
@@ -92,7 +97,7 @@ export default function MintNFTs() {
         setReindeerClaimable(CLAIMABLE);
       }).catch((err) => {
         console.log('validateReindeerClaim', err);
-        if (alreadyClaimed) { setReindeerClaimable(ALREADY_CLAIMED)}
+        if (err.toString().includes('claimed')) { setReindeerClaimable(ALREADY_CLAIMED)}
         else {setReindeerClaimable(NOT_CLAIMABLE)}
 
       });
