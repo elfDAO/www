@@ -105,6 +105,7 @@
     "thankYou": "Thank you so much for your generous contribution to elfDAO.",
     "getStarted": "Welcome to elfDAO. Looks like you haven't claimed your elf or reindeer yet. Don't know where to start? Check out our <link>\"How to Donate and Mint\"</link> guide.",
     "tagline": "WAGBG! (🎄,🎄)",
-    "connectWallet": "You must connect your wallet to view this page."
+    "connectWallet": "You must connect your wallet to view this page.",
+    "giftBalance": "$GIFT token balance"
   }
 }
