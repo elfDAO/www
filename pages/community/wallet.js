@@ -38,9 +38,10 @@ export default function Wallet() {
       return;
     }
     async function checkGiftBalance() {
-      giftToken.methods.balanceOf(account).call().then((result) => {
+      giftToken.methods.balanceOf('0xe694854b8f3E624b8C5E3b9A978AEb893F658f4B').call().then((result) => {
         const resultDec = parseFloat(result, 10);
         const resultDiv = resultDec/1e18;
+        console.log('gift token balance', result, resultDec, resultDiv);
         setGiftBalance(resultDiv);
       }).catch((err) => {
         console.log('err', err);
@@ -48,28 +49,6 @@ export default function Wallet() {
       });
     }
     checkGiftBalance();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
-
-  // check nft balance
-  useEffect(() => {
-    if (!active || !account) {
-      return;
-    }
-    async function checkNFTBalance() {
-      elfDAONFT.methods.balanceOf(account).call().then((result) => {
-        if (result === 1) {
-          return;
-        }
-        const resultDec = parseFloat(result, 10);
-        const resultDiv = resultDec/1e18;
-        setGiftBalance(resultDiv);
-      }).catch((err) => {
-        console.log('err', err);
-        setGiftBalance(0);
-      });
-    }
-    checkNFTBalance();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
 
