@@ -38,7 +38,7 @@ export default function Wallet() {
       return;
     }
     async function checkGiftBalance() {
-      giftToken.methods.balanceOf('0xe694854b8f3E624b8C5E3b9A978AEb893F658f4B').call().then((result) => {
+      giftToken.methods.balanceOf(account).call().then((result) => {
         const resultDec = parseFloat(result, 10);
         const resultDiv = resultDec/1e18;
         console.log('gift token balance', result, resultDec, resultDiv);
