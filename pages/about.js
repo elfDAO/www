@@ -155,6 +155,7 @@ export default function About() {
           <p className="manifesto" style={{marginBottom: '2rem'}}>
             {t.rich('about.reservedAmount', {
               strong: (children) => <strong>{children}</strong>,
+              link: (children) => <a className="link" href="https://join.elfdao.com/" target="_blank" rel="noreferrer">{children}</a>,
             })}
           </p>
           <p className="manifesto" style={{marginBottom: '2rem'}}>
