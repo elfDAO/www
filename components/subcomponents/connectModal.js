@@ -19,7 +19,7 @@ export default function ConnectModal(props) {
           <Coinbase onClick={() => handleLoginClick('coinbase')}>
             <Image
               src="/wallets/coinbase.png"
-              height={60}
+              height={55}
               width={320}
               alt="login with Coinbase Wallet!"
             />
@@ -40,6 +40,11 @@ export default function ConnectModal(props) {
               alt="login with Metamask!"
             />
           </Metamask>
+          <CloseModal>
+            <div className="close-inner" onClick={() => handleClose()}>
+              Close
+            </div>
+          </CloseModal>
         </Stack>
         </Box>
       </Modal>
@@ -66,6 +71,10 @@ export const Coinbase = styled.div`
   padding-bottom: 10px;
   cursor: pointer;
   border-bottom: 1px solid #eee;
+
+  :hover {
+    opacity:0.8;
+  }
 `
 
 export const WalletConnect = styled.div`
@@ -73,8 +82,35 @@ export const WalletConnect = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
+
+  :hover {
+    opacity:0.8;
+  }
 `
 
 export const Metamask = styled.div`
   cursor: pointer;
+
+  :hover {
+    opacity:0.8;
+  }
+`
+
+const CloseModal = styled.div`
+  padding-top: 2rem;
+
+  .close-inner {
+    text-transform:uppercase;
+    font-family: "Space Mono", sans-serif;
+    display:table;
+    cursor:pointer;
+    margin:0 auto;
+    transition:0.2s all cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    color: rgba(0,0,0,0.4);
+  }
+
+  .close-inner:hover {
+    color: rgba(0,0,0,0.2);
+  }
 `

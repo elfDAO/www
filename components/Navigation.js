@@ -52,6 +52,7 @@ const CustomButton = muiStyled(Button)(({ theme }) => ({
   backgroundColor: 'rgba(25, 171, 166, 0.2)',
   borderRadius: '20px',
   height: '45px',
+  minWidth: '100px',
   fontSize: '1.2rem',
   fontFamily: [
     'Space Mono,monospace',

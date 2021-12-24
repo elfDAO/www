@@ -86,6 +86,7 @@ nav {
   position:absolute;
   width:100%;
   left:0;
+  top:0;
 }
 
 nav .nav-inner {
@@ -102,6 +103,10 @@ nav .nav-actions {
   display: flex;
   align-items:center;
   gap:1rem;
+}
+
+nav .nav-actions {
+  overflow-x: auto;
 }
 
 a.nav {
@@ -194,6 +199,11 @@ a.nav {
 }
 
 @media only screen and (max-width: 36rem) {
+  header {
+    padding-right:1.5rem;
+    padding-left:1.5rem;
+  }
+
   .masthead {
     font-size: 3rem;
     text-align: center;
