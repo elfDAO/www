@@ -172,7 +172,7 @@ const CustomMenu = muiStyled(Menu)(({ theme }) => ({
     marginTop: theme.spacing(0.5),
     minWidth: 180,
     color: theme.palette.primary,
-    background: 'rgba(25, 171, 166, 0.2)',
+    background: theme.palette.primary.light,
     boxShadow:
       'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
     '& .MuiMenu-list': {
