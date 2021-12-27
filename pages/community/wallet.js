@@ -41,10 +41,9 @@ export default function Wallet() {
       giftToken.methods.balanceOf(account).call().then((result) => {
         const resultDec = parseFloat(result, 10);
         const resultDiv = resultDec/1e18;
-        console.log('gift token balance', result, resultDec, resultDiv);
         setGiftBalance(resultDiv);
       }).catch((err) => {
-        console.log('err', err);
+        console.error('err', err);
         setGiftBalance(0);
       });
     }
@@ -59,13 +58,15 @@ export default function Wallet() {
       return;
     }
     async function getContractInfo() {
+      const url = process.env.NEXT_PUBLIC_ENVIRONMENT === 'development' ?
+      `https://testnets-api.opensea.io/api/v1/assets?owner=${account}&asset_contract_address=${contract_address}` :
+      `https://api.opensea.io/api/v1/assets?owner=${account}&asset_contract_address=${contract_address}`;
+
       try {
-        const response = await axios.get(
-          `https://testnets-api.opensea.io/api/v1/assets?owner=${account}&asset_contract_address=${contract_address}`);
-          console.log(response.data.assets);
+        const response = await axios.get(url);
         setDisplayTokens(Array(response.data.assets));
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
     getContractInfo()

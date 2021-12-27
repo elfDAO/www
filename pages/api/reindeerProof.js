@@ -40,7 +40,6 @@ const handler = async (req, res) => {
   // just for front-end display convenience
   // proof will be validated in smart contract as well
   const valid = merkleTree.verify(proof, hashedAddress, root);
-  console.log('reindeerProof', proof, root, address, valid);
 
   res.status(200).json({
     proof,

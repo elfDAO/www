@@ -41,8 +41,6 @@ const handler = async (req, res) => {
   // proof will be validated in smart contract as well
   const valid = merkleTree.verify(proof, hashedAddress, root);
 
-  console.log('elfProof', proof, root, address, valid);
-
   res.status(200).json({
     proof,
     valid,
