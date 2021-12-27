@@ -27,7 +27,7 @@ export default function Progress() {
   },[dollars]);
 
 return (
-  <>
+  <div className="progress-wrapper">
     <div className="progress">
         <p>{gifts.toFixed(0)} gifts funded</p>
       <Image alt="gift" src="/gift.png" width="100" height="100" />
@@ -37,6 +37,6 @@ return (
     <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/elfdao">
       {t('home.contribute')}
     </a>
-  </>
+  </div>
 )
 }

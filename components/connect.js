@@ -113,14 +113,31 @@ export default function Connect() {
     <ConnectModal
       isModalVisible={isModalVisible}
       handleLoginClick={handleLoginClick}
+      handleClose={handleClose}
     />
     </ div>
   )
 }
 
+const DisconnectButton = muiStyled(Button)(({ theme }) => ({
+  fontSize: '1rem',
+  borderRadius: '20px',
+  background: 'rgba(7, 24, 18, 0.3)',
+  color: 'rgba(255,255,255,0.7)',
+  padding: '0 1rem',
+  fontFamily: [
+    'Space Mono,monospace',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+  ].join(','),
+}))
+
 const CustomButton = muiStyled(Button)(({ theme }) => ({
   color: '#36ECAC',
-  backgroundColor: '#236357',
+  backgroundColor: 'rgba(25, 171, 166, 0.2)',
+  borderRadius: '20px',
   height: '45px',
   fontSize: '1.2rem',
   fontFamily: [
@@ -134,7 +151,8 @@ const CustomButton = muiStyled(Button)(({ theme }) => ({
 
 const Connected = muiStyled(Button)(({ theme }) => ({
   color: '#36ECAC',
-  backgroundColor: '#236357',
+  backgroundColor: 'rgba(25, 171, 166, 0.2)',
+  borderRadius: '20px',
   height: '45px',
   fontSize: '1.1rem',
   padding: '1rem',

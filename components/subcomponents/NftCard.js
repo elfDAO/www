@@ -35,7 +35,8 @@ export default function Nft(props) {
         padding: "1.25rem",
         marginBottom: "0.75rem",
         borderRadius: "5px",
-        background: "rgba(130, 255, 172, 0.5)",
+        backgroundColor: "rgba(130, 255, 172, 0.1)",
+        background: "linear-gradient(to bottom right, rgba(130, 255, 172, 0.2), rgba(130, 255, 172, 0.05))",
         backdropFilter: "blur(2px)"
       }}>
         <Stack spacing={1}>
@@ -47,9 +48,9 @@ export default function Nft(props) {
               height={300}
             />
             <div style={{paddingTop: '1rem'}}>
-              <h3 style={{color: 'white'}}>{name.toUpperCase()}</h3>
+              <h3 style={{color: 'white', fontFamily: '"Space Mono", sans-serif', marginBottom: 0}}>{name.toUpperCase()}</h3>
             </div>
-            <h3 style={{color: '#A8EAB6', paddingTop: '0.5rem'}}>{value}</h3>
+            <h3 style={{color: '#A8EAB6', marginTop: 0}}>{value}</h3>
             <h4 style={{color: '#A8EAB6'}}>{message}</h4>
             <CustomButton
               variant="contained"
