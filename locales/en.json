@@ -94,10 +94,18 @@
     "connectWallet": "Connect your wallet to check eligibility.",
     "readyToClaim": "Ready to claim.",
     "notEligible": "You are not eligible to claim.",
-    "successful": "Success!",
+    "successful": "Success! Check your wallet in a few minutes.",
     "alreadyClaimed": "You've already claimed!",
     "unsuccessful": "There was a problem with your mint...",
     "connectMainnet": "Please connect to Ethereum mainnet.",
     "connectRinkeby": "This is a development environment. Please connect to Rinkeby."
+  },
+  "community": {
+    "yourWallet": "Your Wallet",
+    "thankYou": "Thank you so much for your generous contribution to elfDAO 💚",
+    "getStarted": "Welcome to elfDAO! Looks like you haven't claimed your $GIFT token or NFT yet. Don't know where to start? Check out our <link>\"How to Donate and Mint\"</link> guide.",
+    "tagline": "WAGBG! (🎄,🎄)",
+    "connectWallet": "You must connect your wallet to view this page.",
+    "giftBalance": "$GIFT token balance"
   }
 }
