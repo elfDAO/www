@@ -25,10 +25,13 @@ const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
                 .first {
                     margin-bottom: .25rem;
                 }
+
                 .count {
                     font-weight: bold;
-                    font-size: 3.5rem;
+                    font-size: 2.5rem;
                     text-align: center;
+                } .count.first {
+                    font-size:3.5rem;
                 }
 
                 .dollars {
