@@ -10,8 +10,8 @@ export default function Navigation() {
 
   return (
     <nav>
-      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} justifyContent={'space-between'} width={"100%"} alignItems="center">
-        <Stack direction="row" justifyContent={'space-between'} width={"100%"}>
+      <div className="nav-inner">
+        <div className="nav-links">
           <Link href="/" passHref>
             <div style={{
               width: '45px',
@@ -31,8 +31,8 @@ export default function Navigation() {
           <a className="nav" href="https://docs.elfdao.com/" target="_blank" rel="noreferrer">
             {t('docs')}
           </a>
-        </Stack>
-        <Stack direction={{ xs: 'column', sm: 'row' }} width={"100%"} justifyContent={'flex-end'} spacing={3} alignItems="center">
+        </div>
+        <div className="nav-actions">
           <Connect />
           <CustomButton
             disableElevation
@@ -41,16 +41,18 @@ export default function Navigation() {
           >
             {t('join')}
           </CustomButton>
-        </Stack>
-      </Stack>
+        </div>
+      </div>
     </nav>
   )
 }
 
 const CustomButton = muiStyled(Button)(({ theme }) => ({
   color: '#36ECAC',
-  backgroundColor: '#236357',
+  backgroundColor: 'rgba(25, 171, 166, 0.2)',
+  borderRadius: '20px',
   height: '45px',
+  minWidth: '100px',
   fontSize: '1.2rem',
   fontFamily: [
     'Space Mono,monospace',

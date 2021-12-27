@@ -45,26 +45,39 @@ export default function Connect() {
           Connect Wallet
         </CustomButton>
         ) :
-    <div>
       <Connected>
-        <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" height={"100%"}>
-          <p>{account && (ENSName || abridgeAddress(account))}</p>
-          <Button variant="contained" disableElevation size="small" onClick={handleLogoutClick}>Disconnect</Button>
-        </Stack>
+        <p style={{ padding: "0 5px" }}>{account && (ENSName || abridgeAddress(account))}</p>
+        <DisconnectButton variant="contained" disableElevation size="small" onClick={handleLogoutClick}>Disconnect</DisconnectButton>
       </Connected>
-    </div>
     }
     <ConnectModal
       isModalVisible={isModalVisible}
       handleLoginClick={handleLoginClick}
+      handleClose={handleClose}
     />
     </ div>
   )
 }
 
+const DisconnectButton = muiStyled(Button)(({ theme }) => ({
+  fontSize: '1rem',
+  borderRadius: '20px',
+  background: 'rgba(7, 24, 18, 0.3)',
+  color: 'rgba(255,255,255,0.7)',
+  padding: '0 1rem',
+  fontFamily: [
+    'Space Mono,monospace',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+  ].join(','),
+}))
+
 const CustomButton = muiStyled(Button)(({ theme }) => ({
   color: '#36ECAC',
-  backgroundColor: '#236357',
+  backgroundColor: 'rgba(25, 171, 166, 0.2)',
+  borderRadius: '20px',
   height: '45px',
   fontSize: '1.2rem',
   fontFamily: [
@@ -77,12 +90,15 @@ const CustomButton = muiStyled(Button)(({ theme }) => ({
 }));
 
 export const Connected = styled.div`
-  width: 250px;
-  background: #236357;
-  border-radius: 5px;
+  box-sizing:border-box;
+  background: rgba(25, 171, 166, 0.2);
+  border-radius:20px;
+  display:flex;
   align-items: center;
   justify-content: center;
   height: 45px;
-  padding-left: 5px;
-  padding-right: 5px;
+  gap: 10px;
+  padding:0 5px 0 10px;
+  overflow:hidden;
+  white-space: nowrap;
 `
