@@ -11,9 +11,9 @@ export const MILESTONES = [50, 100, 200, 500, 750, 1000].map(z => z * 1000)
 export default function Progress() {
   const t = useTranslations();
 
-  const [dollarGoal, setDollarGoal] = useState(MILESTONES.filter(z => dollars < z)[0])
-  const [progress, setProgress] = useState(dollars / dollarGoal * 100)
-  const [gifts, setGifts] = useState(dollars / GIFT_VALUE)
+  const [dollarGoal, setDollarGoal] = useState(0)
+  const [progress, setProgress] = useState(0)
+  const [gifts, setGifts] = useState(0)
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
