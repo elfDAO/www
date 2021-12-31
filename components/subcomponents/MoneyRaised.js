@@ -1,3 +1,5 @@
+import { MILESTONES } from "@components/Progress";
+
 const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
     const ethGoal = (dollarGoal / conversionRate).toFixed(2)
     const ethGoalFallback = 259.96;
@@ -10,12 +12,14 @@ const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
         <div className="raised">
             {/* DOLLARS */}
             <p className="count first">
-            <span className="dollars">${numberWithCommas(dollars)}</span><span className="dollarGoal"> / ${numberWithCommas(dollarGoal)}</span>
+
+                <span className="dollars">${numberWithCommas(dollars)}</span><span className="dollarGoal"> / ${numberWithCommas(dollarGoal)}</span>
             </p>
             {/* ETH */}
             <p className="count">
-            <span className="eth">Ξ{eth}</span><span className="ethGoal"> / Ξ{ethGoal ? ethGoal : ethGoalFallback}</span>
+                <span className="eth">Ξ{eth}</span><span className="ethGoal"> / Ξ{ethGoal ? ethGoal : ethGoalFallback}</span>
             </p>
+            <p className="count secondary">Next goal: ${MILESTONES[MILESTONES.indexOf(dollarGoal) + 1]} / Ξ{MILESTONES[MILESTONES.indexOf(dollarGoal) + 1] / conversionRate}</p>
             <style jsx>
                 {`
                 .raised {
@@ -32,6 +36,10 @@ const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
                     text-align: center;
                 } .count.first {
                     font-size:3.5rem;
+                }
+
+                .count.secondary {
+                    font-size: 1.5rem;
                 }
 
                 .dollars {

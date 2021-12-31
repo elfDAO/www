@@ -1,4 +1,5 @@
 const ProgressBar = ({ percent }) => {
+    console.log(percent)
     return (
         <div className="bar">
             <div className="progress"></div>
