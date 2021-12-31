@@ -5,13 +5,16 @@ import ProgressBar from "./subcomponents/ProgressBar";
 import MoneyRaised from "./subcomponents/MoneyRaised";
 import Image from 'next/image';
 
-const DOLLAR_GOAL = 1000000.0; // constant value of $M
 const GIFT_VALUE = 25; // assuming $25 gift value
+export const MILESTONES = [50, 100, 200, 500, 750, 1000].map(z => z * 1000)
 
 export default function Progress() {
   const t = useTranslations();
-  const [progress, setProgress] = useState(0)
-  const [gifts, setGifts] = useState(0)
+
+  const [dollarGoal, setDollarGoal] = useState(MILESTONES.filter(z => dollars < z)[0])
+  const [progress, setProgress] = useState(dollars / dollarGoal * 100)
+  const [gifts, setGifts] = useState(dollars / GIFT_VALUE)
+
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
   let eth, ethUsdConversion;
@@ -22,21 +25,22 @@ export default function Progress() {
   }
 
   useEffect(() => {
-    setProgress(dollars/DOLLAR_GOAL * 100);
-    setGifts(dollars/GIFT_VALUE);
-  },[dollars]);
+    setProgress(dollars / dollarGoal * 100);
+    setGifts(dollars / GIFT_VALUE);
+    setDollarGoal(MILESTONES.filter(z => dollars < z)[0])
+  }, [dollars, dollarGoal]);
 
-return (
-  <div className="progress-wrapper">
-    <div className="progress">
+  return (
+    <div className="progress-wrapper">
+      <div className="progress">
         <p>{gifts.toFixed(0)} gifts funded</p>
-      <Image alt="gift" src="/gift.png" width="100" height="100" />
+        <Image alt="gift" src="/gift.png" width="100" height="100" />
+      </div>
+      <ProgressBar percent={progress} />
+      <MoneyRaised eth={dollars / 3000} dollarGoal={dollarGoal} dollars={dollars} conversionRate={3000} />
+      <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/elfdao">
+        {t('home.contribute')}
+      </a>
     </div>
-    <ProgressBar percent={progress}/>
-    <MoneyRaised eth={eth} dollarGoal={DOLLAR_GOAL} dollars={dollars} conversionRate={ethUsdConversion} />
-    <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/elfdao">
-      {t('home.contribute')}
-    </a>
-  </div>
-)
+  )
 }
