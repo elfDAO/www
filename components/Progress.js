@@ -37,7 +37,7 @@ export default function Progress() {
         <Image alt="gift" src="/gift.png" width="100" height="100" />
       </div>
       <ProgressBar percent={progress} />
-      <MoneyRaised eth={dollars / 3000} dollarGoal={dollarGoal} dollars={dollars} conversionRate={3000} />
+      <MoneyRaised eth={eth} dollarGoal={dollarGoal} dollars={dollars} conversionRate={ethUsdConversion} />
       <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/elfdao">
         {t('home.contribute')}
       </a>
