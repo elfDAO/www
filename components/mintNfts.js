@@ -65,6 +65,7 @@ export default function MintNFTs(props) {
       elfDAONFT.methods.mintElf(elfProof).call({ from: account }).then(() => {
         setElfClaimable(CLAIMABLE);
       }).catch((err) => {
+        console.error(err)
         if (err.toString().includes('claimed')) { setElfClaimable(ALREADY_CLAIMED)}
         else { setElfClaimable(NOT_CLAIMABLE) }
       });
@@ -95,6 +96,7 @@ export default function MintNFTs(props) {
       elfDAONFT.methods.mintReindeer(reindeerProof).call({ from: account }).then(() => {
         setReindeerClaimable(CLAIMABLE);
       }).catch((err) => {
+        console.error(err)
         if (err.toString().includes('claimed')) { setReindeerClaimable(ALREADY_CLAIMED)}
         else {setReindeerClaimable(NOT_CLAIMABLE)}
 
