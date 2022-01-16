@@ -18,14 +18,16 @@ export default function Home() {
         <Navigation />
         <header>
           <h1 className="masthead">
-            {t.rich('home.tagline', { br: () => <br />})}
+            {t.rich('home.tagline', { br: () => <br /> })}
           </h1>
-          <h2 style={{paddingBottom: '5rem', color: '#36ECAC', textAlign:"center"}}>{t('home.tldr')}</h2>
+          <h2 style={{ paddingBottom: '5rem', color: '#36ECAC', textAlign: "center" }}>{t('home.tldr')}</h2>
+          <p style={{ fontSize: '2rem', paddingBottom: '3rem', textAlign: "center" }}>elfDAO web3 toy drive 2021 has concluded! Thank you for your support 💚</p>
+
           <Progress />
         </header>
         <div className="content">
           <article>
-            <p className="manifesto center" style={{marginBottom: '2rem'}}>
+            <p className="manifesto center" style={{ marginBottom: '2rem' }}>
               {t.rich('home.manifesto', {
                 strong: (children) => <strong>{children} </strong>,
               })}
@@ -38,23 +40,23 @@ export default function Home() {
           </article>
           <Spacer />
           <Stack spacing={2} justifyContent={'center'} alignItems={'center'}>
-              <Box sx={{
-                width: { xs: 250, sm: 800 },
-                borderRadius: '5px',
-                backgroundColor: 'primary.dark',
-                textAlign: 'center',
-                padding: '15px',
-                marginTop: '1rem',
-                marginBottom: '1rem',
-              }}
-              >
+            <Box sx={{
+              width: { xs: 250, sm: 800 },
+              borderRadius: '5px',
+              backgroundColor: 'primary.dark',
+              textAlign: 'center',
+              padding: '15px',
+              marginTop: '1rem',
+              marginBottom: '1rem',
+            }}
+            >
               <h3 className="manifesto">
-                Contributed on Juicebox already? NFTs will be available for claiming soon.
+                Contributed on Juicebox already? NFTs are available for claiming now!
                 Join our Discord and follow our Twitter for daily updates.
               </h3>
             </Box>
             <MintNFTs />
-            <p className="manifesto center" style={{ marginTop: '2rem'}}>
+            <p className="manifesto center" style={{ marginTop: '2rem' }}>
               {t.rich('home.firstTime', {
                 link: (children) => <a className="link" href="https://docs.elfdao.com/donate-and-mint" target="_blank" rel="noreferrer">{children} </a>,
               })}

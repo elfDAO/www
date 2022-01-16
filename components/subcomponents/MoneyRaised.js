@@ -13,13 +13,15 @@ const MoneyRaised = ({ eth, dollarGoal, dollars, conversionRate }) => {
             {/* DOLLARS */}
             <p className="count first">
 
-                <span className="dollars">${numberWithCommas(dollars)}</span><span className="dollarGoal"> / ${numberWithCommas(dollarGoal)}</span>
+                <span className="dollars">${numberWithCommas(dollars.toFixed(2))}</span><span className="dollarGoal"></span>
             </p>
             {/* ETH */}
             <p className="count">
-                <span className="eth">Ξ{eth}</span><span className="ethGoal"> / Ξ{ethGoal ? ethGoal : ethGoalFallback}</span>
+                <span className="eth">Ξ{eth}</span><span className="ethGoal">
+                    {/* / Ξ{ethGoal ? ethGoal : ethGoalFallback} */}
+                </span>
             </p>
-            <p className="count secondary">Next goal: ${MILESTONES[MILESTONES.indexOf(dollarGoal) + 1]} / Ξ{MILESTONES[MILESTONES.indexOf(dollarGoal) + 1] / conversionRate}</p>
+            {/* <p className="count secondary">Next goal: ${MILESTONES[MILESTONES.indexOf(dollarGoal) + 1].toFixed(0)} / Ξ{(MILESTONES[MILESTONES.indexOf(dollarGoal) + 1] / conversionRate).toFixed(2)}</p> */}
             <style jsx>
                 {`
                 .raised {

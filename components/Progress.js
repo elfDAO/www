@@ -8,6 +8,8 @@ import Image from 'next/image';
 const GIFT_VALUE = 25; // assuming $25 gift value
 export const MILESTONES = [50, 100, 200, 500, 750, 1000].map(z => z * 1000)
 
+// final raised: 12.0499662322
+
 export default function Progress() {
   const t = useTranslations();
 
@@ -17,12 +19,13 @@ export default function Progress() {
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
-  let eth, ethUsdConversion;
-  let dollars = 0;
+  let ethUsdConversion;
   const { data, error } = useSWR('/api/raised', { fetcher, revalidateOnFocus: false }); // refresh every 2 minutes
   if (!error && data) {
-    ({ eth, dollars, ethUsdConversion } = data);
+    ({ ethUsdConversion } = data);
   }
+  const eth = 12.04996; // final raised value
+  const dollars = ethUsdConversion * eth;
 
   useEffect(() => {
     setProgress(dollars / dollarGoal * 100);
@@ -36,7 +39,7 @@ export default function Progress() {
         <p>{gifts.toFixed(0)} gifts funded</p>
         <Image alt="gift" src="/gift.png" width="100" height="100" />
       </div>
-      <ProgressBar percent={progress} />
+      <ProgressBar percent={100} />
       <MoneyRaised eth={eth} dollarGoal={dollarGoal} dollars={dollars} conversionRate={ethUsdConversion} />
       <a target="_blank" rel="noreferrer" className="outlined contribute" href="https://juicebox.money/#/p/elfdao">
         {t('home.contribute')}
