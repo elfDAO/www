@@ -1,4 +1,3 @@
-
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { WalletLinkConnector } from '@web3-react/walletlink-connector';
@@ -6,7 +5,7 @@ import { useEffect, useState } from "react";
 import Web3 from 'web3';
 
 /** Do not destructure env variables */
-const INFURA_ID =  process.env.NEXT_PUBLIC_INFURA_ID;
+const INFURA_ID = process.env.NEXT_PUBLIC_INFURA_ID;
 const ELFNFT_ADDRESS = process.env.NEXT_PUBLIC_ELFNFT_ADDRESS;
 const ENVIRONMENT = process.env.NEXT_PUBLIC_ENVIRONMENT;
 
@@ -37,16 +36,36 @@ export const mintElf = async (account, proof) => {
   console.log('minting elf...');
   const result = elfDAONFT.methods.mintElf(proof).send({ from: account }).then((result) => {
     console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
-      return {
-        success: true,
-        status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
-        };
+    return {
+      success: true,
+      status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
+    };
   }).catch((err) => {
     console.log("Mint transaction failed!");
     return {
       success: false,
       status: "😥 Something went wrong: " + err.message
-      }
+    }
+  }).finally((result) => {
+    return result;
+  });
+  return result;
+}
+
+export const mintWorkerElf = async (account, proof) => {
+  console.log('minting worker elf...');
+  const result = elfDAONFT.methods.mintWorkerElf(proof).send({ from: account }).then((result) => {
+    console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
+    return {
+      success: true,
+      status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
+    };
+  }).catch((err) => {
+    console.log("Mint transaction failed!");
+    return {
+      success: false,
+      status: "😥 Something went wrong: " + err.message
+    }
   }).finally((result) => {
     return result;
   });
@@ -56,35 +75,35 @@ export const mintElf = async (account, proof) => {
 export const mintReindeer = async (account, proof) => {
   console.log('minting reindeer...');
   const result = elfDAONFT.methods.mintReindeer(proof).send({ from: account }).then((result) => {
-      return {
-        success: true,
-        status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
-        };
+    return {
+      success: true,
+      status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
+    };
   }).catch((err) => {
     return {
       success: false,
       status: "😥 Something went wrong: " + err.message
-      }
+    }
   });
   return result;
 };
 
-  export const mintSanta = async (account, proof, ethereum) => {
-    console.log('minting santa...')
-    const result = elfDAONFT.methods.mintSanta(proof).send({ from: account }).then((result) => {
-      console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
-        return {
-          success: true,
-          status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
-          };
-    }).catch((err) => {
-      console.log("Mint transaction failed!");
-      return {
-        success: false,
-        status: "😥 Something went wrong: " + err.message
-        }
-    });
-    return result;
+export const mintSanta = async (account, proof, ethereum) => {
+  console.log('minting santa...')
+  const result = elfDAONFT.methods.mintSanta(proof).send({ from: account }).then((result) => {
+    console.log(`✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result);
+    return {
+      success: true,
+      status: `✅ Check out your transaction on Etherscan: https://etherscan.io/tx/` + result
+    };
+  }).catch((err) => {
+    console.log("Mint transaction failed!");
+    return {
+      success: false,
+      status: "😥 Something went wrong: " + err.message
+    }
+  });
+  return result;
 };
 
 export function abridgeAddress(hex, length = 4) {
@@ -106,7 +125,7 @@ export const useENSName = (library, address) => {
             setENSName(name);
           }
         })
-        .catch(() => {});
+        .catch(() => { });
 
       return () => {
         stale = true;
@@ -118,4 +137,4 @@ export const useENSName = (library, address) => {
   return ENSName;
 }
 
-export default function blank() { return <></>}
+export default function blank() { return <></> }
