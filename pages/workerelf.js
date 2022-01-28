@@ -1,12 +1,10 @@
 import Meta from "../components/Meta";
 import { useTranslations } from 'next-intl';
 import Navigation from "../components/Navigation";
-import Progress from "../components/Progress";
 import styled from 'styled-components';
 import Footer from "@components/footer";
 import { Stack, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import MintWorkerElf from "../components/mintWorkerElf";
+import MintWorkerElves from "../components/mintWorkerElf";
 
 export default function Home() {
   const t = useTranslations();
@@ -26,7 +24,7 @@ export default function Home() {
         </header>
         <div className="content">
           <Stack spacing={2} justifyContent={'center'} alignItems={'center'}>
-            <MintWorkerElf />
+            <MintWorkerElves />
           </Stack>
         </div>
       </main>

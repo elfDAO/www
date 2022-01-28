@@ -11,7 +11,7 @@ const NOT_CLAIMABLE = 0;
 const ALREADY_CLAIMED = 1;
 const CLAIMABLE = 2;
 
-export default function MintNFTs(props) {
+export default function MintWorkerElves() {
   const t = useTranslations('nft');
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { active, account, chainId } = useWeb3React();
@@ -48,6 +48,7 @@ export default function MintNFTs(props) {
   });
   if (!error && data) {
     const { proof, valid } = data;
+    console.log('workerElfProof', valid, proof);
     workerElfProof = proof;
     workerElfValid = valid;
   }
@@ -63,7 +64,9 @@ export default function MintNFTs(props) {
     async function validateElfClaim() {
       elfDAONFT.methods.mintWorkerElf(workerElfProof).call({ from: account }).then(() => {
         setClaimable(CLAIMABLE);
+        console.log('workerElfProof claimable');
       }).catch((err) => {
+        console.log('workerElfProof not claimable', err);
         if (err.toString().includes('claimed')) { setClaimable(ALREADY_CLAIMED) }
         else { setClaimable(NOT_CLAIMABLE) }
       });
@@ -93,7 +96,7 @@ export default function MintNFTs(props) {
       <Grid container width="100%" spacing={{ xs: 0, sm: 2 }} direction={{ xs: 'column', sm: 'row' }} justifyContent="center">
         <Grid item>
           <Nft
-            name={t('worker elf')}
+            name={'worker elf'}
             value={'For our wonderful elfDAO team'}
             image={'/elf.svg'}
             active={active}
